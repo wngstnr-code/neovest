@@ -702,7 +702,7 @@ export const INITIAL_MODULES: LearnModule[] = [
 ];
 
 export const INITIAL_USER: UserProfile = {
-  fullName: 'Talita Wijaya',
+  fullName: 'talita feby',
   email: 'talita.wijaya@gmail.com',
   phone: '081234567890',
   balance: 50000000, // Rp 50.000.000 (as shown in standard screen)

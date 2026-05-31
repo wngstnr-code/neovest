@@ -32,16 +32,16 @@ export default function ProfileView({
 
   // Switch user profile identity for fast prototype testing
   const toggleIdentity = () => {
-    if (userProfile.fullName === 'Talita Wijaya') {
+    if (userProfile.fullName === 'talita feby') {
       onUpdateUserProfile({
-        fullName: 'Alex Turner',
+        fullName: 'Olitha Kaisha',
         email: 'alex.turner@gmail.com',
         isPremium: true,
         riskProfile: 'Agresif',
       });
     } else {
       onUpdateUserProfile({
-        fullName: 'Talita Wijaya',
+        fullName: 'talita feby',
         email: 'talita.wijaya@gmail.com',
         isPremium: false,
         riskProfile: 'Moderat',

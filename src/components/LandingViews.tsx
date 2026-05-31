@@ -17,7 +17,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
   const [showPassword, setShowPassword] = useState(false);
   
   // Registration States
-  const [fullName, setFullName] = useState('Talita Wijaya');
+  const [fullName, setFullName] = useState('talita feby');
   const [email, setEmail] = useState('talita.wijaya@gmail.com');
   const [phone, setPhone] = useState('081234567890');
   const [password, setPassword] = useState('Rahasia123');
@@ -67,7 +67,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
     const nameMatch = loginEmail.split('@')[0];
     const cleanName = nameMatch.charAt(0).toUpperCase() + nameMatch.slice(1);
     onLoginSuccess({
-      fullName: cleanName || 'Alex Turner',
+      fullName: cleanName || 'Olitha Kaisha',
       email: loginEmail,
     });
     onNavigate('Home');
@@ -386,7 +386,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
             type="button"
             onClick={() => {
               onLoginSuccess({
-                fullName: 'Talita Wijaya',
+                fullName: 'talita feby',
                 email: 'talita.wijaya@gmail.com',
               });
               onNavigate('Home');
@@ -406,7 +406,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
             type="button"
             onClick={() => {
               onLoginSuccess({
-                fullName: 'Alex Turner',
+                fullName: 'Olitha Kaisha',
                 email: 'alex.turner@gmail.com',
                 isPremium: true,
               });
