@@ -425,6 +425,9 @@ export default function HomeDashboard({
 
       {/* Static progress banner */}
       <div className="px-5">
+        <div className="flex justify-between items-center mb-3">
+          <span className="text-xs font-bold text-gray-905 tracking-tight uppercase">Belajar</span>
+        </div>
         <div
           onClick={() => onNavigate('Learn')}
           className="bg-white rounded-3xl border border-gray-100 p-4 soft-shadow flex items-center gap-3.5 cursor-pointer hover:bg-gray-50/50 transition-all"

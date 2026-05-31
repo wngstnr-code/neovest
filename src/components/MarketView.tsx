@@ -26,6 +26,8 @@ export default function MarketView({
 }: MarketViewProps) {
   const [selectedCategory, setSelectedCategory] = useState<'semua' | 'favorit' | 'perbankan' | 'energi' | 'teknologi'>('semua');
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
+  const [showAllGainers, setShowAllGainers] = useState(false);
+  const [showAllLosers, setShowAllLosers] = useState(false);
 
   const categories: { id: 'semua' | 'favorit' | 'perbankan' | 'energi' | 'teknologi'; label: string }[] = [
     { id: 'semua', label: 'Semua' },
@@ -162,12 +164,17 @@ export default function MarketView({
             <Flame className="w-4 h-4 text-orange-550 fill-orange-500 shrink-0" />
             <span>TOP GAINERS</span>
           </span>
-          <span className="text-[10px] text-gray-400 font-bold">Lihat Semua</span>
+          <button 
+            onClick={() => setShowAllGainers(!showAllGainers)}
+            className="text-[10px] text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
+          >
+            {showAllGainers ? 'Tutup' : 'Lihat Semua'}
+          </button>
         </div>
 
         <div className="flex flex-col gap-2.5">
           {gainers.length > 0 ? (
-            gainers.map((stock) => {
+            (showAllGainers ? gainers : gainers.slice(0, 3)).map((stock) => {
               const isAdded = watchlist.includes(stock.code);
               return (
                 <div
@@ -232,12 +239,17 @@ export default function MarketView({
           <span className="text-xs font-bold text-gray-900 tracking-tight flex items-center gap-1">
             TOP LOSERS
           </span>
-          <span className="text-[10px] text-gray-400 font-bold">Lihat Semua</span>
+          <button 
+            onClick={() => setShowAllLosers(!showAllLosers)}
+            className="text-[10px] text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
+          >
+            {showAllLosers ? 'Tutup' : 'Lihat Semua'}
+          </button>
         </div>
 
         <div className="flex flex-col gap-2.5">
           {losers.length > 0 ? (
-            losers.map((stock) => {
+            (showAllLosers ? losers : losers.slice(0, 3)).map((stock) => {
               const isAdded = watchlist.includes(stock.code);
               return (
                 <div
