@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Screen, UserProfile, PortfolioItem, Stock, LearnModule, Transaction } from './types';
 import {
   INITIAL_STOCKS,
@@ -43,6 +43,14 @@ export default function App() {
   const [portfolio, setPortfolio] = useState<PortfolioItem[]>(INITIAL_PORTFOLIO);
   const [watchlist, setWatchlist] = useState<string[]>(INITIAL_WATCHLIST);
   const [modules, setModules] = useState<LearnModule[]>(INITIAL_MODULES);
+
+  useEffect(() => {
+    setStocks((prev) => {
+      const existingCodes = new Set(prev.map((stock) => stock.code));
+      const missingStocks = INITIAL_STOCKS.filter((stock) => !existingCodes.has(stock.code));
+      return missingStocks.length > 0 ? [...prev, ...missingStocks] : prev;
+    });
+  }, []);
 
   // Orders tracker state
   const [orders, setOrders] = useState<Transaction[]>([

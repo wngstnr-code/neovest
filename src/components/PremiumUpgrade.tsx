@@ -23,12 +23,12 @@ export default function PremiumUpgrade({
   const [paymentFinished, setPaymentFinished] = useState(false);
 
   const perks = [
-    'Rekomendasi emiten harian bertenaga AI dengan akurasi & model confidence tinggi (>80%).',
+    'Rekomendasi emiten harian bertenaga AI dengan akurasi & tingkat keyakinan model tinggi (>80%).',
     'Evaluasi portofolio otomatis & anjuran rebalancing sektoral taktis harian.',
     'Akses grup diskusi forum VIP terverifikasi bersama analis bersertifikat CSA.',
     'Undangan prioritas ke Webinar interaktif eksklusif setiap akhir pekan.',
     'Bebas biaya administrasi penarikan saldo RDN ke rekening bank terdaftar.',
-    'Layanan dukungan Customer Service prioritas 24 jam penuh.'
+    'Layanan dukungan pelanggan prioritas 24 jam penuh.'
   ];
 
   const handleStartUpgrade = () => {
@@ -98,7 +98,7 @@ export default function PremiumUpgrade({
             }`}
           >
             <div>
-              <span className="text-xs font-black block">Paket Bulanan (Monthly)</span>
+              <span className="text-xs font-black block">Paket Bulanan</span>
               <span className="text-xs text-gray-500 font-medium block mt-1">Dapat dibatalkan kapan saja</span>
             </div>
             <div className="text-right">
@@ -121,7 +121,7 @@ export default function PremiumUpgrade({
 
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-xs font-black block">Paket Tahunan (Annual)</span>
+                <span className="text-xs font-black block">Paket Tahunan</span>
                 <span className="bg-accent/20 text-accent text-xs font-black px-1.5 py-0.5 rounded uppercase">POPULER</span>
               </div>
               <span className="text-xs text-gray-500 font-medium block mt-1">Lebih hemat dan stabil jangka panjang</span>
@@ -204,7 +204,7 @@ export default function PremiumUpgrade({
                   <Star className="w-3 h-3 fill-teal-600 text-teal-600 shrink-0" />
                 </span>
                 <p className="text-xs text-gray-500 leading-relaxed font-semibold my-4 px-3">
-                  Terima kasih! Pembayaran Anda sukses diproses. Semua fitur AI Insight, rebalancing otomatis, dan webinar VIP sekarang telah terbuka 100%!
+                  Terima kasih! Pembayaran Anda sukses diproses. Semua fitur Wawasan AI, penyeimbangan ulang otomatis, dan webinar VIP sekarang telah terbuka 100%!
                 </p>
 
                 <button

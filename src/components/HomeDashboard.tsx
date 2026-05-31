@@ -64,7 +64,7 @@ export default function HomeDashboard({
     },
     {
       id: 'order-match',
-      title: 'Order BBCA berhasil',
+      title: 'Pesanan BBCA berhasil',
       message: 'Pembelian 10 lot BBCA sudah match di harga Rp 10.250.',
       time: '14:30',
       tone: 'bg-blue-50 text-primary',
@@ -72,7 +72,7 @@ export default function HomeDashboard({
     },
     {
       id: 'insight-ready',
-      title: 'Insight AI tersedia',
+      title: 'Wawasan AI tersedia',
       message: 'Rekomendasi saham harian sudah diperbarui.',
       time: '09:00',
       tone: 'bg-amber-50 text-amber-700',
@@ -253,7 +253,7 @@ export default function HomeDashboard({
             <div className="w-11 h-11 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center soft-shadow">
               <Users className="w-5 h-5 stroke-[2.2]" />
             </div>
-            <span className="text-xs font-bold text-gray-750">Community</span>
+            <span className="text-xs font-bold text-gray-750">Komunitas</span>
           </button>
 
           {/* Learn */}
@@ -264,7 +264,7 @@ export default function HomeDashboard({
             <div className="w-11 h-11 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center soft-shadow">
               <BookOpen className="w-5 h-5 stroke-[2.2]" />
             </div>
-            <span className="text-xs font-bold text-gray-750">Learn</span>
+            <span className="text-xs font-bold text-gray-750">Belajar</span>
           </button>
         </div>
       </div>
@@ -294,7 +294,7 @@ export default function HomeDashboard({
             </div>
             <div className="flex shrink-0 flex-col items-end gap-1.5">
               <span className="text-xs font-semibold bg-primary-light text-primary px-2.5 py-1 rounded-lg">
-                Confidence {highlightedStock.aiConfidence}%
+                Keyakinan {highlightedStock.aiConfidence}%
               </span>
               <span className="text-xs font-semibold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-lg">
                 Risiko {highlightedStock.riskLevel}

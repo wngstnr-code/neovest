@@ -60,7 +60,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (!loginEmail || !loginPassword) {
-      setErrorInput('Mohon masukkan Email dan Password.');
+      setErrorInput('Mohon masukkan email dan kata sandi.');
       return;
     }
     setErrorInput('');
@@ -161,7 +161,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
               {/* Full Name */}
               <div className="relative">
                 <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
-                  Full Name
+                  Nama Lengkap
                 </label>
                 <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
                   <User className="w-4 h-4 text-gray-400 mr-2.5" />
@@ -197,7 +197,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
               {/* Phone Number */}
               <div className="relative">
                 <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
-                  Phone Number
+                  Nomor Telepon
                 </label>
                 <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
                   <Phone className="w-4 h-4 text-gray-400 mr-2.5" />
@@ -215,7 +215,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
               {/* Password */}
               <div className="relative">
                 <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
-                  Password
+                  Kata Sandi
                 </label>
                 <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
                   <Lock className="w-4 h-4 text-gray-400 mr-2.5" />
@@ -245,7 +245,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
                   <div className={`h-1.5 flex-1 rounded-full transition-colors ${strength.score >= 3 ? 'bg-green-500' : 'bg-gray-100'}`} />
                 </div>
                 <div className="flex justify-between items-center text-xs mt-0.5">
-                  <span className="text-gray-400">Kekuatan Password</span>
+                  <span className="text-gray-400">Kekuatan Kata Sandi</span>
                   <span className={`font-semibold ${strength.score === 1 ? 'text-red-500' : strength.score === 2 ? 'text-amber-500 font-semibold' : 'text-green-600'}`}>{strength.label}</span>
                 </div>
               </div>
@@ -304,7 +304,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
             </svg>
           </div>
           <h2 className="text-xl font-bold text-gray-900 tracking-tight">NeoVest</h2>
-          <span className="text-xs text-gray-400 font-medium">Your trusted financial companion.</span>
+          <span className="text-xs text-gray-400 font-medium">Teman finansial tepercaya Anda.</span>
         </div>
 
         {/* Inputs */}
@@ -318,7 +318,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
           {/* Email Address */}
           <div className="relative">
             <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
-              Email Address
+              Alamat Email
             </label>
             <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
               <Mail className="w-4 h-4 text-gray-400 mr-2.5" />
@@ -337,7 +337,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
           <div>
             <div className="relative">
               <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
-                Password
+                Kata Sandi
               </label>
               <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
                 <Lock className="w-4 h-4 text-gray-400 mr-2.5" />
@@ -347,7 +347,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
                   value={loginPassword}
                   onChange={(e) => setLoginPassword(e.target.value)}
                   className="w-full text-xs text-gray-800 outline-none font-sans font-medium"
-                  placeholder="Password anda"
+                  placeholder="Kata sandi Anda"
                 />
                 <button
                   type="button"
@@ -359,7 +359,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
               </div>
             </div>
             <div className="flex justify-end text-xs font-semibold text-primary mt-1.5 cursor-pointer">
-              Lupa Password?
+              Lupa Kata Sandi?
             </div>
           </div>
 
@@ -386,26 +386,6 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
             type="button"
             onClick={() => {
               onLoginSuccess({
-                fullName: 'Alex Turner',
-                email: 'alex.turner@gmail.com',
-                isPremium: true
-              });
-              onNavigate('Home');
-            }}
-            className="w-full h-11 border border-gray-200 hover:bg-gray-50 text-xs font-semibold text-gray-700 rounded-full flex items-center justify-center gap-2 transition-all"
-          >
-            <span className="p-1 bg-teal-50 text-teal-600 rounded-full">
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM18 10L14 10L14 6L10 6L10 10L6 10L6 14L10 14L10 18L14 18L14 14L18 14L18 10Z"/>
-              </svg>
-            </span>
-            Masuk dengan Biometrik (Alex: Premium)
-          </button>
-
-          <button
-            type="button"
-            onClick={() => {
-              onLoginSuccess({
                 fullName: 'Talita Wijaya',
                 email: 'talita.wijaya@gmail.com',
               });
@@ -413,11 +393,32 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
             }}
             className="w-full h-11 border border-gray-200 hover:bg-gray-50 text-xs font-semibold text-gray-700 rounded-full flex items-center justify-center gap-2 transition-all"
           >
-            {/* Google G icon */}
-            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
-              <path fill="#EA4335" d="M12.24 10.285V14.4h6.887c-.275 1.565-1.88 4.6-6.887 4.6-4.33 0-7.866-3.57-7.866-7.97s3.536-7.97 7.866-7.97c2.46 0 4.105 1.025 5.047 1.926l3.245-3.125C18.465 1.05 15.63 0 12.24 0 5.58 0 .17 5.37.17 12s5.41 12 12.07 12c6.95 0 11.57-4.85 11.57-11.75 0-.79-.085-1.4-.19-1.965H12.24z" />
+            <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.42-.22-2.05H12v3.87h6.62c-.13.96-.85 2.41-2.45 3.38l-.02.13 3.56 2.4.25.02c2.3-1.85 3.54-4.58 3.54-7.75z" />
+              <path fill="#34A853" d="M12 23c3.29 0 6.05-.95 8.06-2.59l-3.84-2.94c-1.03.62-2.41 1.06-4.22 1.06-3.22 0-5.95-1.85-6.92-4.41l-.14.01-3.7 2.49-.05.12C3.19 20.45 7.29 23 12 23z" />
+              <path fill="#FBBC05" d="M5.08 14.12A5.91 5.91 0 0 1 4.75 12c0-.74.12-1.45.32-2.12l-.01-.13-3.75-2.53-.12.05A10.2 10.2 0 0 0 0 12c0 1.68.44 3.27 1.2 4.73l3.88-2.61z" />
+              <path fill="#EA4335" d="M12 5.47c2.29 0 3.83.86 4.71 1.58l3.44-2.92C18.04 2.42 15.29 1.38 12 1.38 7.29 1.38 3.19 3.93 1.2 7.27l3.87 2.61C6.05 7.32 8.78 5.47 12 5.47z" />
             </svg>
-            Lanjutkan dengan Google (Talita: Baru)
+            Masuk dengan Google
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              onLoginSuccess({
+                fullName: 'Alex Turner',
+                email: 'alex.turner@gmail.com',
+                isPremium: true,
+              });
+              onNavigate('Home');
+            }}
+            className="w-full h-11 border border-gray-200 hover:bg-gray-50 text-xs font-semibold text-gray-700 rounded-full flex items-center justify-center gap-2 transition-all"
+          >
+            <svg className="w-4 h-4 shrink-0 text-gray-950" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16.62 13.08c-.02-2.28 1.86-3.38 1.94-3.43-1.06-1.55-2.71-1.76-3.29-1.78-1.4-.14-2.73.82-3.44.82-.72 0-1.82-.8-2.99-.78-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.15.76 1.1 1.67 2.34 2.87 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.78.74 2.99.72 1.24-.02 2.02-1.13 2.78-2.23.87-1.28 1.23-2.51 1.25-2.58-.03-.02-2.4-.92-2.43-3.73z" />
+              <path d="M14.35 6.39c.63-.77 1.06-1.84.94-2.91-.91.04-2.01.61-2.67 1.37-.58.67-1.09 1.76-.96 2.79 1.02.08 2.06-.52 2.69-1.25z" />
+            </svg>
+            Masuk dengan Apple
           </button>
         </div>
 

@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { User, Shield, CreditCard, Bell, LogOut, CheckCircle, Smartphone, Globe, Landmark, Award, Sun, Moon } from 'lucide-react';
+import { User, Shield, LogOut, CheckCircle, Globe, Landmark, Award, Sun, Moon } from 'lucide-react';
 import { UserProfile, Screen } from '../types';
 
 interface ProfileViewProps {
@@ -43,7 +43,7 @@ export default function ProfileView({
         fullName: 'Talita Wijaya',
         email: 'talita.wijaya@gmail.com',
         isPremium: false,
-        riskProfile: 'Moderate',
+        riskProfile: 'Moderat',
       });
     }
   };
@@ -98,13 +98,13 @@ export default function ProfileView({
                     onClick={() => onNavigate('PremiumUpgrade')}
                     className="bg-primary/5 text-primary text-xs font-black px-1.5 py-0.5 rounded-full uppercase hover:bg-primary-light"
                   >
-                    Upgrade
+                    Tingkatkan
                   </button>
                 )}
               </div>
               <p className="text-xs text-gray-400 font-medium tracking-normal mt-0.5">{userProfile.email}</p>
               <p className="text-xs text-primary font-bold mt-1.5 cursor-pointer block hover:underline" onClick={toggleIdentity}>
-                Ganti User (Simulasi Test)
+                Ganti Pengguna (Simulasi)
               </p>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function ProfileView({
       {/* Bank balance credentials */}
       <div className="px-5 mb-6">
         <div className="bg-gradient-to-tr from-[#001a41] to-primary-dark rounded-3xl p-5 text-white shadow-md relative overflow-hidden">
-          <span className="text-xs text-white/70 font-semibold block tracking-wider uppercase">Saldo RDN (Virtual Account)</span>
+          <span className="text-xs text-white/70 font-semibold block tracking-wider uppercase">Saldo RDN (Rekening Virtual)</span>
           <h2 id="profile-rdn-balance" className="text-xl font-extrabold mt-0.5 select-all">{formatIDR(userProfile.balance)}</h2>
           
           <div className="flex justify-between items-center mt-3.5 border-t border-white/10 pt-3.5 bg-transparent">
@@ -133,7 +133,7 @@ export default function ProfileView({
 
       {/* Rincian Menu Settings options precisely matching Livin layout */}
       <div className="px-5 mb-6">
-        <span className="text-xs font-black text-gray-900 block mb-3 uppercase tracking-wider">PREFERENSI SETTINGS</span>
+        <span className="text-xs font-black text-gray-900 block mb-3 uppercase tracking-wider">PREFERENSI PENGATURAN</span>
 
         <div className="bg-white rounded-3xl p-2 soft-shadow border border-gray-100 flex flex-col gap-1">
           {/* KYC Status Action Button */}
@@ -239,7 +239,7 @@ export default function ProfileView({
           className="w-full h-11 border border-red-500 bg-red-500 hover:bg-red-600 text-white dark:border-[#9f1239] dark:bg-[#be123c] dark:hover:bg-[#9f1239] dark:text-white rounded-2xl text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm"
         >
           <LogOut className="w-4.5 h-4.5 stroke-[2.5]" />
-          Log Out Akun NeoVest
+          Keluar dari Akun NeoVest
         </button>
       </div>
 
@@ -250,9 +250,9 @@ export default function ProfileView({
             <div className="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-8 h-8 stroke-[2.2]" />
             </div>
-            <h3 className="text-sm font-black text-gray-950 block mb-1">KYC Account Verified</h3>
+            <h3 className="text-sm font-black text-gray-950 block mb-1">Akun KYC Terverifikasi</h3>
             <span className="text-xs text-teal-600 bg-teal-50 px-3 py-1 rounded-full font-bold uppercase inline-block my-2">
-              Level 2 Pemula Verified
+              Level 2 Pemula Terverifikasi
             </span>
             <p className="text-xs text-gray-500 leading-relaxed font-semibold my-4 px-2">
               Selamat! Dokumen KTP, Swafoto, dan rekening bank kustodian Anda telah berhasil diproses KYC 100%. Anda memiliki hak penuh untuk membeli dan menjual saham tanpa batas limit penarikan.

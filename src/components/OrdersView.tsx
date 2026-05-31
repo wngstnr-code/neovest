@@ -63,13 +63,13 @@ export default function OrdersView({
             onClick={() => onNavigate('Community')}
             className="text-xs font-black px-4 py-1.5 rounded-full text-gray-500 hover:text-gray-900 uppercase tracking-wider transition-all"
           >
-            Community
+            Komunitas
           </button>
           <button
             onClick={() => onNavigate('Orders')}
             className="text-xs font-black px-4 py-1.5 rounded-full bg-white text-primary shadow-sm uppercase tracking-wider"
           >
-            Order
+            Pesanan
           </button>
         </div>
 
@@ -77,7 +77,7 @@ export default function OrdersView({
         <button
           onClick={() => onNavigate('Home')}
           className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-gray-100 shadow-sm text-gray-600 active:scale-95 transition-all"
-          title="Back to Home"
+          title="Kembali ke Beranda"
         >
           <ArrowLeft className="w-4 h-4" />
         </button>
@@ -87,7 +87,7 @@ export default function OrdersView({
       <div className="px-5 mb-5 grid grid-cols-2 gap-3">
         <div className="bg-white rounded-2xl p-3 border border-gray-100 soft-shadow">
           <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Total Transaksi</span>
-          <span className="text-base font-black text-gray-900 block mt-0.5">{orders.length} Order</span>
+          <span className="text-base font-black text-gray-900 block mt-0.5">{orders.length} Pesanan</span>
           <span className="text-xs text-teal-600 font-semibold block mt-0.5">Semua diproses sukses</span>
         </div>
 
@@ -106,7 +106,7 @@ export default function OrdersView({
           <Search className="w-4 h-4 text-gray-400 shrink-0 mr-2.5" />
           <input 
             type="text" 
-            placeholder="Cari emiten (e.g. BBCA)..." 
+            placeholder="Cari emiten (mis. BBCA)..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-transparent outline-none text-xs text-gray-800 placeholder-gray-400 font-bold"
@@ -185,7 +185,7 @@ export default function OrdersView({
 
                     <div className="flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5 text-teal-500" />
-                      <span className="text-xs font-black text-teal-600 uppercase tracking-wider bg-teal-50 px-2 py-0.5 rounded-lg">Match</span>
+                      <span className="text-xs font-black text-teal-600 uppercase tracking-wider bg-teal-50 px-2 py-0.5 rounded-lg">Sesuai</span>
                     </div>
                   </div>
 

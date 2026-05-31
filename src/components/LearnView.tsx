@@ -40,7 +40,7 @@ export default function LearnView({
       correctIndex: 1,
     },
     {
-      question: 'Apa arti dari Price to Earnings Ratio (PER) yang rendah?',
+      question: 'Apa arti Rasio Harga terhadap Laba (PER) yang rendah?',
       options: [
         'Perusahaan rawan bangkrut dalam waktu singkat',
         'Harga saham relatif murah dibanding laba bersih per saham',
@@ -54,7 +54,7 @@ export default function LearnView({
       options: [
         'Analisis Fundamental',
         'Analisis Teknikal',
-        'Analisis Sentiment',
+        'Analisis Sentimen',
         'Analisis Kuantitatif'
       ],
       correctIndex: 1,

@@ -152,9 +152,9 @@ export default function StockDetailView({
           <div className="absolute right-0 top-0 w-24 h-24 bg-primary/5 rounded-full" />
 
           <div className="flex justify-between items-center mb-3">
-            <span className="text-xs font-black text-gray-900 tracking-wider">RECOMMENDED AI INSIGHT</span>
+            <span className="text-xs font-black text-gray-900 tracking-wider">WAWASAN AI REKOMENDASI</span>
             <span className="text-xs font-bold text-primary flex items-center gap-0.5 bg-primary-light px-2.5 py-0.5 rounded-full">
-              Confidence {stock.aiConfidence}%
+              Keyakinan {stock.aiConfidence}%
             </span>
           </div>
 
@@ -169,12 +169,12 @@ export default function StockDetailView({
 
       {/* Financial Health 2x2 Valuation Grid */}
       <div className="px-5 mb-6">
-        <span className="text-xs font-bold text-gray-900 tracking-wider block mb-3 uppercase">Financial Health</span>
+        <span className="text-xs font-bold text-gray-900 tracking-wider block mb-3 uppercase">Kesehatan Keuangan</span>
 
         <div className="grid grid-cols-2 gap-3.5">
           {/* PE Card */}
           <div className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow">
-            <span className="text-xs text-gray-400 font-bold block">PE Ratio (PER)</span>
+            <span className="text-xs text-gray-400 font-bold block">Rasio PE (PER)</span>
             <h4 className="text-base font-extrabold text-gray-950 mt-1">{stock.pe}</h4>
             <span className="text-xs font-bold text-primary mt-1.5 block bg-primary-light/50 px-2 py-0.5 rounded inline-block">
               {stock.peClassification}
@@ -183,7 +183,7 @@ export default function StockDetailView({
 
           {/* PBV Card */}
           <div className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow">
-            <span className="text-xs text-gray-400 font-bold block">PBV Ratio</span>
+            <span className="text-xs text-gray-400 font-bold block">Rasio PBV</span>
             <h4 className="text-base font-extrabold text-gray-950 mt-1">{stock.pbv}</h4>
             <span className="text-xs font-bold text-teal-700 mt-1.5 block bg-teal-50 px-2 py-0.5 rounded inline-block animate-pulse">
               {stock.pbvClassification}
@@ -192,7 +192,7 @@ export default function StockDetailView({
 
           {/* ROE Card */}
           <div className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow">
-            <span className="text-xs text-gray-400 font-bold block">Return on Equity (ROE)</span>
+            <span className="text-xs text-gray-400 font-bold block">Imbal Hasil Ekuitas (ROE)</span>
             <h4 className="text-base font-extrabold text-gray-950 mt-1">{stock.roe}</h4>
             <span className="text-xs font-bold text-gray-600 mt-1.5 block bg-gray-100 px-2 py-0.5 rounded inline-block">
               {stock.roeClassification}
@@ -201,7 +201,7 @@ export default function StockDetailView({
 
           {/* Dividend Yield Card */}
           <div className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow">
-            <span className="text-xs text-gray-400 font-bold block">Dividend Yield</span>
+            <span className="text-xs text-gray-400 font-bold block">Imbal Hasil Dividen</span>
             <h4 className="text-base font-extrabold text-gray-950 mt-1">{stock.divYield}</h4>
             <span className="text-xs font-bold text-amber-700 mt-1.5 block bg-amber-50 px-2 py-0.5 rounded inline-block">
               {stock.divYieldClassification}
@@ -212,14 +212,14 @@ export default function StockDetailView({
 
       {/* Bull and Bear Scenarios layout precisely matching design */}
       <div className="px-5 mb-6">
-        <span className="text-xs font-bold text-gray-905 tracking-wider block mb-3 uppercase">Scenario Target Price</span>
+        <span className="text-xs font-bold text-gray-905 tracking-wider block mb-3 uppercase">Skenario Target Harga</span>
 
         <div className="bg-white rounded-3xl border border-gray-100 p-5 soft-shadow">
           <div className="flex flex-col gap-4">
             {/* Bull Scenario */}
             <div>
               <div className="flex justify-between items-center mb-1">
-                <span className="text-xs font-bold text-teal-600">Optimis (Bull Case)</span>
+                <span className="text-xs font-bold text-teal-600">Optimis (Skenario Naik)</span>
                 <span className="text-xs font-black text-teal-700">Rp {stock.bullCase.toLocaleString('id-ID')}</span>
               </div>
               <div className="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
@@ -231,7 +231,7 @@ export default function StockDetailView({
             {/* Bear Scenario */}
             <div className="border-t border-gray-100 pt-4 bg-transparent">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-xs font-bold text-red-500">Konservatif (Bear Case)</span>
+                <span className="text-xs font-bold text-red-500">Konservatif (Skenario Turun)</span>
                 <span className="text-xs font-black text-red-600">Rp {stock.bearCase.toLocaleString('id-ID')}</span>
               </div>
               <div className="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
@@ -246,7 +246,7 @@ export default function StockDetailView({
       {/* Drivers List and Technical Indicators Panel */}
       <div className="px-5 mb-5">
         <div className="bg-white rounded-3xl border border-gray-100 p-5 soft-shadow">
-          <span className="text-xs font-extrabold text-gray-900 block mb-3">KEY STRENGTH DRIVERS</span>
+          <span className="text-xs font-extrabold text-gray-900 block mb-3">FAKTOR PENGUAT UTAMA</span>
 
           <div className="flex flex-col gap-3">
             {stock.drivers ? (

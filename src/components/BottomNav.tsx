@@ -30,11 +30,11 @@ export default function BottomNav({ currentScreen, onNavigate }: BottomNavProps)
   if (activeTab === 'none') return null;
 
   const tabs = [
-    { id: 'Home', label: 'Home', icon: Home, screen: 'Home' as Screen },
-    { id: 'Market', label: 'Market', icon: TrendingUp, screen: 'Market' as Screen },
-    { id: 'Portfolio', label: 'Portfolio', icon: PieChart, screen: 'Portfolio' as Screen },
-    { id: 'Insight', label: 'Insight', icon: Lightbulb, screen: 'Insight' as Screen },
-    { id: 'Profile', label: 'Profile', icon: User, screen: 'Profile' as Screen },
+    { id: 'Home', label: 'Beranda', icon: Home, screen: 'Home' as Screen },
+    { id: 'Market', label: 'Pasar', icon: TrendingUp, screen: 'Market' as Screen },
+    { id: 'Portfolio', label: 'Portofolio', icon: PieChart, screen: 'Portfolio' as Screen },
+    { id: 'Insight', label: 'Wawasan', icon: Lightbulb, screen: 'Insight' as Screen },
+    { id: 'Profile', label: 'Profil', icon: User, screen: 'Profile' as Screen },
   ];
 
   return (

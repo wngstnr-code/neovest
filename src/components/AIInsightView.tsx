@@ -44,7 +44,7 @@ export default function AIInsightView({
             <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           <div>
-            <h2 className="text-xl font-bold text-gray-900 tracking-tight mt-0.5">AI Insight</h2>
+            <h2 className="text-xl font-bold text-gray-900 tracking-tight mt-0.5">Wawasan AI</h2>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ export default function AIInsightView({
       <div className="px-5 mb-6">
         <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3.5 flex items-center gap-1">
           <Sparkles className="w-4.5 h-4.5 text-primary stroke-[2.2]" />
-          TODAY'S AI PICKS
+          PILIHAN AI HARI INI
         </h3>
 
         {[bbcaData, bmriData, adroData].map((pickData) => {
@@ -86,7 +86,7 @@ export default function AIInsightView({
                 <div className="flex items-center gap-3">
                   <div className="text-right">
                     <span className="text-sm font-black text-primary block">{pickData.aiConfidence}%</span>
-                    <span className="text-[10px] text-gray-400 font-bold block">Confidence</span>
+                    <span className="text-[10px] text-gray-400 font-bold block">Keyakinan</span>
                   </div>
                   <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
                 </div>
@@ -97,7 +97,7 @@ export default function AIInsightView({
                 <div className="mt-4 pt-4 border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-300">
                   <div className="grid grid-cols-2 gap-3.5 mb-4">
                     <div>
-                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Risk Level</span>
+                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Tingkat Risiko</span>
                       <div className="flex items-center gap-1.5 mt-1">
                         <span className={`w-2.5 h-2.5 rounded-full ${pickData.riskLevel === 'Rendah' ? 'bg-teal-500' : 'bg-amber-500'}`} />
                         <span className="text-xs font-bold text-gray-700">{pickData.riskLevel}</span>
@@ -105,7 +105,7 @@ export default function AIInsightView({
                     </div>
 
                     <div>
-                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Target Price</span>
+                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Target Harga</span>
                       <span className="text-xs font-bold text-gray-900 block mt-1">Rp {(pickData.price * 1.15).toLocaleString('id-ID')}</span>
                     </div>
                   </div>
@@ -162,18 +162,18 @@ export default function AIInsightView({
             </div>
             
             <h4 id="ai-market-sentiment-label" className="text-sm font-extrabold text-primary mb-1 mt-1">Positif</h4>
-            <span className="text-xs text-gray-400 font-semibold block uppercase tracking-wider mb-4">Market Mood Indicator</span>
+            <span className="text-xs text-gray-400 font-semibold block uppercase tracking-wider mb-4">Indikator Suasana Pasar</span>
           </div>
 
           {/* Sectors to watch tags */}
           <div>
-            <span className="text-xs text-gray-400 font-bold block mb-2 tracking-wider">SECTORS TO WATCH</span>
+            <span className="text-xs text-gray-400 font-bold block mb-2 tracking-wider">SEKTOR YANG DIPANTAU</span>
             <div className="flex gap-2">
               <span className="inline-flex items-center gap-1.5 bg-blue-50 text-primary text-xs font-extrabold px-2.5 py-1 rounded-lg">
-                <Landmark className="w-3.5 h-3.5" /> Banking
+                <Landmark className="w-3.5 h-3.5" /> Perbankan
               </span>
               <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">
-                <ShoppingBag className="w-3.5 h-3.5" /> Consumer
+                <ShoppingBag className="w-3.5 h-3.5" /> Konsumen
               </span>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function AIInsightView({
       <div className="px-5 mb-6">
         <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
           <LayoutGrid className="w-4 h-4 text-primary stroke-[2.2]" />
-          NEWS SENTIMENT HIGHLIGHT
+          SOROTAN SENTIMEN BERITA
         </h3>
         <div className="bg-white rounded-2xl border border-gray-100 p-4 soft-shadow">
           <div className="flex items-start gap-3">
@@ -206,7 +206,7 @@ export default function AIInsightView({
       <div className="px-5 mb-6">
         <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
           <AlertTriangle className="w-4 h-4 text-red-500 stroke-[2.2]" />
-          EARLY WARNING SYSTEM
+          SISTEM PERINGATAN DINI
         </h3>
         <div className="bg-red-50/50 rounded-2xl border border-red-100 p-4 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-1 h-full bg-red-500"></div>
@@ -228,7 +228,7 @@ export default function AIInsightView({
       <div className="px-5 mb-6">
         <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
           <Activity className="w-4 h-4 text-primary stroke-[2.2]" />
-          PATTERN RECOGNITION
+          PENGENALAN POLA
         </h3>
         <div className="bg-white rounded-2xl border border-gray-100 p-4 soft-shadow">
           <h4 className="text-xs font-bold text-gray-900 mb-1">BBRI - Double Bottom</h4>
@@ -241,7 +241,7 @@ export default function AIInsightView({
             </svg>
           </div>
           <p className="text-[10px] leading-relaxed text-gray-500 font-medium">
-            <strong className="text-gray-700">BBRI</strong> sedang membentuk pola Double Bottom. Potensi rebound dengan support kuat di 5.300 dan target resistance di 5.600.
+            <strong className="text-gray-700">BBRI</strong> sedang membentuk pola dasar ganda. Ada potensi pantulan dengan area dukungan kuat di 5.300 dan target resistensi di 5.600.
           </p>
         </div>
       </div>
@@ -250,7 +250,7 @@ export default function AIInsightView({
       <div className="px-5 mb-6">
         <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
           <FileText className="w-4 h-4 text-primary stroke-[2.2]" />
-          EARNINGS SUMMARY
+          RANGKUMAN KINERJA
         </h3>
         <div className="bg-white rounded-2xl border border-gray-100 p-4 soft-shadow">
           <div className="flex items-start gap-3 mb-2">
@@ -263,7 +263,7 @@ export default function AIInsightView({
             </div>
           </div>
           <ul className="text-[10px] leading-relaxed text-gray-500 font-medium list-disc pl-4 space-y-1">
-            <li>Laba BMRI naik 15% (Beat estimasi pasar).</li>
+            <li>Laba BMRI naik 15% (melampaui estimasi pasar).</li>
             <li>NPL (Kredit Macet) membaik.</li>
             <li>Pertumbuhan kredit solid.</li>
           </ul>
@@ -274,7 +274,7 @@ export default function AIInsightView({
       <div className="px-5 mb-6">
         <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
           <Globe className="w-4 h-4 text-primary stroke-[2.2]" />
-          MACRO CORRELATION
+          KORELASI MAKRO
         </h3>
         <div className="bg-white rounded-2xl border border-gray-100 p-4 soft-shadow">
           <h4 className="text-xs font-bold text-gray-900 mb-1">Keputusan Suku Bunga BI</h4>
@@ -287,7 +287,7 @@ export default function AIInsightView({
       {/* Disclaimer footer */}
       <div className="px-5">
         <p className="text-xs text-gray-400 font-medium leading-relaxed text-center mt-2">
-          Disclaimer: Keputusan investasi sepenuhnya berada di tangan investor. Data AI Insight disajikan sebagai referensi pendukung dan tidak menjamin keuntungan pasti. Kinerja masa lalu tidak mencerminkan hasil di masa depan.
+          Penafian: Keputusan investasi sepenuhnya berada di tangan investor. Data Wawasan AI disajikan sebagai referensi pendukung dan tidak menjamin keuntungan pasti. Kinerja masa lalu tidak mencerminkan hasil di masa depan.
         </p>
       </div>
     </div>

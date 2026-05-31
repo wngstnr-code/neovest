@@ -69,15 +69,15 @@ const INITIAL_POSTS: CommunityPost[] = [
   {
     id: 'post-1',
     author: 'Budi Investor',
-    authorRole: 'Top Contributor',
+    authorRole: 'Kontributor Utama',
     avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
-    timeAgo: '2 hours ago',
-    category: 'Equities',
+    timeAgo: '2 jam lalu',
+    category: 'Saham',
     title: 'Analisa BBCA Menjelang Dividen',
     content: "Menjelang pembagian dividen tahun ini, saya melihat pergerakan harga saham BBCA cukup menarik. Secara historis, selalu ada 'dividend play' di mana harga cenderung naik mendekati cum date.\n\nNamun, perlu diperhatikan juga kondisi makro ekonomi saat ini. Suku bunga yang stabil memberikan angin segar bagi sektor perbankan, namun potensi perlambatan kredit juga perlu diwaspadai.\n\nMenurut pandangan saya, bagi investor jangka panjang, BBCA tetap menjadi pilihan yang solid. Bagaimana pendapat teman-teman? Apakah ada yang berencana akumulasi sebelum cum date?",
     likes: 245,
     commentsCount: 42,
-    tags: ['#BBCA', '#Dividen', '#Bullish'],
+    tags: ['#BBCA', '#Dividen', '#Optimis'],
     stockTag: 'BBCA',
     sentiment: 'Bullish',
     hasLiked: false,
@@ -87,7 +87,7 @@ const INITIAL_POSTS: CommunityPost[] = [
         id: 'comment-1',
         author: 'Siti Trader',
         avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
-        timeAgo: '1 hr ago',
+        timeAgo: '1 jam lalu',
         content: 'Setuju banget! Biasanya saya akumulasi 1 bulan sebelum RUPS. Sejauh ini strateginya cukup berhasil.',
         likes: 12,
         hasLiked: false
@@ -96,7 +96,7 @@ const INITIAL_POSTS: CommunityPost[] = [
         id: 'comment-2',
         author: 'Agus Bear',
         avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150',
-        timeAgo: '45 mins ago',
+        timeAgo: '45 menit lalu',
         content: 'Hati-hati jebakan dividen trap. Seringkali setelah ex-date harganya turun lebih dalam dari dividen yang didapat.',
         likes: 5,
         hasLiked: false
@@ -106,15 +106,15 @@ const INITIAL_POSTS: CommunityPost[] = [
   {
     id: 'post-2',
     author: 'David Chen',
-    authorRole: 'Top Contributor',
+    authorRole: 'Kontributor Utama',
     avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150',
-    timeAgo: '2 hours ago',
-    category: 'Equities',
-    title: "Thoughts on BBCA's Q3 Earnings Report?",
-    content: "Just finished reviewing the latest earnings call. Impressive loan growth, but NIM seems to be tightening slightly. Are you guys adding to your position or holding? The current valuation feels a bit stretched to me, but their asset quality is unmatched.",
+    timeAgo: '2 jam lalu',
+    category: 'Saham',
+    title: "Pendapat soal Laporan Kinerja Q3 BBCA?",
+    content: "Baru selesai membaca paparan kinerja terbaru. Pertumbuhan kreditnya impresif, tetapi NIM terlihat sedikit menurun. Kalian sedang tambah posisi atau tetap menahan? Valuasi saat ini terasa agak premium, tetapi kualitas asetnya masih sangat kuat.",
     likes: 24,
     commentsCount: 12,
-    tags: ['#BBCA', '#Earnings', '#Neutral'],
+    tags: ['#BBCA', '#Kinerja', '#Netral'],
     stockTag: 'BBCA',
     sentiment: 'Neutral',
     hasLiked: false,
@@ -123,7 +123,7 @@ const INITIAL_POSTS: CommunityPost[] = [
       {
         id: 'comment-3',
         author: 'Yusuf Saham',
-        timeAgo: '1 hr ago',
+        timeAgo: '1 jam lalu',
         content: 'Secara PBV memang sudah agak mahal dibanding bank BUMN lain, tapi ROE-nya memang paling konsisten.',
         likes: 3,
         hasLiked: false
@@ -133,15 +133,15 @@ const INITIAL_POSTS: CommunityPost[] = [
   {
     id: 'post-3',
     author: 'Sarah Jenkins',
-    authorRole: 'Advisor',
+    authorRole: 'Penasihat',
     avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150',
-    timeAgo: '5 hours ago',
-    category: 'Bonds',
-    title: 'SBN Retail SR019 Allocation',
-    content: 'The coupon rate for SR019 looks solid at 5.95%. I\'m planning to shift some of my cash reserves here for the fixed income. Anyone else maxing out their quota early? Seems like a safer bet amidst current market volatility.',
+    timeAgo: '5 jam lalu',
+    category: 'Obligasi',
+    title: 'Alokasi SBN Ritel SR019',
+    content: 'Kupon SR019 terlihat menarik di 5,95%. Saya berencana mengalihkan sebagian kas ke instrumen pendapatan tetap ini. Ada yang juga mau memaksimalkan kuota lebih awal? Kelihatannya lebih defensif di tengah volatilitas pasar saat ini.',
     likes: 48,
     commentsCount: 26,
-    tags: ['#SBN', '#SR019', '#FixedIncome'],
+    tags: ['#SBN', '#SR019', '#PendapatanTetap'],
     stockTag: 'SBN',
     sentiment: 'Bullish',
     hasLiked: false,
@@ -161,7 +161,7 @@ export default function CommunityView({
   const [posts, setPosts] = useState<CommunityPost[]>(INITIAL_POSTS);
   
   // Navigation internal mode
-  const [filterTag, setFilterTag] = useState<string>('All');
+  const [filterTag, setFilterTag] = useState<string>('Semua');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false);
   
@@ -170,7 +170,7 @@ export default function CommunityView({
   const [newPostContent, setNewPostContent] = useState<string>('');
   const [newPostStock, setNewPostStock] = useState<string>('BBCA');
   const [newPostSentiment, setNewPostSentiment] = useState<'Bullish' | 'Bearish' | 'Neutral'>('Bullish');
-  const [newPostCategory, setNewPostCategory] = useState<string>('Equities');
+  const [newPostCategory, setNewPostCategory] = useState<string>('Saham');
   
   // Comment typing state
   const [typedComment, setTypedComment] = useState<string>('');
@@ -214,14 +214,14 @@ export default function CommunityView({
     const newPost: CommunityPost = {
       id: `post-${Date.now()}`,
       author: userProfile.fullName,
-      authorRole: 'Top Contributor',
-      timeAgo: 'Just now',
+      authorRole: 'Kontributor Utama',
+      timeAgo: 'Baru saja',
       category: newPostCategory,
       title: newPostTitle,
       content: newPostContent,
       likes: 1,
       commentsCount: 0,
-      tags: [`#${newPostStock}`, `#${newPostSentiment}`],
+      tags: [`#${newPostStock}`, `#${newPostSentiment === 'Bullish' ? 'Optimis' : newPostSentiment === 'Bearish' ? 'Pesimis' : 'Netral'}`],
       stockTag: newPostStock,
       sentiment: newPostSentiment,
       comments: [],
@@ -242,7 +242,7 @@ export default function CommunityView({
     const newComment: CommunityComment = {
       id: `comment-${Date.now()}`,
       author: userProfile.fullName,
-      timeAgo: 'Just now',
+      timeAgo: 'Baru saja',
       content: typedComment,
       likes: 0
     };
@@ -263,6 +263,13 @@ export default function CommunityView({
 
   const activePost = posts.find(p => p.id === selectedPostId);
 
+  const sentimentLabel = (sentiment?: CommunityPost['sentiment']) => {
+    if (sentiment === 'Bullish') return 'Optimis';
+    if (sentiment === 'Bearish') return 'Pesimis';
+    if (sentiment === 'Neutral') return 'Netral';
+    return '';
+  };
+
   // Filtering posts based on search and buttons
   const filteredPosts = posts.filter(post => {
     const matchesSearch = 
@@ -270,34 +277,34 @@ export default function CommunityView({
       post.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.author.toLowerCase().includes(searchQuery.toLowerCase());
     
-    if (filterTag === 'All') return matchesSearch;
+    if (filterTag === 'Semua') return matchesSearch;
     return post.stockTag === filterTag && matchesSearch;
   });
 
   // Trending Topics List
   const trendingTopics = [
     {
-      domain: 'Macro Economy',
-      title: 'BI Rate Holds at 6.00%',
-      desc: 'Bank Indonesia decides to maintain the 7-Day Reverse Repo Rate to maintain stability of Rupiah...',
+      domain: 'Ekonomi Makro',
+      title: 'BI Rate Ditahan di 6,00%',
+      desc: 'Bank Indonesia mempertahankan suku bunga acuan untuk menjaga stabilitas Rupiah...',
       cmts: 142,
-      tag: 'Hot',
+      tag: 'Ramai',
       bgClass: 'from-blue-50 to-indigo-50 border-blue-100',
       textClass: 'text-blue-500'
     },
     {
-      domain: 'Crypto Asset',
-      title: 'BTC Halving Countdown',
-      desc: 'Miners are adjusting and predictions showing historical trend models are very bullish as supply constraints kick in...',
+      domain: 'Aset Kripto',
+      title: 'Hitung Mundur Halving BTC',
+      desc: 'Penambang mulai menyesuaikan strategi dan model historis menunjukkan tren optimis saat pasokan makin terbatas...',
       cmts: 89,
-      tag: 'Crypto',
+      tag: 'Kripto',
       bgClass: 'from-amber-50 to-yellow-50 border-amber-100',
       textClass: 'text-amber-500'
     },
     {
-      domain: 'Tech Sector',
-      title: 'AI Boom in Indonesia',
-      desc: 'Leading data centers are expanding in Jakarta with growing computing power demand across all national systems...',
+      domain: 'Sektor Teknologi',
+      title: 'Pertumbuhan AI di Indonesia',
+      desc: 'Pusat data besar berekspansi di Jakarta seiring kenaikan kebutuhan komputasi di berbagai sistem nasional...',
       cmts: 54,
       tag: 'AI',
       bgClass: 'from-teal-50 to-emerald-50 border-teal-100',
@@ -341,7 +348,7 @@ export default function CommunityView({
           >
             <ArrowLeft className="w-5 h-5 text-gray-800" />
           </button>
-          <span className="text-sm font-extrabold text-blue-900 tracking-tight">NeoVest Community</span>
+          <span className="text-sm font-extrabold text-blue-900 tracking-tight">Komunitas NeoVest</span>
           <button className="w-10 h-10 -mr-2 rounded-full flex items-center justify-center hover:bg-gray-100 active:scale-95 transition-all">
             <MoreVertical className="w-5 h-5 text-gray-500" />
           </button>
@@ -361,12 +368,12 @@ export default function CommunityView({
             }`}>
               <div className="flex items-center gap-2">
                 <Target className="w-4 h-4" />
-                <span>{activePost.stockTag} Sentiment: {activePost.sentiment}</span>
+                <span>{activePost.stockTag} Sentimen: {sentimentLabel(activePost.sentiment)}</span>
               </div>
               <span className={`text-xs px-2 py-0.5 rounded-full ${
                 activePost.sentiment === 'Bullish' ? 'bg-emerald-100' : activePost.sentiment === 'Bearish' ? 'bg-rose-100' : 'bg-amber-100'
               }`}>
-                {activePost.sentiment === 'Bullish' ? '80% Bullish' : activePost.sentiment === 'Bearish' ? '65% Bearish' : '55% Neutral'}
+                {activePost.sentiment === 'Bullish' ? '80% Optimis' : activePost.sentiment === 'Bearish' ? '65% Pesimis' : '55% Netral'}
               </span>
             </div>
           )}
@@ -390,7 +397,7 @@ export default function CommunityView({
                       {activePost.author.charAt(0)}
                     </div>
                   )}
-                  {activePost.authorRole === 'Advisor' && (
+                  {activePost.authorRole === 'Penasihat' && (
                     <div className="absolute -bottom-1 -right-1 bg-accent p-0.5 rounded-full border border-white">
                       <Award className="w-3.5 h-3.5 text-dark-blue fill-dark-blue" />
                     </div>
@@ -432,9 +439,9 @@ export default function CommunityView({
                 <span 
                   key={idx} 
                   className={`text-xs font-extrabold px-2.5 py-0.5 rounded-full ${
-                    tag.includes('Bullish') 
+                    tag.includes('Optimis') 
                       ? 'bg-emerald-50 text-emerald-800' 
-                      : tag.includes('Bearish') 
+                      : tag.includes('Pesimis') 
                       ? 'bg-rose-50 text-rose-800' 
                       : 'bg-blue-50 text-primary'
                   }`}
@@ -458,15 +465,15 @@ export default function CommunityView({
 
               <div className="flex items-center gap-1.5 text-xs text-gray-450 font-bold leading-none">
                 <MessageSquare className="w-4 h-4 text-gray-400" />
-                <span>{activePost.comments.length} Comments</span>
+                <span>{activePost.comments.length} Komentar</span>
               </div>
 
               <button 
-                onClick={() => alert('Post link copied to clipboard! Share it with your network.')}
+                onClick={() => alert('Tautan postingan disalin. Bagikan ke jaringan Anda.')}
                 className="flex items-center gap-1.5 text-xs text-gray-455 font-bold leading-none hover:text-primary transition-all"
               >
                 <Share2 className="w-4 h-4" />
-                <span>Share</span>
+                <span>Bagikan</span>
               </button>
             </div>
 
@@ -475,7 +482,7 @@ export default function CommunityView({
           {/* Heading Divider comments section */}
           <div className="mb-3 px-1 flex items-center justify-between">
             <span className="text-xs font-black text-slate-900 tracking-tight">
-              Comments ({activePost.comments.length})
+              Komentar ({activePost.comments.length})
             </span>
             <span className="text-xs text-gray-400 font-bold">Terbaru</span>
           </div>
@@ -516,7 +523,7 @@ export default function CommunityView({
 
                     <div className="flex items-center gap-4 mt-3 pt-1">
                       <button className="text-xs text-primary font-extrabold hover:underline">
-                        Reply
+                        Balas
                       </button>
                       <button 
                         onClick={() => handleLikeComment(comment.id)}
@@ -579,7 +586,7 @@ export default function CommunityView({
           <div className="w-8 h-8 rounded-full bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
             <User className="w-4 h-4 stroke-[2.4]" />
           </div>
-          <span className="text-xs font-extrabold text-primary uppercase tracking-wider">Community</span>
+          <span className="text-xs font-extrabold text-primary uppercase tracking-wider">Komunitas</span>
         </div>
         
         {/* Toggle list action search */}
@@ -587,7 +594,7 @@ export default function CommunityView({
           <Search className="w-3.5 h-3.5 text-gray-400 shrink-0 mr-1.5" />
           <input 
             type="text" 
-            placeholder="Cari Post..." 
+            placeholder="Cari postingan..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-transparent outline-none text-xs text-gray-800 placeholder-gray-400 font-bold"
@@ -603,9 +610,9 @@ export default function CommunityView({
           <div className="px-5 mb-3 flex items-center justify-between">
             <span className="text-xs font-black text-slate-900 tracking-tight flex items-center gap-1">
               <Sparkles className="w-4 h-4 text-accent fill-accent" />
-              <span>Trending Topics</span>
+              <span>Topik Tren</span>
             </span>
-            <span className="text-xs text-gray-400 font-bold">24h Volume</span>
+            <span className="text-xs text-gray-400 font-bold">Volume 24 Jam</span>
           </div>
 
           <div className="flex gap-3.5 overflow-x-auto no-scrollbar px-5 py-1">
@@ -641,9 +648,9 @@ export default function CommunityView({
                 <div className="flex items-center justify-between border-t border-gray-100/60 pt-3 mt-4 text-xs font-bold text-gray-400">
                   <span className="flex items-center gap-1">
                     <MessageSquare className="w-3 h-3 text-gray-400" />
-                    <span>{topic.cmts} Comments</span>
+                    <span>{topic.cmts} Komentar</span>
                   </span>
-                  <span className="text-teal-600 font-black">Join Live &gt;</span>
+                  <span className="text-teal-600 font-black">Ikuti Langsung &gt;</span>
                 </div>
               </div>
             ))}
@@ -653,7 +660,7 @@ export default function CommunityView({
         {/* Horizontal filter chips */}
         <div className="px-5 mb-4 scroll-smooth">
           <div className="flex gap-2.5 overflow-x-auto no-scrollbar">
-            {['All', 'BBCA', 'SBN', 'TLKM', 'BMRI'].map((tag) => (
+            {['Semua', 'BBCA', 'SBN', 'TLKM', 'BMRI'].map((tag) => (
               <button
                 key={tag}
                 onClick={() => setFilterTag(tag)}
@@ -674,7 +681,7 @@ export default function CommunityView({
           <div className="flex justify-between items-center mb-3">
             <span className="text-xs font-black text-slate-900 tracking-tight flex items-center gap-1">
               <Compass className="w-4 h-4 text-primary" />
-              <span>Latest Discussions</span>
+              <span>Diskusi Terbaru</span>
             </span>
             <button 
               onClick={() => {
@@ -683,7 +690,7 @@ export default function CommunityView({
               }}
               className="text-xs text-primary font-black hover:underline"
             >
-              Filter
+              Saring
             </button>
           </div>
 
@@ -753,7 +760,7 @@ export default function CommunityView({
 
                     <span className="flex items-center gap-1 text-xs text-gray-400 font-bold">
                       <MessageSquare className="w-3.5 h-3.5 text-gray-400" />
-                      <span>{post.comments.length || post.commentsCount} Comments</span>
+                      <span>{post.comments.length || post.commentsCount} Komentar</span>
                     </span>
 
                     <button 
@@ -776,8 +783,8 @@ export default function CommunityView({
         <div className="px-5 mt-6 mb-12">
           <div className="bg-white rounded-3xl border border-gray-100 p-5 soft-shadow">
             <div className="flex items-center justify-between mb-4.5">
-              <span className="text-xs font-black text-slate-900 tracking-tight">Community Sentiment</span>
-              <span className="text-xs text-teal-600 font-black">Terbaca Live</span>
+              <span className="text-xs font-black text-slate-900 tracking-tight">Sentimen Komunitas</span>
+              <span className="text-xs text-teal-600 font-black">Terbaca Langsung</span>
             </div>
 
             <div className="flex flex-col gap-4">
@@ -791,7 +798,7 @@ export default function CommunityView({
                     </span>
                     <span>BBCA</span>
                   </div>
-                  <span className="text-emerald-600">78% Bullish</span>
+                  <span className="text-emerald-600">78% Optimis</span>
                 </div>
                 <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden flex">
                   <div className="bg-emerald-500 h-full transition-all" style={{ width: '78%' }} />
@@ -808,7 +815,7 @@ export default function CommunityView({
                     </span>
                     <span>TLKM</span>
                   </div>
-                  <span className="text-rose-600">65% Bearish</span>
+                  <span className="text-rose-600">65% Pesimis</span>
                 </div>
                 <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden flex">
                   <div className="bg-emerald-500 h-full transition-all" style={{ width: '35%' }} />
@@ -825,7 +832,7 @@ export default function CommunityView({
                     </span>
                     <span>BMRI</span>
                   </div>
-                  <span className="text-amber-500">55% Neutral</span>
+                  <span className="text-amber-500">55% Netral</span>
                 </div>
                 <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden flex">
                   <div className="bg-amber-400 h-full transition-all" style={{ width: '55%' }} />
@@ -902,10 +909,10 @@ export default function CommunityView({
                     onChange={(e) => setNewPostCategory(e.target.value)}
                     className="w-full text-xs font-semibold px-3 py-2 border border-gray-205 rounded-xl bg-white outline-none text-gray-800"
                   >
-                    <option value="Equities">Equities</option>
-                    <option value="Bonds">Bonds</option>
-                    <option value="Crypto">Crypto</option>
-                    <option value="Macro">Macro</option>
+                    <option value="Saham">Saham</option>
+                    <option value="Obligasi">Obligasi</option>
+                    <option value="Kripto">Kripto</option>
+                    <option value="Makro">Makro</option>
                   </select>
                 </div>
                 <div>
@@ -915,9 +922,9 @@ export default function CommunityView({
                     onChange={(e) => setNewPostSentiment(e.target.value as any)}
                     className="w-full text-xs font-semibold px-3 py-2 border border-gray-205 rounded-xl bg-white outline-none text-gray-800"
                   >
-                    <option value="Bullish">Bullish (Optimis Naik)</option>
-                    <option value="Neutral">Neutral (Konsolidasi)</option>
-                    <option value="Bearish">Bearish (Prediksi Turun)</option>
+                    <option value="Bullish">Optimis (Prediksi Naik)</option>
+                    <option value="Neutral">Netral (Konsolidasi)</option>
+                    <option value="Bearish">Pesimis (Prediksi Turun)</option>
                   </select>
                 </div>
               </div>

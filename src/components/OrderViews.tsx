@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { ArrowLeft, HelpCircle, CheckCircle, AlertTriangle, Building2, Info, Minus, Plus, Sparkles, TrendingUp } from 'lucide-react';
-import { Stock, Screen, UserProfile, PortfolioItem } from '../types';
+import { Stock, Screen, UserProfile } from '../types';
 
 interface OrderViewsProps {
   currentScreen: Screen;
@@ -76,7 +76,7 @@ export default function OrderViews({
             <ArrowLeft className="w-4.5 h-4.5 stroke-[2.2]" />
           </button>
           
-          <span className="font-extrabold text-primary text-sm">Buy {stock.code}</span>
+          <span className="font-extrabold text-primary text-sm">Beli {stock.code}</span>
           
           <HelpCircle className="w-5 h-5 text-primary" />
         </div>
@@ -102,14 +102,14 @@ export default function OrderViews({
         {/* Embedded Active Order book lists with filler triggers */}
         <div className="px-5 mb-4">
           <div className="bg-white rounded-3xl border border-gray-100 p-4 soft-shadow">
-            <h2 className="text-lg font-bold text-gray-950 mb-4">Order Book</h2>
+            <h2 className="text-lg font-bold text-gray-950 mb-4">Buku Antrean</h2>
 
             {/* Bids and Asks table */}
             <div className="grid grid-cols-4 gap-2 text-xs font-semibold">
-              <span className="text-gray-500">Bid Lot</span>
-              <span className="text-right text-gray-500">Bid</span>
-              <span className="text-right text-gray-500">Ask</span>
-              <span className="text-right text-gray-500">Ask Lot</span>
+              <span className="text-gray-500">Lot Beli</span>
+              <span className="text-right text-gray-500">Beli</span>
+              <span className="text-right text-gray-500">Jual</span>
+              <span className="text-right text-gray-500">Lot Jual</span>
               {/* Bid Column (Buying) */}
               {stock.orderBook?.map((ob, idx) => (
                 <React.Fragment key={idx}>
@@ -135,7 +135,7 @@ export default function OrderViews({
 
             {/* Input 1: Harga Beli */}
             <div>
-              <label className="text-xs text-gray-400 font-bold block mb-1.5 px-3 bg-white w-fit relative top-3">Price (Rp)</label>
+              <label className="text-xs text-gray-400 font-bold block mb-1.5 px-3 bg-white w-fit relative top-3">Harga (Rp)</label>
               <div className="flex items-center justify-between border border-gray-200 rounded-xl h-12 px-2">
                 <button
                   type="button"
@@ -206,7 +206,7 @@ export default function OrderViews({
                   onClick={() => setTradeShares(Math.max(1, Math.floor(userProfile.balance / (tradePrice * 1.00193))))}
                   className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs px-4 py-1.5 rounded-full focus:outline-none"
                 >
-                  Max
+                  Maks
                 </button>
               </div>
             </div>
@@ -216,11 +216,11 @@ export default function OrderViews({
         {/* Persistent screen button "Review Order" */}
         <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex flex-col gap-3 px-5 py-5 z-40">
           <div className="flex justify-between text-xs text-gray-600">
-            <span>Available Balance</span>
+            <span>Saldo Tersedia</span>
             <span className="text-gray-900">{formatIDR(userProfile.balance)}</span>
           </div>
           <div className="flex justify-between items-end">
-            <span className="text-lg font-black text-gray-900">Est. Total</span>
+            <span className="text-lg font-black text-gray-900">Estimasi Total</span>
             <span className="text-2xl font-black text-primary">{formatIDR(priceSharesAmount)}</span>
           </div>
           <button
@@ -228,7 +228,7 @@ export default function OrderViews({
             onClick={handleReviewOrder}
             className="w-full h-12 bg-primary hover:bg-primary-dark text-white rounded-full text-base font-bold shadow transition-all"
           >
-            Buy
+            Beli
           </button>
         </div>
       </div>
@@ -246,14 +246,14 @@ export default function OrderViews({
           >
             <ArrowLeft className="w-4 h-4 stroke-[2.2]" />
           </button>
-          <span className="font-extrabold text-primary text-sm">Trade Assets</span>
+          <span className="font-extrabold text-primary text-sm">Transaksi Aset</span>
           <HelpCircle className="w-5 h-5 text-gray-600" />
         </div>
 
         <div className="px-5">
           <div className="text-center mb-7">
-            <h1 className="text-xl font-black text-gray-950">Review Your Order</h1>
-            <p className="text-xs text-gray-600 mt-2">Please verify the details below before confirming.</p>
+            <h1 className="text-xl font-black text-gray-950">Tinjau Pesanan Anda</h1>
+            <p className="text-xs text-gray-600 mt-2">Pastikan detail berikut sudah benar sebelum dikonfirmasi.</p>
           </div>
 
           <div className="bg-white rounded-3xl p-4 soft-shadow border border-gray-100 mb-4">
@@ -265,39 +265,39 @@ export default function OrderViews({
                 <h2 className="text-lg font-black text-gray-950">{stock.code}</h2>
                 <p className="text-xs font-semibold text-gray-500 truncate">{stock.name}</p>
               </div>
-              <span className="rounded-full bg-primary-light px-3 py-1 text-xs font-bold text-primary">Buy</span>
+              <span className="rounded-full bg-primary-light px-3 py-1 text-xs font-bold text-primary">Beli</span>
             </div>
             <div className="flex flex-col gap-3 pt-4 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-600">Quantity</span>
+                <span className="text-gray-600">Jumlah</span>
                 <span className="font-black text-gray-950">{tradeShares.toLocaleString('id-ID')} Lembar</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Price</span>
+                <span className="text-gray-600">Harga</span>
                 <span className="font-black text-gray-950">{formatIDR(tradePrice)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Estimated Total</span>
+                <span className="text-gray-600">Estimasi Total</span>
                 <span className="font-black text-gray-950">{formatIDR(priceSharesAmount)}</span>
               </div>
             </div>
           </div>
 
           <div className="bg-white rounded-3xl p-4 soft-shadow border border-gray-100 mb-4">
-            <h2 className="text-lg font-black text-gray-950 mb-4">Fee Breakdown</h2>
+            <h2 className="text-lg font-black text-gray-950 mb-4">Rincian Biaya</h2>
             <div className="flex flex-col gap-3 text-xs border-b border-gray-100 pb-4">
-              <div className="flex justify-between"><span className="text-gray-600">Transaction Fee (0.15%)</span><span className="text-gray-900">{formatIDR(brokerageFee)}</span></div>
-              <div className="flex justify-between"><span className="text-gray-600">Levy/Tax (0.043%)</span><span className="text-gray-900">{formatIDR(levyTax)}</span></div>
+              <div className="flex justify-between"><span className="text-gray-600">Biaya Transaksi (0,15%)</span><span className="text-gray-900">{formatIDR(brokerageFee)}</span></div>
+              <div className="flex justify-between"><span className="text-gray-600">Pajak/Biaya Bursa (0,043%)</span><span className="text-gray-900">{formatIDR(levyTax)}</span></div>
             </div>
             <div className="flex justify-between items-center pt-4">
-              <span className="text-lg font-black text-gray-950">Total Payment</span>
+              <span className="text-lg font-black text-gray-950">Total Pembayaran</span>
               <span className="text-lg font-black text-primary">{formatIDR(totalChargeAmount)}</span>
             </div>
           </div>
 
           <div className="order-tip-box rounded-xl p-4 flex gap-2.5 text-xs leading-relaxed">
             <Info className="order-tip-icon w-4 h-4 shrink-0 mt-0.5" />
-            <p><span className="font-black">Market Tip:</span> Stock prices fluctuate. This is a limit order; your execution price may slightly vary based on market conditions.</p>
+            <p><span className="font-black">Tips Pasar:</span> Harga saham dapat berubah. Ini adalah pesanan limit; harga eksekusi dapat sedikit berbeda mengikuti kondisi pasar.</p>
           </div>
         </div>
 
@@ -307,13 +307,13 @@ export default function OrderViews({
             onClick={handleConfirmSubmit}
             className="w-full h-12 bg-primary hover:bg-primary-dark text-white text-base font-black rounded-full flex items-center justify-center shadow-md active:scale-95 transition-all"
           >
-            Confirm Buy
+            Konfirmasi Beli
           </button>
           <button
             onClick={() => onNavigate('TradeBuy')}
             className="w-full mt-4 text-center text-xs font-semibold text-primary hover:text-primary-dark focus:outline-none"
           >
-            Cancel
+            Batal
           </button>
         </div>
 
@@ -324,7 +324,7 @@ export default function OrderViews({
               <div className="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 stroke-[2.2]" />
               </div>
-              <h3 className="text-sm font-black text-gray-950 block mb-0.5">Order Berhasil Dikirim!</h3>
+              <h3 className="text-sm font-black text-gray-950 block mb-0.5">Pesanan Berhasil Dikirim!</h3>
               <span className="text-xs text-teal-600 bg-teal-50 px-3 py-1 rounded-full font-bold uppercase inline-flex items-center gap-1 my-2">
                 Sukses Terbeli <Sparkles className="w-3 h-3 text-teal-600 fill-teal-600" />
               </span>

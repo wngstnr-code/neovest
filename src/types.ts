@@ -54,7 +54,7 @@ export interface UserProfile {
   email: string;
   phone: string;
   balance: number; // in IDR
-  riskProfile: 'Konservatif' | 'Moderate' | 'Agresif';
+  riskProfile: 'Konservatif' | 'Moderat' | 'Agresif';
   isPremium: boolean;
   biometricsEnabled: boolean;
 }

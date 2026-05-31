@@ -72,12 +72,12 @@ export default function RiskProfileQuizViews({
     } else {
       // Finished all questions, compute profile category!
       const totalScore = updatedScores.reduce((acc, c) => acc + c, 0);
-      let calculatedProfile: 'Konservatif' | 'Moderate' | 'Agresif' = 'Moderate';
+      let calculatedProfile: 'Konservatif' | 'Moderat' | 'Agresif' = 'Moderat';
 
       if (totalScore <= 6) {
         calculatedProfile = 'Konservatif';
       } else if (totalScore <= 12) {
-        calculatedProfile = 'Moderate';
+        calculatedProfile = 'Moderat';
       } else {
         calculatedProfile = 'Agresif';
       }
@@ -96,14 +96,14 @@ export default function RiskProfileQuizViews({
   };
 
   // Dedicated asset allocation specifications based on computed profile
-  const allocations: Record<'Konservatif' | 'Moderate' | 'Agresif', { name: string; percentage: number; colorClass: string; wStyle: string }[]> = {
+  const allocations: Record<'Konservatif' | 'Moderat' | 'Agresif', { name: string; percentage: number; colorClass: string; wStyle: string }[]> = {
     Konservatif: [
       { name: 'Kas & Deposito Terbuka', percentage: 40, colorClass: 'bg-teal-500', wStyle: '40%' },
       { name: 'Obligasi Pemerintah / SBN', percentage: 40, colorClass: 'bg-amber-500', wStyle: '40%' },
       { name: 'Saham Kualitas Blue Chip', percentage: 15, colorClass: 'bg-primary', wStyle: '15%' },
       { name: 'Reksadana Campuran', percentage: 5, colorClass: 'bg-purple-550', wStyle: '5%' },
     ],
-    Moderate: [
+    Moderat: [
       { name: 'Saham Kualitas Blue Chip', percentage: 40, colorClass: 'bg-primary', wStyle: '40%' },
       { name: 'Obligasi / SBN Jangka Menengah', percentage: 30, colorClass: 'bg-amber-500', wStyle: '30%' },
       { name: 'Reksadana Campuran & Emas', percentage: 20, colorClass: 'bg-teal-500', wStyle: '20%' },
@@ -117,7 +117,7 @@ export default function RiskProfileQuizViews({
     ],
   };
 
-  const activeAllocations = allocations[userProfile.riskProfile || 'Moderate'];
+  const activeAllocations = allocations[userProfile.riskProfile || 'Moderat'];
 
   if (currentScreen === 'RiskProfileQuiz') {
     return (
@@ -181,7 +181,7 @@ export default function RiskProfileQuizViews({
             <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
             <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span className="font-extrabold text-[#001a41] text-sm">Risk Results</span>
+          <span className="font-extrabold text-[#001a41] text-sm">Hasil Risiko</span>
         </div>
 
         {/* Card Body Container */}
@@ -199,7 +199,7 @@ export default function RiskProfileQuizViews({
             {/* Explanation box */}
             <p className="text-xs text-gray-500 leading-relaxed font-semibold mb-6 bg-gray-50 p-3.5 rounded-2xl border border-gray-100/50">
               {userProfile.riskProfile === 'Konservatif' && 'Anda memprioritaskan keamanan modal utama di atas keuntungan eskalatif. Skenario fluktuasi pasar yang sangat kecil sudah sesuai dengan kenyamanan Anda.'}
-              {userProfile.riskProfile === 'Moderate' && 'Anda mencari keseimbangan optimal antara pertumbuhan modal jangka panjang dan toleransi risiko jangka pendek yang terukur.'}
+              {userProfile.riskProfile === 'Moderat' && 'Anda mencari keseimbangan optimal antara pertumbuhan modal jangka panjang dan toleransi risiko jangka pendek yang terukur.'}
               {userProfile.riskProfile === 'Agresif' && 'Anda siap menghadapi fluktuasi harga saham yang ekstrem demi mengejar potensi hasil imbal investasi eksponensial di masa depan.'}
             </p>
 

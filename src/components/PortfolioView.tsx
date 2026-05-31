@@ -293,7 +293,7 @@ export default function PortfolioView({
                   </div>
                   <div>
                     <h4 className="text-xs font-extrabold text-[#001a41]">{item.stockCode}</h4>
-                    <span className="text-xs text-gray-400 font-medium block mt-0.5">{item.lots} Lots · Avg {formatIDR(item.avgPrice)}</span>
+                    <span className="text-xs text-gray-400 font-medium block mt-0.5">{(item.lots * 100).toLocaleString('id-ID')} Lembar · Rata-rata {formatIDR(item.avgPrice)}</span>
                   </div>
                 </div>
 
@@ -314,7 +314,7 @@ export default function PortfolioView({
         <div className="bg-white border border-gray-100 rounded-3xl p-5 soft-shadow">
           <div className="flex items-center gap-2 text-primary font-bold text-xs mb-3">
             <Shield className="w-4.5 h-4.5 text-accent stroke-[2.5]" />
-            <span>Risk Analyzer</span>
+            <span>Analisis Risiko</span>
           </div>
 
           <div className="risk-profile-panel rounded-2xl p-4 mb-4">

@@ -24,12 +24,13 @@ export default function MarketView({
   onSelectStock,
   initialSearchQuery = '',
 }: MarketViewProps) {
-  const [selectedCategory, setSelectedCategory] = useState<'semua' | 'favorit' | 'perbankan' | 'energi' | 'teknologi'>('semua');
+  const [selectedCategory, setSelectedCategory] = useState<'top' | 'semua' | 'favorit' | 'perbankan' | 'energi' | 'teknologi'>('semua');
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [showAllGainers, setShowAllGainers] = useState(false);
   const [showAllLosers, setShowAllLosers] = useState(false);
 
-  const categories: { id: 'semua' | 'favorit' | 'perbankan' | 'energi' | 'teknologi'; label: string }[] = [
+  const categories: { id: 'top' | 'semua' | 'favorit' | 'perbankan' | 'energi' | 'teknologi'; label: string }[] = [
+    { id: 'top', label: 'Top Naik/Turun' },
     { id: 'semua', label: 'Semua' },
     { id: 'favorit', label: 'Favorit' },
     { id: 'perbankan', label: 'Perbankan' },
@@ -40,6 +41,7 @@ export default function MarketView({
   // Filtering stock items
   const filteredStocks = stocks.filter((stock) => {
     const matchesCategory =
+      selectedCategory === 'top' ||
       selectedCategory === 'semua' ||
       (selectedCategory === 'favorit' ? watchlist.includes(stock.code) : stock.category === selectedCategory);
     const matchesSearch =
@@ -71,7 +73,7 @@ export default function MarketView({
             <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
             <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <h2 className="text-xl font-bold text-gray-900 tracking-tight">Market</h2>
+          <h2 className="text-xl font-bold text-gray-900 tracking-tight">Pasar</h2>
         </div>
       </div>
 
@@ -158,150 +160,214 @@ export default function MarketView({
         </div>
       </div>
 
-      {/* Top Gainers section listing stocks */}
-      <div className="px-5 mb-5 pt-1">
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-xs font-bold text-gray-900 tracking-tight flex items-center gap-1.5">
-            <Flame className="w-4 h-4 text-orange-550 fill-orange-500 shrink-0" />
-            <span>TOP GAINERS</span>
-          </span>
-          <button 
-            onClick={() => setShowAllGainers(!showAllGainers)}
-            className="text-xs text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
-          >
-            {showAllGainers ? 'Tutup' : 'Lihat Semua'}
-          </button>
-        </div>
-
-        <div className="flex flex-col gap-2.5">
-          {gainers.length > 0 ? (
-            (showAllGainers ? gainers : gainers.slice(0, 3)).map((stock) => {
-              const isAdded = watchlist.includes(stock.code);
-              return (
-                <div
-                  key={stock.code}
-                  id={`stock-gainer-${stock.code}`}
-                  className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow flex items-center justify-between hover:bg-gray-50/40 transition-all cursor-pointer"
-                  onClick={() => {
-                    onSelectStock(stock.code);
-                    onNavigate('StockDetail');
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-blue-50 text-primary font-black text-xs flex items-center justify-center">
-                      {stock.code.substring(0, 1)}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        <h4 className="text-xs font-extrabold text-gray-950">{stock.code}</h4>
-                      </div>
-                      <span className="text-xs text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
-                    </div>
-                  </div>
-
-                  {/* spark line mini gradient */}
-                  <div className="w-14 h-6">
-                    <svg className="w-full h-full animate-pulse" viewBox="0 0 100 40">
-                      <path d="M0,35 L20,30 L40,25 L65,15 L100,5" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" />
-                    </svg>
-                  </div>
-
-                  <div className="flex items-center gap-2.5" onClick={(e) => e.stopPropagation()}>
-                    <div className="text-right">
-                      <span className="text-xs font-extrabold text-gray-900 block">{formatIDR(stock.price)}</span>
-                      <span className="text-xs font-bold text-teal-600 block">+{stock.changePercent}%</span>
-                    </div>
-
-                    <button
-                      id={`star-${stock.code}`}
-                      onClick={() => onToggleWatchlist(stock.code)}
-                      className="p-1 text-gray-300 hover:text-accent focus:outline-none"
-                    >
-                      <Star className={`w-4 h-4 stroke-[2.2] ${isAdded ? 'fill-accent text-accent' : 'text-gray-300'}`} />
-                    </button>
-                  </div>
-                </div>
-              );
-            })
-          ) : (
-            <div className="text-center py-6 bg-white rounded-2xl border border-dashed border-gray-200 text-xs text-gray-400 font-medium">
-              Tidak ada saham ditemukan dalam kategori ini.
+      {selectedCategory === 'top' ? (
+        <>
+          {/* Top Gainers section listing stocks */}
+          <div className="px-5 mb-5 pt-1">
+            <div className="flex justify-between items-center mb-3">
+              <span className="text-xs font-bold text-gray-900 tracking-tight flex items-center gap-1.5">
+                <Flame className="w-4 h-4 text-orange-550 fill-orange-500 shrink-0" />
+                <span>SAHAM NAIK TERATAS</span>
+              </span>
+              <button
+                onClick={() => setShowAllGainers(!showAllGainers)}
+                className="text-xs text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
+              >
+                {showAllGainers ? 'Tutup' : 'Lihat Semua'}
+              </button>
             </div>
-          )}
-        </div>
-      </div>
 
-      {/* Top Losers Section */}
-      <div className="px-5 mb-6">
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-xs font-bold text-gray-900 tracking-tight flex items-center gap-1">
-            TOP LOSERS
-          </span>
-          <button 
-            onClick={() => setShowAllLosers(!showAllLosers)}
-            className="text-xs text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
-          >
-            {showAllLosers ? 'Tutup' : 'Lihat Semua'}
-          </button>
-        </div>
-
-        <div className="flex flex-col gap-2.5">
-          {losers.length > 0 ? (
-            (showAllLosers ? losers : losers.slice(0, 3)).map((stock) => {
-              const isAdded = watchlist.includes(stock.code);
-              return (
-                <div
-                  key={stock.code}
-                  id={`stock-loser-${stock.code}`}
-                  className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow flex items-center justify-between hover:bg-gray-50/40 transition-all cursor-pointer"
-                  onClick={() => {
-                    onSelectStock(stock.code);
-                    onNavigate('StockDetail');
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-red-50 text-red-500 font-black text-xs flex items-center justify-center">
-                      {stock.code.substring(0, 1)}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        <h4 className="text-xs font-extrabold text-gray-950">{stock.code}</h4>
-                      </div>
-                      <span className="text-xs text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
-                    </div>
-                  </div>
-
-                  {/* Spark line drop */}
-                  <div className="w-14 h-6">
-                    <svg className="w-full h-full" viewBox="0 0 100 40">
-                      <path d="M0,10 L30,15 L60,25 L80,28 L100,35" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" />
-                    </svg>
-                  </div>
-
-                  <div className="flex items-center gap-2.5" onClick={(e) => e.stopPropagation()}>
-                    <div className="text-right">
-                      <span className="text-xs font-extrabold text-gray-900 block">{formatIDR(stock.price)}</span>
-                      <span className="text-xs font-bold text-red-500 block">{stock.changePercent}%</span>
-                    </div>
-
-                    <button
-                      id={`star-${stock.code}`}
-                      onClick={() => onToggleWatchlist(stock.code)}
-                      className="p-1 text-gray-300 hover:text-accent focus:outline-none"
+            <div className="flex flex-col gap-2.5">
+              {gainers.length > 0 ? (
+                (showAllGainers ? gainers : gainers.slice(0, 3)).map((stock) => {
+                  const isAdded = watchlist.includes(stock.code);
+                  return (
+                    <div
+                      key={stock.code}
+                      id={`stock-gainer-${stock.code}`}
+                      className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow flex items-center justify-between hover:bg-gray-50/40 transition-all cursor-pointer"
+                      onClick={() => {
+                        onSelectStock(stock.code);
+                        onNavigate('StockDetail');
+                      }}
                     >
-                      <Star className={`w-4 h-4 stroke-[2.2] ${isAdded ? 'fill-accent text-accent' : 'text-gray-300'}`} />
-                    </button>
-                  </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-2xl bg-blue-50 text-primary font-black text-xs flex items-center justify-center">
+                          {stock.code.substring(0, 1)}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <h4 className="text-xs font-extrabold text-gray-950">{stock.code}</h4>
+                          </div>
+                          <span className="text-xs text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
+                        </div>
+                      </div>
+
+                      {/* spark line mini gradient */}
+                      <div className="w-14 h-6">
+                        <svg className="w-full h-full animate-pulse" viewBox="0 0 100 40">
+                          <path d="M0,35 L20,30 L40,25 L65,15 L100,5" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" />
+                        </svg>
+                      </div>
+
+                      <div className="flex items-center gap-2.5" onClick={(e) => e.stopPropagation()}>
+                        <div className="text-right">
+                          <span className="text-xs font-extrabold text-gray-900 block">{formatIDR(stock.price)}</span>
+                          <span className="text-xs font-bold text-teal-600 block">+{stock.changePercent}%</span>
+                        </div>
+
+                        <button
+                          id={`star-${stock.code}`}
+                          onClick={() => onToggleWatchlist(stock.code)}
+                          className="p-1 text-gray-300 hover:text-accent focus:outline-none"
+                        >
+                          <Star className={`w-4 h-4 stroke-[2.2] ${isAdded ? 'fill-accent text-accent' : 'text-gray-300'}`} />
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="text-center py-6 bg-white rounded-2xl border border-dashed border-gray-200 text-xs text-gray-400 font-medium">
+                  Tidak ada saham ditemukan dalam kategori ini.
                 </div>
-              );
-            })
-          ) : (
-            <div className="text-center py-6 bg-white rounded-2xl border border-dashed border-gray-200 text-xs text-gray-400 font-medium">
-              Tidak ada loss emiten pencocokan.
+              )}
             </div>
-          )}
+          </div>
+
+          {/* Top Losers Section */}
+          <div className="px-5 mb-6">
+            <div className="flex justify-between items-center mb-3">
+              <span className="text-xs font-bold text-gray-900 tracking-tight flex items-center gap-1">
+                SAHAM TURUN TERATAS
+              </span>
+              <button
+                onClick={() => setShowAllLosers(!showAllLosers)}
+                className="text-xs text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
+              >
+                {showAllLosers ? 'Tutup' : 'Lihat Semua'}
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-2.5">
+              {losers.length > 0 ? (
+                (showAllLosers ? losers : losers.slice(0, 3)).map((stock) => {
+                  const isAdded = watchlist.includes(stock.code);
+                  return (
+                    <div
+                      key={stock.code}
+                      id={`stock-loser-${stock.code}`}
+                      className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow flex items-center justify-between hover:bg-gray-50/40 transition-all cursor-pointer"
+                      onClick={() => {
+                        onSelectStock(stock.code);
+                        onNavigate('StockDetail');
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-2xl bg-red-50 text-red-500 font-black text-xs flex items-center justify-center">
+                          {stock.code.substring(0, 1)}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <h4 className="text-xs font-extrabold text-gray-950">{stock.code}</h4>
+                          </div>
+                          <span className="text-xs text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
+                        </div>
+                      </div>
+
+                      {/* Spark line drop */}
+                      <div className="w-14 h-6">
+                        <svg className="w-full h-full" viewBox="0 0 100 40">
+                          <path d="M0,10 L30,15 L60,25 L80,28 L100,35" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" />
+                        </svg>
+                      </div>
+
+                      <div className="flex items-center gap-2.5" onClick={(e) => e.stopPropagation()}>
+                        <div className="text-right">
+                          <span className="text-xs font-extrabold text-gray-900 block">{formatIDR(stock.price)}</span>
+                          <span className="text-xs font-bold text-red-500 block">{stock.changePercent}%</span>
+                        </div>
+
+                        <button
+                          id={`star-${stock.code}`}
+                          onClick={() => onToggleWatchlist(stock.code)}
+                          className="p-1 text-gray-300 hover:text-accent focus:outline-none"
+                        >
+                          <Star className={`w-4 h-4 stroke-[2.2] ${isAdded ? 'fill-accent text-accent' : 'text-gray-300'}`} />
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="text-center py-6 bg-white rounded-2xl border border-dashed border-gray-200 text-xs text-gray-400 font-medium">
+                  Tidak ada emiten turun yang cocok.
+                </div>
+              )}
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="px-5 mb-6">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-xs font-bold text-gray-900 tracking-tight uppercase">
+              {selectedCategory === 'semua' ? 'Semua Saham' : categories.find((cat) => cat.id === selectedCategory)?.label}
+            </span>
+            <span className="text-xs text-gray-400 font-bold">{filteredStocks.length} Emiten</span>
+          </div>
+
+          <div className="flex flex-col gap-2.5">
+            {filteredStocks.length > 0 ? (
+              filteredStocks.map((stock) => {
+                const isAdded = watchlist.includes(stock.code);
+                const isLoss = stock.changePercent < 0;
+                return (
+                  <div
+                    key={stock.code}
+                    id={`stock-all-${stock.code}`}
+                    className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow flex items-center justify-between hover:bg-gray-50/40 transition-all cursor-pointer"
+                    onClick={() => {
+                      onSelectStock(stock.code);
+                      onNavigate('StockDetail');
+                    }}
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className={`w-10 h-10 rounded-2xl ${isLoss ? 'bg-red-50 text-red-500' : 'bg-blue-50 text-primary'} font-black text-xs flex items-center justify-center shrink-0`}>
+                        {stock.code.substring(0, 1)}
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="text-xs font-extrabold text-gray-950">{stock.code}</h4>
+                        <span className="text-xs text-gray-400 font-medium block truncate max-w-36">{stock.name}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2.5 shrink-0" onClick={(e) => e.stopPropagation()}>
+                      <div className="text-right">
+                        <span className="text-xs font-extrabold text-gray-900 block">{formatIDR(stock.price)}</span>
+                        <span className={`text-xs font-bold block ${isLoss ? 'text-red-500' : 'text-teal-600'}`}>
+                          {isLoss ? '' : '+'}{stock.changePercent}%
+                        </span>
+                      </div>
+
+                      <button
+                        id={`star-all-${stock.code}`}
+                        onClick={() => onToggleWatchlist(stock.code)}
+                        className="p-1 text-gray-300 hover:text-accent focus:outline-none"
+                      >
+                        <Star className={`w-4 h-4 stroke-[2.2] ${isAdded ? 'fill-accent text-accent' : 'text-gray-300'}`} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="text-center py-6 bg-white rounded-2xl border border-dashed border-gray-200 text-xs text-gray-400 font-medium">
+                Tidak ada saham ditemukan.
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
