@@ -118,12 +118,12 @@ export default function PortfolioView({
     <div id="portfolio-view" className="flex flex-col h-full bg-surface-bg overflow-y-auto no-scrollbar pb-24 rounded-t-3xl pt-5">
       {/* Top Header */}
       <div className="flex items-center justify-between px-5 mb-5">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <svg className="w-7 h-7 text-primary shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
             <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span className="font-extrabold text-[#001a41] text-base font-sans">Portofolio</span>
+          <h2 className="text-xl font-bold text-gray-900 tracking-tight">Portofolio</h2>
         </div>
       </div>
 
@@ -132,14 +132,14 @@ export default function PortfolioView({
         <div className="bg-gradient-to-br from-primary via-primary to-[#0070ea] rounded-3xl p-5 text-white shadow-xl relative overflow-hidden">
           <div className="absolute -right-10 -bottom-10 w-44 h-44 bg-white/5 rounded-full blur-2xl" />
           <div className="absolute left-1/3 -top-12 w-32 h-32 bg-accent/10 rounded-full blur-xl" />
-          <span className="text-[11px] text-white/80 font-medium tracking-wide block relative">Total Nilai</span>
+          <span className="text-xs text-white/80 font-medium tracking-wide block relative">Total Nilai</span>
           <h2 className="text-2xl font-bold tracking-tight text-white mt-1 relative">{formatIDR(totalAssets)}</h2>
 
           <div className="inline-flex items-center gap-1.5 bg-white/15 px-3 py-1.5 rounded-xl text-teal-200 mt-4 select-none backdrop-blur-sm relative">
             <svg className="w-3.5 h-3.5 stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
             </svg>
-            <span className="text-[10px] text-white font-bold tracking-wide">
+            <span className="text-xs text-white font-bold tracking-wide">
               {netProfitLoss >= 0 ? '+' : ''}{formatIDR(netProfitLoss)} hari ini
             </span>
           </div>
@@ -151,7 +151,7 @@ export default function PortfolioView({
         <div className="bg-white rounded-3xl border border-gray-100 p-5 soft-shadow">
           <div className="flex justify-between items-center mb-4">
             <span className="text-xs font-bold text-gray-900">Performa</span>
-            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${activeSeries.positive ? 'bg-teal-50 text-teal-700' : 'bg-red-50 text-red-500'}`}>
+            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${activeSeries.positive ? 'bg-teal-50 text-teal-700' : 'bg-red-50 text-red-500'}`}>
               {activeSeries.change}
             </span>
 
@@ -163,7 +163,7 @@ export default function PortfolioView({
                   <button
                     key={tab}
                     onClick={() => setPerformanceTab(tab)}
-                    className={`px-2.5 py-1 rounded-lg text-[10px] font-bold tracking-wide transition-all ${
+                    className={`px-2.5 py-1 rounded-lg text-xs font-bold tracking-wide transition-all ${
                       isActive ? 'bg-primary text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'
                     }`}
                   >
@@ -210,7 +210,7 @@ export default function PortfolioView({
             </svg>
 
             {/* X Axis Labels */}
-            <div className="flex justify-between items-center text-[9px] text-gray-400 font-semibold px-2 mt-2">
+            <div className="flex justify-between items-center text-xs text-gray-400 font-semibold px-2 mt-2">
               {activeSeries.labels.map((label, index) => (
                 <span key={index}>{label}</span>
               ))}
@@ -246,8 +246,8 @@ export default function PortfolioView({
                 })}
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-[14px] font-black text-gray-900 leading-none">{allocationRows.length}</span>
-                <span className="text-[8px] text-gray-400 font-bold block mt-0.5">Sektor</span>
+                <span className="text-sm font-black text-gray-900 leading-none">{allocationRows.length}</span>
+                <span className="text-xs text-gray-400 font-bold block mt-0.5">Sektor</span>
               </div>
             </div>
 
@@ -293,13 +293,13 @@ export default function PortfolioView({
                   </div>
                   <div>
                     <h4 className="text-xs font-extrabold text-[#001a41]">{item.stockCode}</h4>
-                    <span className="text-[10px] text-gray-400 font-medium block mt-0.5">{item.lots} Lots · Avg {formatIDR(item.avgPrice)}</span>
+                    <span className="text-xs text-gray-400 font-medium block mt-0.5">{item.lots} Lots · Avg {formatIDR(item.avgPrice)}</span>
                   </div>
                 </div>
 
                 <div className="text-right">
                   <span className="text-xs font-bold text-gray-900 block">{formatIDR(livePrice)}</span>
-                  <span className={`text-[10px] font-bold ${isGain ? 'text-teal-600' : 'text-red-500'}`}>
+                  <span className={`text-xs font-bold ${isGain ? 'text-teal-600' : 'text-red-500'}`}>
                     {isGain ? '▲' : '▼'} {isGain ? '+' : ''}{diffPercent.toFixed(1)}%
                   </span>
                 </div>
@@ -319,8 +319,8 @@ export default function PortfolioView({
 
           <div className="bg-amber-50/50 rounded-2xl p-4 border border-amber-100/50 mb-4">
             <div className="flex justify-between items-center mb-1.5">
-              <span className="text-[10px] text-amber-800 font-extrabold">Profil Risiko Anda</span>
-              <span className="bg-accent text-dark-blue font-bold px-2.5 py-0.5 rounded-lg text-[9px] uppercase">
+              <span className="text-xs text-amber-800 font-extrabold">Profil Risiko Anda</span>
+              <span className="bg-accent text-dark-blue font-bold px-2.5 py-0.5 rounded-lg text-xs uppercase">
                 {userProfile.riskProfile}
               </span>
             </div>
@@ -345,7 +345,7 @@ export default function PortfolioView({
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <h3 className="text-sm font-black text-gray-950">Rekomendasi Alokasi</h3>
-                <p className="mt-0.5 text-[10px] font-medium text-gray-400">Saran berbasis profil {userProfile.riskProfile}</p>
+                <p className="mt-0.5 text-xs font-medium text-gray-400">Saran berbasis profil {userProfile.riskProfile}</p>
               </div>
               <button
                 onClick={() => setShowAllocationModal(false)}

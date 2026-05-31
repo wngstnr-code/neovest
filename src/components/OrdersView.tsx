@@ -55,19 +55,19 @@ export default function OrdersView({
         <div className="flex bg-gray-100/80 p-0.5 rounded-full border border-gray-200/50">
           <button
             onClick={() => onNavigate('Market')}
-            className="text-[10px] font-black px-4 py-1.5 rounded-full text-gray-500 hover:text-gray-900 uppercase tracking-wider transition-all"
+            className="text-xs font-black px-4 py-1.5 rounded-full text-gray-500 hover:text-gray-900 uppercase tracking-wider transition-all"
           >
             SBN &amp; Saham
           </button>
           <button
             onClick={() => onNavigate('Community')}
-            className="text-[10px] font-black px-4 py-1.5 rounded-full text-gray-500 hover:text-gray-900 uppercase tracking-wider transition-all"
+            className="text-xs font-black px-4 py-1.5 rounded-full text-gray-500 hover:text-gray-900 uppercase tracking-wider transition-all"
           >
             Community
           </button>
           <button
             onClick={() => onNavigate('Orders')}
-            className="text-[10px] font-black px-4 py-1.5 rounded-full bg-white text-primary shadow-sm uppercase tracking-wider"
+            className="text-xs font-black px-4 py-1.5 rounded-full bg-white text-primary shadow-sm uppercase tracking-wider"
           >
             Order
           </button>
@@ -86,17 +86,17 @@ export default function OrdersView({
       {/* Quick Stats Grid */}
       <div className="px-5 mb-5 grid grid-cols-2 gap-3">
         <div className="bg-white rounded-2xl p-3 border border-gray-100 soft-shadow">
-          <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block">Total Transaksi</span>
+          <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Total Transaksi</span>
           <span className="text-base font-black text-gray-900 block mt-0.5">{orders.length} Order</span>
-          <span className="text-[8px] text-teal-600 font-semibold block mt-0.5">Semua diproses sukses</span>
+          <span className="text-xs text-teal-600 font-semibold block mt-0.5">Semua diproses sukses</span>
         </div>
 
         <div className="bg-white rounded-2xl p-3 border border-gray-100 soft-shadow">
-          <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block">Total Volume</span>
+          <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Total Volume</span>
           <span className="text-base font-black text-primary block mt-0.5">
             {orders.reduce((acc, o) => acc + o.lots, 0)} Lots
           </span>
-          <span className="text-[8px] text-gray-400 font-semibold block mt-0.5">Rata-rata 100 lembar/lot</span>
+          <span className="text-xs text-gray-400 font-semibold block mt-0.5">Rata-rata 100 lembar/lot</span>
         </div>
       </div>
 
@@ -123,7 +123,7 @@ export default function OrdersView({
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider transition-all shadow-sm ${
+              className={`px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider transition-all shadow-sm ${
                 isActive 
                   ? 'bg-primary text-white font-bold' 
                   : 'bg-white text-gray-500 hover:text-gray-900 border border-gray-100'
@@ -141,10 +141,10 @@ export default function OrdersView({
           <div className="bg-white rounded-3xl border border-gray-100 p-8 text-center text-xs text-gray-400 soft-shadow">
             <History className="w-10 h-10 text-gray-200 mx-auto mb-3" />
             <p className="font-extrabold text-gray-800">Tidak ada riwayat order</p>
-            <p className="text-[10px] text-gray-400 mt-1">Lakukan transaksi pembelian saham pada halaman Pasar.</p>
+            <p className="text-xs text-gray-400 mt-1">Lakukan transaksi pembelian saham pada halaman Pasar.</p>
             <button
               onClick={() => onNavigate('Market')}
-              className="mt-4 px-4 py-2 bg-primary text-white text-[10px] uppercase tracking-wide font-black rounded-xl active:scale-95 transition-all shadow"
+              className="mt-4 px-4 py-2 bg-primary text-white text-xs uppercase tracking-wide font-black rounded-xl active:scale-95 transition-all shadow"
             >
               Cari Saham Sekarang
             </button>
@@ -174,7 +174,7 @@ export default function OrdersView({
                       </div>
                       <div>
                         <span className="text-xs font-black text-gray-900">{order.stockCode}</span>
-                        <span className={`text-[9px] font-bold uppercase ml-1 px-1.5 py-0.5 rounded-md ${
+                        <span className={`text-xs font-bold uppercase ml-1 px-1.5 py-0.5 rounded-md ${
                           isBuy ? 'bg-teal-50 text-teal-700' : 'bg-rose-50 text-rose-700'
                         }`}>
                           {isBuy ? 'Beli' : 'Jual'}
@@ -184,30 +184,30 @@ export default function OrdersView({
 
                     <div className="flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5 text-teal-500" />
-                      <span className="text-[9px] font-black text-teal-600 uppercase tracking-wider bg-teal-50 px-2 py-0.5 rounded-lg">Match</span>
+                      <span className="text-xs font-black text-teal-600 uppercase tracking-wider bg-teal-50 px-2 py-0.5 rounded-lg">Match</span>
                     </div>
                   </div>
 
                   {/* Body values of Card */}
                   <div className="grid grid-cols-3 gap-2 text-center text-xs font-bold text-gray-500">
                     <div className="text-left">
-                      <span className="text-[9px] text-gray-400 block mb-0.5 font-bold uppercase tracking-wider">Jumlah</span>
+                      <span className="text-xs text-gray-400 block mb-0.5 font-bold uppercase tracking-wider">Jumlah</span>
                       <span className="text-gray-900 font-extrabold">{order.lots} Lot</span>
                     </div>
 
                     <div>
-                      <span className="text-[9px] text-gray-400 block mb-0.5 font-bold uppercase tracking-wider">Harga unit</span>
+                      <span className="text-xs text-gray-400 block mb-0.5 font-bold uppercase tracking-wider">Harga unit</span>
                       <span className="text-gray-900 font-extrabold">{formatIDR(order.price)}</span>
                     </div>
 
                     <div className="text-right">
-                      <span className="text-[9px] text-gray-400 block mb-0.5 font-bold uppercase tracking-wider">Total Dana</span>
+                      <span className="text-xs text-gray-400 block mb-0.5 font-bold uppercase tracking-wider">Total Dana</span>
                       <span className="text-primary font-black">{formatIDR(order.totalPayment)}</span>
                     </div>
                   </div>
 
                   {/* Footer metadata of Card */}
-                  <div className="flex items-center justify-between text-[9px] font-bold text-gray-400 border-t border-gray-50 pt-2">
+                  <div className="flex items-center justify-between text-xs font-bold text-gray-400 border-t border-gray-50 pt-2">
                     <span>ID: {order.id}</span>
                     <span>{order.date}</span>
                   </div>

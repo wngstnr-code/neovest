@@ -87,11 +87,11 @@ export default function OrderViews({
               <div>
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-black text-gray-900">{stock.code}</span>
-                  <span className="text-[9px] font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full max-w-36 truncate">{stock.name}</span>
+                  <span className="text-xs font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full max-w-36 truncate">{stock.name}</span>
                 </div>
                 <h1 className="text-2xl font-black text-gray-950 mt-2">{formatIDR(tradePrice)}</h1>
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-sky-100 px-3 py-1 text-[10px] font-bold text-primary">
+              <span className="inline-flex items-center gap-1 rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-primary">
                 <TrendingUp className="w-3 h-3" />
                 {stock.changePercent > 0 ? '+' : ''}{stock.changePercent}%
               </span>
@@ -105,7 +105,7 @@ export default function OrderViews({
             <h2 className="text-lg font-bold text-gray-950 mb-4">Order Book</h2>
 
             {/* Bids and Asks table */}
-            <div className="grid grid-cols-4 gap-2 text-[11px] font-semibold">
+            <div className="grid grid-cols-4 gap-2 text-xs font-semibold">
               <span className="text-gray-500">Bid Lot</span>
               <span className="text-right text-gray-500">Bid</span>
               <span className="text-right text-gray-500">Ask</span>
@@ -135,7 +135,7 @@ export default function OrderViews({
 
             {/* Input 1: Harga Beli */}
             <div>
-              <label className="text-[10px] text-gray-400 font-bold block mb-1.5 px-3 bg-white w-fit relative top-3">Price (Rp)</label>
+              <label className="text-xs text-gray-400 font-bold block mb-1.5 px-3 bg-white w-fit relative top-3">Price (Rp)</label>
               <div className="flex items-center justify-between border border-gray-200 rounded-xl h-12 px-2">
                 <button
                   type="button"
@@ -163,7 +163,7 @@ export default function OrderViews({
 
             {/* Input 2: Jumlah Lot */}
             <div>
-              <label className="text-[10px] text-gray-400 font-bold block mb-1.5 px-3 bg-white w-fit relative top-3">Lot Amount</label>
+              <label className="text-xs text-gray-400 font-bold block mb-1.5 px-3 bg-white w-fit relative top-3">Lot Amount</label>
               <div className="flex items-center justify-between border border-gray-200 rounded-xl h-12 px-2">
                 <button
                   type="button"
@@ -192,19 +192,19 @@ export default function OrderViews({
               <div className="flex gap-2 mt-3 justify-center">
                 <button
                   onClick={() => handleLotsPills(10)}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-[10px] px-4 py-1.5 rounded-full focus:outline-none"
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs px-4 py-1.5 rounded-full focus:outline-none"
                 >
                   +10
                 </button>
                 <button
                   onClick={() => handleLotsPills(50)}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-[10px] px-4 py-1.5 rounded-full focus:outline-none"
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs px-4 py-1.5 rounded-full focus:outline-none"
                 >
                   +50
                 </button>
                 <button
                   onClick={() => setTradeLots(Math.max(1, Math.floor(userProfile.balance / (tradePrice * 100))))}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-[10px] px-4 py-1.5 rounded-full focus:outline-none"
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs px-4 py-1.5 rounded-full focus:outline-none"
                 >
                   Max
                 </button>
@@ -263,9 +263,9 @@ export default function OrderViews({
               </div>
               <div className="flex-1 min-w-0">
                 <h2 className="text-lg font-black text-gray-950">{stock.code}</h2>
-                <p className="text-[10px] font-semibold text-gray-500 truncate">{stock.name}</p>
+                <p className="text-xs font-semibold text-gray-500 truncate">{stock.name}</p>
               </div>
-              <span className="rounded-full bg-primary-light px-3 py-1 text-[10px] font-bold text-primary">Buy</span>
+              <span className="rounded-full bg-primary-light px-3 py-1 text-xs font-bold text-primary">Buy</span>
             </div>
             <div className="flex flex-col gap-3 pt-4 text-sm">
               <div className="flex justify-between">
@@ -325,12 +325,12 @@ export default function OrderViews({
                 <CheckCircle className="w-8 h-8 stroke-[2.2]" />
               </div>
               <h3 className="text-sm font-black text-gray-950 block mb-0.5">Order Berhasil Dikirim!</h3>
-              <span className="text-[9px] text-teal-600 bg-teal-50 px-3 py-1 rounded-full font-bold uppercase inline-flex items-center gap-1 my-2">
+              <span className="text-xs text-teal-600 bg-teal-50 px-3 py-1 rounded-full font-bold uppercase inline-flex items-center gap-1 my-2">
                 Sukses Terbeli <Sparkles className="w-3 h-3 text-teal-600 fill-teal-600" />
               </span>
 
               {/* Details table inside modal */}
-              <div className="bg-gray-50 rounded-2xl p-4.5 my-4.5 flex flex-col gap-2.5 text-[11px] font-semibold text-gray-600 text-left border border-gray-100">
+              <div className="bg-gray-50 rounded-2xl p-4.5 my-4.5 flex flex-col gap-2.5 text-xs font-semibold text-gray-600 text-left border border-gray-100">
                 <div className="flex justify-between">
                   <span>Emiten Saham:</span>
                   <span className="text-gray-900 font-black">{stock.code}</span>
@@ -366,7 +366,7 @@ export default function OrderViews({
                     setTradeExecuted(false);
                     onNavigate('Home');
                   }}
-                  className="text-[10px] text-gray-400 font-bold hover:underline"
+                  className="text-xs text-gray-400 font-bold hover:underline"
                 >
                   Kembali ke Beranda Utama
                 </button>

@@ -143,7 +143,7 @@ export default function HistoryView({ orders, stocks, onNavigate }: HistoryViewP
         <div className="flex flex-col gap-5 px-5 pt-4">
           {Object.entries(groupedItems).map(([group, items]) => (
             <section key={group}>
-              <h2 className="mb-2.5 text-[10px] font-bold tracking-[0.18em] text-slate-700">{group}</h2>
+              <h2 className="mb-2.5 text-xs font-bold tracking-[0.18em] text-slate-700">{group}</h2>
               <div className="flex flex-col gap-2.5">
                 {items.map((item) => {
                   const isBuy = item.type === 'Beli';
@@ -175,10 +175,10 @@ export default function HistoryView({ orders, stocks, onNavigate }: HistoryViewP
 
                         <div className="min-w-0">
                           <h3 className="truncate text-sm font-black leading-tight text-gray-950">{item.stockCode}</h3>
-                          <p className="max-w-28 truncate text-[11px] font-semibold leading-tight text-slate-700">
+                          <p className="max-w-28 truncate text-xs font-semibold leading-tight text-slate-700">
                             {item.stockName}
                           </p>
-                          <span className={`mt-2 inline-flex rounded-md px-2 py-0.5 text-[9px] font-bold ${badgeClasses}`}>
+                          <span className={`mt-2 inline-flex rounded-md px-2 py-0.5 text-xs font-bold ${badgeClasses}`}>
                             {item.type} • {item.status}
                           </span>
                         </div>
@@ -188,7 +188,7 @@ export default function HistoryView({ orders, stocks, onNavigate }: HistoryViewP
                         <p className={`text-sm font-black tracking-tight ${isFailed ? 'text-gray-500' : 'text-gray-950'}`}>
                           {formatIDR(item.amount)}
                         </p>
-                        <p className="mt-1 text-[11px] font-medium text-slate-700">{item.time}</p>
+                        <p className="mt-1 text-xs font-medium text-slate-700">{item.time}</p>
                       </div>
                     </article>
                   );

@@ -56,12 +56,12 @@ export default function BottomNav({ currentScreen, onNavigate }: BottomNavProps)
                 <div className="p-2 bg-primary/10 rounded-full text-primary transition-all">
                   <Icon className="w-5 h-5 stroke-[2.5]" />
                 </div>
-                <span className="text-[10px] font-bold text-primary mt-1">{tab.label}</span>
+                <span className="text-xs font-bold text-primary mt-1">{tab.label}</span>
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center text-gray-400 hover:text-gray-600 transition-all">
                 <Icon className="w-5 h-5 stroke-[2]" />
-                <span className="text-[10px] font-medium text-gray-400 mt-1">{tab.label}</span>
+                <span className="text-xs font-medium text-gray-400 mt-1">{tab.label}</span>
               </div>
             )}
           </button>

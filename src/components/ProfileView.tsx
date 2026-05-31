@@ -54,7 +54,7 @@ export default function ProfileView({
       {/* Top Header */}
       <div className="px-5 mb-5 flex justify-between items-center">
         <h2 className="text-xl font-bold text-gray-900 tracking-tight">Akun Saya</h2>
-        <span className="text-[10px] text-gray-400 font-bold">Ver v1.0.8</span>
+        <span className="text-xs text-gray-400 font-bold">Ver v1.0.8</span>
       </div>
 
       {/* User Information Display Card with toggle possibility */}
@@ -75,20 +75,20 @@ export default function ProfileView({
               <div className="flex items-center gap-1.5 flex-wrap">
                 <h3 className="text-sm font-black text-[#001a41]">{userProfile.fullName}</h3>
                 {userProfile.isPremium ? (
-                  <span className="bg-amber-100 text-amber-700 text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider">
+                  <span className="bg-amber-100 text-amber-700 text-xs font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider">
                     Premium
                   </span>
                 ) : (
                   <button
                     onClick={() => onNavigate('PremiumUpgrade')}
-                    className="bg-primary/5 text-primary text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase hover:bg-primary-light"
+                    className="bg-primary/5 text-primary text-xs font-black px-1.5 py-0.5 rounded-full uppercase hover:bg-primary-light"
                   >
                     Upgrade
                   </button>
                 )}
               </div>
-              <p className="text-[10px] text-gray-400 font-medium tracking-normal mt-0.5">{userProfile.email}</p>
-              <p className="text-[9px] text-primary font-bold mt-1.5 cursor-pointer block hover:underline" onClick={toggleIdentity}>
+              <p className="text-xs text-gray-400 font-medium tracking-normal mt-0.5">{userProfile.email}</p>
+              <p className="text-xs text-primary font-bold mt-1.5 cursor-pointer block hover:underline" onClick={toggleIdentity}>
                 Ganti User (Simulasi Test)
               </p>
             </div>
@@ -99,17 +99,17 @@ export default function ProfileView({
       {/* Bank balance credentials */}
       <div className="px-5 mb-6">
         <div className="bg-gradient-to-tr from-[#001a41] to-primary-dark rounded-3xl p-5 text-white shadow-md relative overflow-hidden">
-          <span className="text-[10px] text-white/70 font-semibold block tracking-wider uppercase">Saldo RDN (Virtual Account)</span>
+          <span className="text-xs text-white/70 font-semibold block tracking-wider uppercase">Saldo RDN (Virtual Account)</span>
           <h2 id="profile-rdn-balance" className="text-xl font-extrabold mt-0.5 select-all">{formatIDR(userProfile.balance)}</h2>
           
           <div className="flex justify-between items-center mt-3.5 border-t border-white/10 pt-3.5 bg-transparent">
             <div>
-              <span className="text-[8px] text-white/50 font-bold block uppercase tracking-wider">Bank Kustodian</span>
+              <span className="text-xs text-white/50 font-bold block uppercase tracking-wider">Bank Kustodian</span>
               <span className="text-xs font-bold text-white mt-0.5 block">BANK MANDIRI (VA)</span>
             </div>
 
             <div>
-              <span className="text-[8px] text-white/50 font-bold block uppercase tracking-wider">Nomor Rekening VA</span>
+              <span className="text-xs text-white/50 font-bold block uppercase tracking-wider">Nomor Rekening VA</span>
               <span className="text-xs font-mono font-bold text-accent tracking-widest block select-all">8802 0812 3456</span>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function ProfileView({
               </div>
               <div>
                 <span className="text-xs font-bold text-gray-900 block">Status KYC</span>
-                <span className="text-[10px] text-teal-600 font-bold mt-0.5 flex items-center gap-1">
+                <span className="text-xs text-teal-600 font-bold mt-0.5 flex items-center gap-1">
                   <span>Akun Sudah Terverifikasi</span>
                   <span className="w-1.5 h-1.5 bg-teal-500 rounded-full inline-block" />
                 </span>
@@ -154,7 +154,7 @@ export default function ProfileView({
               </div>
               <div>
                 <span className="text-xs font-bold text-gray-900 block">Tes Profil Risiko</span>
-                <span className="text-[10px] text-gray-400 font-medium block mt-0.5">Ubah profil risiko ({userProfile.riskProfile})</span>
+                <span className="text-xs text-gray-400 font-medium block mt-0.5">Ubah profil risiko ({userProfile.riskProfile})</span>
               </div>
             </div>
             <span className="text-xs text-gray-300 font-bold">&gt;</span>
@@ -168,7 +168,7 @@ export default function ProfileView({
               </div>
               <div>
                 <span className="text-xs font-bold text-gray-900 block">Biometric Fingerprint</span>
-                <span className="text-[10px] text-gray-400 font-medium block mt-0.5">Aktifkan sidik jari saat masuk login</span>
+                <span className="text-xs text-gray-400 font-medium block mt-0.5">Aktifkan sidik jari saat masuk login</span>
               </div>
             </div>
             {/* Custom toggle switch */}
@@ -195,7 +195,7 @@ export default function ProfileView({
               </div>
               <div>
                 <span className="text-xs font-bold text-gray-900 block">Rekening Bank Penarikan</span>
-                <span className="text-[10px] text-gray-400 font-semibold block mt-0.5">BCA - **** 4567 aa/ Talita</span>
+                <span className="text-xs text-gray-400 font-semibold block mt-0.5">BCA - **** 4567 aa/ Talita</span>
               </div>
             </div>
             <span className="text-xs text-gray-300 font-bold">&gt;</span>
@@ -209,7 +209,7 @@ export default function ProfileView({
               </div>
               <div>
                 <span className="text-xs font-bold text-gray-900 block">Bahasa Aplikasi</span>
-                <span className="text-[10px] text-gray-400 font-medium block mt-0.5">Bahasa Indonesia</span>
+                <span className="text-xs text-gray-400 font-medium block mt-0.5">Bahasa Indonesia</span>
               </div>
             </div>
             <span className="text-xs text-gray-400 font-bold shrink-0">ID (Bahasa)</span>
@@ -237,7 +237,7 @@ export default function ProfileView({
               <CheckCircle className="w-8 h-8 stroke-[2.2]" />
             </div>
             <h3 className="text-sm font-black text-gray-950 block mb-1">KYC Account Verified</h3>
-            <span className="text-[10px] text-teal-600 bg-teal-50 px-3 py-1 rounded-full font-bold uppercase inline-block my-2">
+            <span className="text-xs text-teal-600 bg-teal-50 px-3 py-1 rounded-full font-bold uppercase inline-block my-2">
               Level 2 Pemula Verified
             </span>
             <p className="text-xs text-gray-500 leading-relaxed font-semibold my-4 px-2">

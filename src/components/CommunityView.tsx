@@ -363,7 +363,7 @@ export default function CommunityView({
                 <Target className="w-4 h-4" />
                 <span>{activePost.stockTag} Sentiment: {activePost.sentiment}</span>
               </div>
-              <span className={`text-[10px] px-2 py-0.5 rounded-full ${
+              <span className={`text-xs px-2 py-0.5 rounded-full ${
                 activePost.sentiment === 'Bullish' ? 'bg-emerald-100' : activePost.sentiment === 'Bearish' ? 'bg-rose-100' : 'bg-amber-100'
               }`}>
                 {activePost.sentiment === 'Bullish' ? '80% Bullish' : activePost.sentiment === 'Bearish' ? '65% Bearish' : '55% Neutral'}
@@ -400,7 +400,7 @@ export default function CommunityView({
                   <h4 className="text-xs font-extrabold text-gray-950 flex items-center gap-1">
                     {activePost.author}
                   </h4>
-                  <p className="text-[10px] text-gray-400 font-bold">
+                  <p className="text-xs text-gray-400 font-bold">
                     {activePost.timeAgo} {activePost.authorRole && `• ${activePost.authorRole}`}
                   </p>
                 </div>
@@ -422,7 +422,7 @@ export default function CommunityView({
             </h1>
 
             {/* Paragraph block content */}
-            <div className="text-[11px] text-gray-650 leading-relaxed font-semibold whitespace-pre-wrap">
+            <div className="text-xs text-gray-650 leading-relaxed font-semibold whitespace-pre-wrap">
               {activePost.content}
             </div>
 
@@ -431,7 +431,7 @@ export default function CommunityView({
               {activePost.tags.map((tag, idx) => (
                 <span 
                   key={idx} 
-                  className={`text-[9px] font-extrabold px-2.5 py-0.5 rounded-full ${
+                  className={`text-xs font-extrabold px-2.5 py-0.5 rounded-full ${
                     tag.includes('Bullish') 
                       ? 'bg-emerald-50 text-emerald-800' 
                       : tag.includes('Bearish') 
@@ -477,7 +477,7 @@ export default function CommunityView({
             <span className="text-xs font-black text-slate-900 tracking-tight">
               Comments ({activePost.comments.length})
             </span>
-            <span className="text-[10px] text-gray-400 font-bold">Terbaru</span>
+            <span className="text-xs text-gray-400 font-bold">Terbaru</span>
           </div>
 
           {/* Comments Lists */}
@@ -507,20 +507,20 @@ export default function CommunityView({
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs font-black text-gray-900">{comment.author}</span>
-                      <span className="text-[9px] text-gray-400 font-bold">{comment.timeAgo}</span>
+                      <span className="text-xs text-gray-400 font-bold">{comment.timeAgo}</span>
                     </div>
 
-                    <p className="text-[11px] text-gray-600 font-medium leading-relaxed">
+                    <p className="text-xs text-gray-600 font-medium leading-relaxed">
                       {comment.content}
                     </p>
 
                     <div className="flex items-center gap-4 mt-3 pt-1">
-                      <button className="text-[9px] text-primary font-extrabold hover:underline">
+                      <button className="text-xs text-primary font-extrabold hover:underline">
                         Reply
                       </button>
                       <button 
                         onClick={() => handleLikeComment(comment.id)}
-                        className={`flex items-center gap-1 text-[10px] font-bold ${
+                        className={`flex items-center gap-1 text-xs font-bold ${
                           comment.hasLiked ? 'text-rose-600' : 'text-gray-400'
                         }`}
                       >
@@ -590,7 +590,7 @@ export default function CommunityView({
             placeholder="Cari Post..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-transparent outline-none text-[10px] text-gray-800 placeholder-gray-400 font-bold"
+            className="w-full bg-transparent outline-none text-xs text-gray-800 placeholder-gray-400 font-bold"
           />
         </div>
       </div>
@@ -605,7 +605,7 @@ export default function CommunityView({
               <Sparkles className="w-4 h-4 text-accent fill-accent" />
               <span>Trending Topics</span>
             </span>
-            <span className="text-[10px] text-gray-400 font-bold">24h Volume</span>
+            <span className="text-xs text-gray-400 font-bold">24h Volume</span>
           </div>
 
           <div className="flex gap-3.5 overflow-x-auto no-scrollbar px-5 py-1">
@@ -622,10 +622,10 @@ export default function CommunityView({
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[8px] text-gray-400 font-bold uppercase tracking-wider bg-gray-50 border border-gray-150 px-2 py-0.5 rounded-md">
+                    <span className="text-xs text-gray-400 font-bold uppercase tracking-wider bg-gray-50 border border-gray-150 px-2 py-0.5 rounded-md">
                       {topic.domain}
                     </span>
-                    <span className="inline-flex items-center gap-1 bg-red-50 text-red-700 text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1 bg-red-50 text-red-700 text-xs font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
                       <Flame className="w-2.5 h-2.5" /> {topic.tag}
                     </span>
                   </div>
@@ -633,12 +633,12 @@ export default function CommunityView({
                   <h3 className="text-xs font-black text-slate-900 line-clamp-1 mb-1">
                     {topic.title}
                   </h3>
-                  <p className="text-[10px] text-gray-500 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
                     {topic.desc}
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between border-t border-gray-100/60 pt-3 mt-4 text-[9px] font-bold text-gray-400">
+                <div className="flex items-center justify-between border-t border-gray-100/60 pt-3 mt-4 text-xs font-bold text-gray-400">
                   <span className="flex items-center gap-1">
                     <MessageSquare className="w-3 h-3 text-gray-400" />
                     <span>{topic.cmts} Comments</span>
@@ -657,7 +657,7 @@ export default function CommunityView({
               <button
                 key={tag}
                 onClick={() => setFilterTag(tag)}
-                className={`text-[9px] font-black px-3.5 py-1.5 rounded-full border transition-all active:scale-[0.96] shrink-0 uppercase tracking-wider ${
+                className={`text-xs font-black px-3.5 py-1.5 rounded-full border transition-all active:scale-[0.96] shrink-0 uppercase tracking-wider ${
                   filterTag === tag 
                     ? 'bg-primary border-primary text-white shadow-sm' 
                     : 'bg-white border-gray-100 text-gray-500 hover:text-gray-900'
@@ -681,7 +681,7 @@ export default function CommunityView({
                 // Shuffle filter tag order or show alert
                 alert('Menampilkan postingan terkini dari investor NeoVest!');
               }}
-              className="text-[10px] text-primary font-black hover:underline"
+              className="text-xs text-primary font-black hover:underline"
             >
               Filter
             </button>
@@ -721,11 +721,11 @@ export default function CommunityView({
                       )}
                       <div>
                         <span className="text-xs font-black text-gray-950 block">{post.author}</span>
-                        <span className="text-[10px] text-gray-400 font-bold block">{post.timeAgo}</span>
+                        <span className="text-xs text-gray-400 font-bold block">{post.timeAgo}</span>
                       </div>
                     </div>
 
-                    <span className="text-[9px] text-gray-500 bg-gray-50 px-2.5 py-0.5 rounded-lg border border-gray-100 font-extrabold uppercase tracking-wide">
+                    <span className="text-xs text-gray-500 bg-gray-50 px-2.5 py-0.5 rounded-lg border border-gray-100 font-extrabold uppercase tracking-wide">
                       {post.category}
                     </span>
                   </div>
@@ -734,7 +734,7 @@ export default function CommunityView({
                   <h3 className="text-xs font-black text-gray-950 line-clamp-2 leading-relaxed mb-1 hover:text-primary transition-all">
                     {post.title}
                   </h3>
-                  <p className="text-[10px] font-semibold text-gray-500 line-clamp-3 leading-relaxed mb-4">
+                  <p className="text-xs font-semibold text-gray-500 line-clamp-3 leading-relaxed mb-4">
                     {post.content}
                   </p>
 
@@ -743,7 +743,7 @@ export default function CommunityView({
                     <button 
                       onClick={(e) => handleLikePost(post.id, e)}
                       id={`like-${post.id}`}
-                      className={`flex items-center gap-1 text-[10px] font-bold ${
+                      className={`flex items-center gap-1 text-xs font-bold ${
                         post.hasLiked ? 'text-rose-600' : 'text-gray-400 hover:text-rose-500'
                       }`}
                     >
@@ -751,7 +751,7 @@ export default function CommunityView({
                       <span>{post.likes}</span>
                     </button>
 
-                    <span className="flex items-center gap-1 text-[10px] text-gray-400 font-bold">
+                    <span className="flex items-center gap-1 text-xs text-gray-400 font-bold">
                       <MessageSquare className="w-3.5 h-3.5 text-gray-400" />
                       <span>{post.comments.length || post.commentsCount} Comments</span>
                     </span>
@@ -777,16 +777,16 @@ export default function CommunityView({
           <div className="bg-white rounded-3xl border border-gray-100 p-5 soft-shadow">
             <div className="flex items-center justify-between mb-4.5">
               <span className="text-xs font-black text-slate-900 tracking-tight">Community Sentiment</span>
-              <span className="text-[9px] text-teal-600 font-black">Terbaca Live</span>
+              <span className="text-xs text-teal-600 font-black">Terbaca Live</span>
             </div>
 
             <div className="flex flex-col gap-4">
               
               {/* BBCA */}
               <div>
-                <div className="flex justify-between items-center text-[10px] font-black mb-1.5">
+                <div className="flex justify-between items-center text-xs font-black mb-1.5">
                   <div className="flex items-center gap-1.5 uppercase tracking-wide">
-                    <span className="w-6 h-6 rounded-md bg-blue-50 text-primary border border-blue-100 flex items-center justify-center font-extrabold text-[8px]">
+                    <span className="w-6 h-6 rounded-md bg-blue-50 text-primary border border-blue-100 flex items-center justify-center font-extrabold text-xs">
                       BCA
                     </span>
                     <span>BBCA</span>
@@ -801,9 +801,9 @@ export default function CommunityView({
 
               {/* TLKM */}
               <div>
-                <div className="flex justify-between items-center text-[10px] font-black mb-1.5">
+                <div className="flex justify-between items-center text-xs font-black mb-1.5">
                   <div className="flex items-center gap-1.5 uppercase tracking-wide">
-                    <span className="w-6 h-6 rounded-md bg-rose-50 text-rose-600 border border-rose-100 flex items-center justify-center font-extrabold text-[8px]">
+                    <span className="w-6 h-6 rounded-md bg-rose-50 text-rose-600 border border-rose-100 flex items-center justify-center font-extrabold text-xs">
                       TLK
                     </span>
                     <span>TLKM</span>
@@ -818,9 +818,9 @@ export default function CommunityView({
 
               {/* BMRI */}
               <div>
-                <div className="flex justify-between items-center text-[10px] font-black mb-1.5">
+                <div className="flex justify-between items-center text-xs font-black mb-1.5">
                   <div className="flex items-center gap-1.5 uppercase tracking-wide">
-                    <span className="w-6 h-6 rounded-md bg-amber-50 text-amber-600 border border-amber-100 flex items-center justify-center font-extrabold text-[8px]">
+                    <span className="w-6 h-6 rounded-md bg-amber-50 text-amber-600 border border-amber-100 flex items-center justify-center font-extrabold text-xs">
                       MRI
                     </span>
                     <span>BMRI</span>
@@ -868,7 +868,7 @@ export default function CommunityView({
             {/* Input fields */}
             <form onSubmit={handleSubmitPost} className="flex flex-col gap-3">
               <div>
-                <label className="text-[9px] font-bold text-gray-400 uppercase block mb-1">Judul Diskusi</label>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Judul Diskusi</label>
                 <input 
                   type="text" 
                   placeholder="Contoh: Analisa Dividen BBRI kuartal ini..." 
@@ -880,7 +880,7 @@ export default function CommunityView({
               </div>
 
               <div>
-                <label className="text-[9px] font-bold text-gray-400 uppercase block mb-1">Pilih Isu Saham / Tag</label>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Pilih Isu Saham / Tag</label>
                 <select 
                   value={newPostStock}
                   onChange={(e) => setNewPostStock(e.target.value)}
@@ -896,7 +896,7 @@ export default function CommunityView({
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-[9px] font-bold text-gray-400 uppercase block mb-1">Kategori</label>
+                  <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Kategori</label>
                   <select 
                     value={newPostCategory}
                     onChange={(e) => setNewPostCategory(e.target.value)}
@@ -909,7 +909,7 @@ export default function CommunityView({
                   </select>
                 </div>
                 <div>
-                  <label className="text-[9px] font-bold text-gray-400 uppercase block mb-1">Analisa Sentimen</label>
+                  <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Analisa Sentimen</label>
                   <select 
                     value={newPostSentiment}
                     onChange={(e) => setNewPostSentiment(e.target.value as any)}
@@ -923,7 +923,7 @@ export default function CommunityView({
               </div>
 
               <div>
-                <label className="text-[9px] font-bold text-gray-400 uppercase block mb-1">Pendapat / Analisa Anda</label>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Pendapat / Analisa Anda</label>
                 <textarea 
                   rows={4}
                   placeholder="Tuliskan ulasan analisa teknikal, fundamental atau sekadar diskusi di sini..." 

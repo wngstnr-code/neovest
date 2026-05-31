@@ -95,7 +95,7 @@ export default function HomeDashboard({
               </div>
               <div>
                 <h3 className="text-xs font-black text-gray-950">Notifikasi</h3>
-                <p className="text-[10px] font-medium text-gray-400">Update terbaru akun Anda</p>
+                <p className="text-xs font-medium text-gray-400">Update terbaru akun Anda</p>
               </div>
             </div>
             <button
@@ -110,8 +110,8 @@ export default function HomeDashboard({
           <div className="flex flex-col gap-2.5">
             {unreadNotifications.length === 0 ? (
               <div className="rounded-2xl bg-gray-50 p-4 text-center">
-                <p className="text-[11px] font-bold text-gray-700">Semua notifikasi sudah dibaca</p>
-                <p className="mt-0.5 text-[10px] font-medium text-gray-400">Update baru akan muncul di sini.</p>
+                <p className="text-xs font-bold text-gray-700">Semua notifikasi sudah dibaca</p>
+                <p className="mt-0.5 text-xs font-medium text-gray-400">Update baru akan muncul di sini.</p>
               </div>
             ) : (
               unreadNotifications.map((notification) => (
@@ -119,9 +119,9 @@ export default function HomeDashboard({
                 <div className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${notification.dot}`} />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-2">
-                    <h4 className="text-[11px] font-black text-gray-900">{notification.title}</h4>
+                    <h4 className="text-xs font-black text-gray-900">{notification.title}</h4>
                     <div className="flex shrink-0 items-center gap-1.5">
-                      <span className="text-[9px] font-bold text-gray-400">{notification.time}</span>
+                      <span className="text-xs font-bold text-gray-400">{notification.time}</span>
                       <button
                         onClick={() => setReadNotificationIds((prev) => [...prev, notification.id])}
                         className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-gray-400 border border-gray-100 hover:text-primary active:scale-95 transition-all"
@@ -131,10 +131,10 @@ export default function HomeDashboard({
                       </button>
                     </div>
                   </div>
-                  <p className="mt-0.5 text-[10px] font-medium leading-relaxed text-gray-500">
+                  <p className="mt-0.5 text-xs font-medium leading-relaxed text-gray-500">
                     {notification.message}
                   </p>
-                  <span className={`mt-2 inline-flex rounded-full px-2 py-0.5 text-[9px] font-bold ${notification.tone}`}>
+                  <span className={`mt-2 inline-flex rounded-full px-2 py-0.5 text-xs font-bold ${notification.tone}`}>
                     Belum dibaca
                   </span>
                 </div>
@@ -154,10 +154,10 @@ export default function HomeDashboard({
           </div>
           <div>
             <div className="flex items-center gap-1">
-              <span className="text-[13px] text-gray-500 font-medium">Halo, </span>
-              <span className="text-[14px] font-bold text-gray-900">{userProfile.fullName.split(' ')[0]}</span>
+              <span className="text-sm text-gray-500 font-medium">Halo, </span>
+              <span className="text-sm font-bold text-gray-900">{userProfile.fullName.split(' ')[0]}</span>
             </div>
-            <span className="text-[10px] text-gray-400 font-medium block leading-none mt-0.5">Masa Depan Berkelas Anda</span>
+            <span className="text-xs text-gray-400 font-medium block leading-none mt-0.5">Masa Depan Berkelas Anda</span>
           </div>
         </div>
 
@@ -196,12 +196,12 @@ export default function HomeDashboard({
 
           {/* Premium banner badge indicator if applicable */}
           {userProfile.isPremium && (
-            <span className="absolute top-4 right-4 bg-accent text-dark-blue text-[9px] font-bold px-2 py-0.5 rounded-full">
+            <span className="absolute top-4 right-4 bg-accent text-dark-blue text-xs font-bold px-2 py-0.5 rounded-full">
               PREMIUM
             </span>
           )}
 
-          <span className="text-[11px] text-white/80 font-medium tracking-wide">Total Aset</span>
+          <span className="text-xs text-white/80 font-medium tracking-wide">Total Aset</span>
           <h2 id="home-total-assets" className="text-2xl font-bold tracking-tight text-white mt-1 select-all font-sans">
             {formatIDR(totalAssets)}
           </h2>
@@ -210,7 +210,7 @@ export default function HomeDashboard({
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
             </svg>
-            <span className="text-[10px] font-bold text-white tracking-wide">
+            <span className="text-xs font-bold text-white tracking-wide">
               {portfolioValue > 0 ? '+Rp 320.000 hari ini (+3.24%)' : '+Rp 0 hari ini (0.00%)'}
             </span>
           </div>
@@ -228,7 +228,7 @@ export default function HomeDashboard({
             <div className="w-11 h-11 bg-blue-50 text-primary rounded-2xl flex items-center justify-center soft-shadow">
               <History className="w-5 h-5 stroke-[2.2]" />
             </div>
-            <span className="text-[10px] font-bold text-gray-750">Riwayat</span>
+            <span className="text-xs font-bold text-gray-750">Riwayat</span>
           </button>
 
           {/* Premium Subscription */}
@@ -242,7 +242,7 @@ export default function HomeDashboard({
                 <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full" />
               )}
             </div>
-            <span className="text-[10px] font-bold text-gray-750">Premium</span>
+            <span className="text-xs font-bold text-gray-750">Premium</span>
           </button>
 
           {/* Community */}
@@ -253,7 +253,7 @@ export default function HomeDashboard({
             <div className="w-11 h-11 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center soft-shadow">
               <Users className="w-5 h-5 stroke-[2.2]" />
             </div>
-            <span className="text-[10px] font-bold text-gray-750">Community</span>
+            <span className="text-xs font-bold text-gray-750">Community</span>
           </button>
 
           {/* Learn */}
@@ -264,7 +264,7 @@ export default function HomeDashboard({
             <div className="w-11 h-11 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center soft-shadow">
               <BookOpen className="w-5 h-5 stroke-[2.2]" />
             </div>
-            <span className="text-[10px] font-bold text-gray-750">Learn</span>
+            <span className="text-xs font-bold text-gray-750">Learn</span>
           </button>
         </div>
       </div>
@@ -274,7 +274,7 @@ export default function HomeDashboard({
         <div className="mb-3 flex items-center justify-between">
           <div>
             <span className="text-xs font-black text-gray-900 tracking-tight">Rekomendasi AI Hari Ini</span>
-            <p className="mt-0.5 text-[10px] font-medium text-gray-400 leading-normal">
+            <p className="mt-0.5 text-xs font-medium text-gray-400 leading-normal">
               Analisis berbasis data, bukan ajakan transaksi mutlak.
             </p>
           </div>
@@ -290,13 +290,13 @@ export default function HomeDashboard({
           <div className="relative flex items-start justify-between gap-3">
             <div>
               <h3 className="text-xl font-extrabold text-primary tracking-tight">{highlightedStock.code}</h3>
-              <p className="text-[11px] text-gray-400 font-medium">{highlightedStock.name}</p>
+              <p className="text-xs text-gray-400 font-medium">{highlightedStock.name}</p>
             </div>
             <div className="flex shrink-0 flex-col items-end gap-1.5">
-              <span className="text-[10px] font-semibold bg-primary-light text-primary px-2.5 py-1 rounded-lg">
+              <span className="text-xs font-semibold bg-primary-light text-primary px-2.5 py-1 rounded-lg">
                 Confidence {highlightedStock.aiConfidence}%
               </span>
-              <span className="text-[10px] font-semibold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-lg">
+              <span className="text-xs font-semibold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-lg">
                 Risiko {highlightedStock.riskLevel}
               </span>
             </div>
@@ -330,9 +330,9 @@ export default function HomeDashboard({
         <div className="flex gap-3 overflow-x-auto no-scrollbar px-5 pb-1">
           {/* Card 1: IHSG */}
           <div className="min-w-32 bg-white rounded-2xl p-3.5 border border-gray-100 flex-1 soft-shadow">
-            <span className="text-[10px] text-gray-400 font-bold block">IHSG</span>
+            <span className="text-xs text-gray-400 font-bold block">IHSG</span>
             <h4 className="text-xs font-bold text-gray-900 mt-1">7.245,12</h4>
-            <div className="flex items-center gap-0.5 text-teal-600 font-bold text-[9px] mt-2">
+            <div className="flex items-center gap-0.5 text-teal-600 font-bold text-xs mt-2">
               <TrendingUp className="w-3.5 h-3.5" />
               <span>+0.45%</span>
             </div>
@@ -340,9 +340,9 @@ export default function HomeDashboard({
 
           {/* Card 2: LQ45 */}
           <div className="min-w-32 bg-white rounded-2xl p-3.5 border border-gray-100 flex-1 soft-shadow">
-            <span className="text-[10px] text-gray-400 font-bold block">LQ45</span>
+            <span className="text-xs text-gray-400 font-bold block">LQ45</span>
             <h4 className="text-xs font-bold text-gray-900 mt-1">982,40</h4>
-            <div className="flex items-center gap-0.5 text-teal-600 font-bold text-[9px] mt-2">
+            <div className="flex items-center gap-0.5 text-teal-600 font-bold text-xs mt-2">
               <TrendingUp className="w-3.5 h-3.5" />
               <span>+0.62%</span>
             </div>
@@ -350,9 +350,9 @@ export default function HomeDashboard({
 
           {/* Card 3: IDX30 */}
           <div className="min-w-32 bg-white rounded-2xl p-3.5 border border-gray-100 flex-1 soft-shadow">
-            <span className="text-[10px] text-gray-400 font-bold block">IDX30</span>
+            <span className="text-xs text-gray-400 font-bold block">IDX30</span>
             <h4 className="text-xs font-bold text-gray-900 mt-1">495,10</h4>
-            <div className="flex items-center gap-0.5 text-red-500 font-bold text-[9px] mt-2">
+            <div className="flex items-center gap-0.5 text-red-500 font-bold text-xs mt-2">
               <TrendingDown className="w-3.5 h-3.5" />
               <span>-0.12%</span>
             </div>
@@ -367,7 +367,7 @@ export default function HomeDashboard({
           <button
             id="home-view-all-stocks"
             onClick={() => onNavigate('Market')}
-            className="text-[10px] font-bold text-primary hover:underline"
+            className="text-xs font-bold text-primary hover:underline"
           >
             Lihat Semua
           </button>
@@ -392,7 +392,7 @@ export default function HomeDashboard({
                   </div>
                   <div>
                     <h4 className="text-xs font-extrabold text-gray-900">{stock.code}</h4>
-                    <span className="text-[10px] text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
+                    <span className="text-xs text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
                   </div>
                 </div>
 
@@ -413,7 +413,7 @@ export default function HomeDashboard({
 
                 <div className="text-right">
                   <span className="text-xs font-bold text-gray-900 block">Rp {stock.price.toLocaleString('id-ID')}</span>
-                  <span className={`text-[10px] font-bold ${isLoss ? 'text-red-500' : 'text-teal-600'}`}>
+                  <span className={`text-xs font-bold ${isLoss ? 'text-red-500' : 'text-teal-600'}`}>
                     {isLoss ? '' : '+'}{stock.changePercent}%
                   </span>
                 </div>
@@ -439,7 +439,7 @@ export default function HomeDashboard({
           
           <div className="flex-1 min-w-0">
             <h4 className="text-xs font-black text-gray-900 leading-tight">Dasar Investasi Saham</h4>
-            <span className="text-[10px] text-gray-400 font-medium block mt-1.5">Modul 2: Analisis Fundamental</span>
+            <span className="text-xs text-gray-400 font-medium block mt-1.5">Modul 2: Analisis Fundamental</span>
             {/* Progress bar */}
             <div className="w-full bg-gray-100 h-1.5 rounded-full mt-2 overflow-hidden">
               <div className="bg-primary h-full rounded-full" style={{ width: '35%' }} />

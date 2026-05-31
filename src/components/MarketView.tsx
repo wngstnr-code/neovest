@@ -120,7 +120,7 @@ export default function MarketView({
         <div className="bg-white rounded-3xl border border-gray-100 p-5 soft-shadow">
           <div className="flex justify-between items-center mb-1">
             <span className="text-xs font-bold text-gray-900">Indeks Pasar (IHSG)</span>
-            <span className="text-[10px] text-teal-600 font-bold flex items-center gap-0.5 bg-teal-50 px-2 py-0.5 rounded-full">
+            <span className="text-xs text-teal-600 font-bold flex items-center gap-0.5 bg-teal-50 px-2 py-0.5 rounded-full">
               <TrendingUp className="w-3.5 h-3.5" />
               +0.82%
             </span>
@@ -166,7 +166,7 @@ export default function MarketView({
           </span>
           <button 
             onClick={() => setShowAllGainers(!showAllGainers)}
-            className="text-[10px] text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
+            className="text-xs text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
           >
             {showAllGainers ? 'Tutup' : 'Lihat Semua'}
           </button>
@@ -193,11 +193,11 @@ export default function MarketView({
                     <div>
                       <div className="flex items-center gap-1.5">
                         <h4 className="text-xs font-extrabold text-gray-950">{stock.code}</h4>
-                        <span className="bg-primary/5 text-primary text-[8px] font-bold px-1.5 py-0.5 rounded-full">
+                        <span className="bg-primary/5 text-primary text-xs font-bold px-1.5 py-0.5 rounded-full">
                           AI BUY
                         </span>
                       </div>
-                      <span className="text-[10px] text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
+                      <span className="text-xs text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
                     </div>
                   </div>
 
@@ -211,7 +211,7 @@ export default function MarketView({
                   <div className="flex items-center gap-2.5" onClick={(e) => e.stopPropagation()}>
                     <div className="text-right">
                       <span className="text-xs font-extrabold text-gray-900 block">{formatIDR(stock.price)}</span>
-                      <span className="text-[10px] font-bold text-teal-600 block">+{stock.changePercent}%</span>
+                      <span className="text-xs font-bold text-teal-600 block">+{stock.changePercent}%</span>
                     </div>
 
                     <button
@@ -241,7 +241,7 @@ export default function MarketView({
           </span>
           <button 
             onClick={() => setShowAllLosers(!showAllLosers)}
-            className="text-[10px] text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
+            className="text-xs text-gray-400 font-bold hover:text-primary transition-colors focus:outline-none"
           >
             {showAllLosers ? 'Tutup' : 'Lihat Semua'}
           </button>
@@ -268,11 +268,11 @@ export default function MarketView({
                     <div>
                       <div className="flex items-center gap-1.5">
                         <h4 className="text-xs font-extrabold text-gray-950">{stock.code}</h4>
-                        <span className="bg-amber-50 text-amber-600 text-[8px] font-bold px-1.5 py-0.5 rounded-full">
+                        <span className="bg-amber-50 text-amber-600 text-xs font-bold px-1.5 py-0.5 rounded-full">
                           AI HOLD
                         </span>
                       </div>
-                      <span className="text-[10px] text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
+                      <span className="text-xs text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
                     </div>
                   </div>
 
@@ -286,7 +286,7 @@ export default function MarketView({
                   <div className="flex items-center gap-2.5" onClick={(e) => e.stopPropagation()}>
                     <div className="text-right">
                       <span className="text-xs font-extrabold text-gray-900 block">{formatIDR(stock.price)}</span>
-                      <span className="text-[10px] font-bold text-red-500 block">{stock.changePercent}%</span>
+                      <span className="text-xs font-bold text-red-500 block">{stock.changePercent}%</span>
                     </div>
 
                     <button

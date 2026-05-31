@@ -64,7 +64,7 @@ export default function PremiumUpgrade({
         <h2 className="text-lg font-black tracking-tight text-white leading-snug">
           Buka Kecerdasan Investasi Tanpa Batas
         </h2>
-        <p className="text-[10px] text-gray-400 mt-1.5 leading-relaxed px-2 font-medium">
+        <p className="text-xs text-gray-400 mt-1.5 leading-relaxed px-2 font-medium">
           Dapatkan akurasi analisis AI terbaik untuk maksimalkan profit portofolio Anda hari ini bersama NeoVest Elite.
         </p>
       </div>
@@ -72,7 +72,7 @@ export default function PremiumUpgrade({
       {/* Perks Checklist Cards Panel */}
       <div className="px-5 mb-6">
         <div className="bg-white/5 rounded-3xl border border-white/10 p-5 backdrop-blur-xs flex flex-col gap-4">
-          <span className="text-[9px] text-[#fecb00] font-bold tracking-wider block uppercase">FITUR VIP PREMIUM ELITE</span>
+          <span className="text-xs text-[#fecb00] font-bold tracking-wider block uppercase">FITUR VIP PREMIUM ELITE</span>
 
           <div className="flex flex-col gap-3.5">
             {perks.map((perk, idx) => (
@@ -99,11 +99,11 @@ export default function PremiumUpgrade({
           >
             <div>
               <span className="text-xs font-black block">Paket Bulanan (Monthly)</span>
-              <span className="text-[10px] text-gray-500 font-medium block mt-1">Dapat dibatalkan kapan saja</span>
+              <span className="text-xs text-gray-500 font-medium block mt-1">Dapat dibatalkan kapan saja</span>
             </div>
             <div className="text-right">
               <span className="text-xs font-black block text-white">Rp 99.000</span>
-              <span className="text-[9px] text-gray-400 font-semibold block mt-0.5">/ Bulan</span>
+              <span className="text-xs text-gray-400 font-semibold block mt-0.5">/ Bulan</span>
             </div>
           </div>
 
@@ -115,20 +115,20 @@ export default function PremiumUpgrade({
             }`}
           >
             {/* Promo banner badge */}
-            <div className="absolute top-0 right-0 bg-accent text-dark-blue text-[8px] font-black px-2 mt-0 rounded-bl">
+            <div className="absolute top-0 right-0 bg-accent text-dark-blue text-xs font-black px-2 mt-0 rounded-bl">
               HEMAT 30%
             </div>
 
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="text-xs font-black block">Paket Tahunan (Annual)</span>
-                <span className="bg-accent/20 text-accent text-[8px] font-black px-1.5 py-0.5 rounded uppercase">POPULER</span>
+                <span className="bg-accent/20 text-accent text-xs font-black px-1.5 py-0.5 rounded uppercase">POPULER</span>
               </div>
-              <span className="text-[10px] text-gray-500 font-medium block mt-1">Lebih hemat dan stabil jangka panjang</span>
+              <span className="text-xs text-gray-500 font-medium block mt-1">Lebih hemat dan stabil jangka panjang</span>
             </div>
             <div className="text-right">
               <span className="text-xs font-black block text-accent">Rp 799.000</span>
-              <span className="text-[9px] text-gray-400 font-semibold block mt-0.5">/ Tahun</span>
+              <span className="text-xs text-gray-400 font-semibold block mt-0.5">/ Tahun</span>
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@ export default function PremiumUpgrade({
                 </p>
 
                 {userProfile.balance < (selectedPlan === 'yearly' ? 799000 : 99000) ? (
-                  <div className="p-3 bg-red-50 text-red-655 rounded-xl text-[11px] font-bold leading-normal mb-4 flex items-center gap-1.5 text-red-600">
+                  <div className="p-3 bg-red-50 text-red-655 rounded-xl text-xs font-bold leading-normal mb-4 flex items-center gap-1.5 text-red-600">
                     <ShieldAlert className="w-4.5 h-4.5 text-red-600 shrink-0" />
                     <span>Saldo RDN Rincian Anda tidak mencukupi. Silakan lakukan Top Up atau ganti metode pembayaran.</span>
                   </div>
@@ -199,7 +199,7 @@ export default function PremiumUpgrade({
                   <Check className="w-6 h-6 stroke-[3.5]" />
                 </div>
                 <h3 className="text-xs font-black text-gray-950 block">Langganan Aktif!</h3>
-                <span className="text-[9px] text-teal-600 bg-teal-50 px-2.5 py-0.5 rounded font-bold uppercase inline-flex items-center gap-1 my-2">
+                <span className="text-xs text-teal-600 bg-teal-50 px-2.5 py-0.5 rounded font-bold uppercase inline-flex items-center gap-1 my-2">
                   <span>NeoVest VIP Elite</span>
                   <Star className="w-3 h-3 fill-teal-600 text-teal-600 shrink-0" />
                 </span>

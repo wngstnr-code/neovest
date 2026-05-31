@@ -64,7 +64,7 @@ export default function StockDetailView({
       <div className="px-5 mb-5 mt-1">
         <div className="flex items-center gap-1.5">
           <span className="text-xl font-black text-[#001a41]">{stock.code}</span>
-          <span className="text-[10px] bg-primary/5 text-primary font-black uppercase px-2 py-0.5 rounded">
+          <span className="text-xs bg-primary/5 text-primary font-black uppercase px-2 py-0.5 rounded">
             {stock.category}
           </span>
         </div>
@@ -153,14 +153,14 @@ export default function StockDetailView({
 
           <div className="flex justify-between items-center mb-3">
             <span className="text-xs font-black text-gray-900 tracking-wider">RECOMMENDED AI INSIGHT</span>
-            <span className="text-[10px] font-bold text-primary flex items-center gap-0.5 bg-primary-light px-2.5 py-0.5 rounded-full">
+            <span className="text-xs font-bold text-primary flex items-center gap-0.5 bg-primary-light px-2.5 py-0.5 rounded-full">
               Confidence {stock.aiConfidence}%
             </span>
           </div>
 
           <div className="bg-blue-50/60 p-4 rounded-2xl border border-blue-100/40 mb-3 text-xs leading-relaxed font-semibold text-gray-800">
             AI Rekomendasi: <span className="text-primary font-black">{stock.aiRecommendation}</span>  
-            <p className="text-[11px] text-gray-500 font-medium leading-relaxed mt-2">
+            <p className="text-xs text-gray-500 font-medium leading-relaxed mt-2">
               "{stock.fundamental}"
             </p>
           </div>
@@ -174,36 +174,36 @@ export default function StockDetailView({
         <div className="grid grid-cols-2 gap-3.5">
           {/* PE Card */}
           <div className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow">
-            <span className="text-[10px] text-gray-400 font-bold block">PE Ratio (PER)</span>
+            <span className="text-xs text-gray-400 font-bold block">PE Ratio (PER)</span>
             <h4 className="text-base font-extrabold text-gray-950 mt-1">{stock.pe}</h4>
-            <span className="text-[9px] font-bold text-primary mt-1.5 block bg-primary-light/50 px-2 py-0.5 rounded inline-block">
+            <span className="text-xs font-bold text-primary mt-1.5 block bg-primary-light/50 px-2 py-0.5 rounded inline-block">
               {stock.peClassification}
             </span>
           </div>
 
           {/* PBV Card */}
           <div className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow">
-            <span className="text-[10px] text-gray-400 font-bold block">PBV Ratio</span>
+            <span className="text-xs text-gray-400 font-bold block">PBV Ratio</span>
             <h4 className="text-base font-extrabold text-gray-950 mt-1">{stock.pbv}</h4>
-            <span className="text-[9px] font-bold text-teal-700 mt-1.5 block bg-teal-50 px-2 py-0.5 rounded inline-block animate-pulse">
+            <span className="text-xs font-bold text-teal-700 mt-1.5 block bg-teal-50 px-2 py-0.5 rounded inline-block animate-pulse">
               {stock.pbvClassification}
             </span>
           </div>
 
           {/* ROE Card */}
           <div className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow">
-            <span className="text-[10px] text-gray-400 font-bold block">Return on Equity (ROE)</span>
+            <span className="text-xs text-gray-400 font-bold block">Return on Equity (ROE)</span>
             <h4 className="text-base font-extrabold text-gray-950 mt-1">{stock.roe}</h4>
-            <span className="text-[9px] font-bold text-gray-600 mt-1.5 block bg-gray-100 px-2 py-0.5 rounded inline-block">
+            <span className="text-xs font-bold text-gray-600 mt-1.5 block bg-gray-100 px-2 py-0.5 rounded inline-block">
               {stock.roeClassification}
             </span>
           </div>
 
           {/* Dividend Yield Card */}
           <div className="bg-white rounded-2xl p-4 border border-gray-100 soft-shadow">
-            <span className="text-[10px] text-gray-400 font-bold block">Dividend Yield</span>
+            <span className="text-xs text-gray-400 font-bold block">Dividend Yield</span>
             <h4 className="text-base font-extrabold text-gray-950 mt-1">{stock.divYield}</h4>
-            <span className="text-[9px] font-bold text-amber-700 mt-1.5 block bg-amber-50 px-2 py-0.5 rounded inline-block">
+            <span className="text-xs font-bold text-amber-700 mt-1.5 block bg-amber-50 px-2 py-0.5 rounded inline-block">
               {stock.divYieldClassification}
             </span>
           </div>
@@ -225,7 +225,7 @@ export default function StockDetailView({
               <div className="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
                 <div className="bg-teal-500 h-full rounded-full" style={{ width: '82%' }} />
               </div>
-              <span className="text-[9px] text-gray-400 mt-1 block font-medium">Berdasarkan pemulihan margin penuh dan pertumbuhan kredit agresif.</span>
+              <span className="text-xs text-gray-400 mt-1 block font-medium">Berdasarkan pemulihan margin penuh dan pertumbuhan kredit agresif.</span>
             </div>
 
             {/* Bear Scenario */}
@@ -237,7 +237,7 @@ export default function StockDetailView({
               <div className="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
                 <div className="bg-red-500 h-full rounded-full" style={{ width: '45%' }} />
               </div>
-              <span className="text-[9px] text-gray-400 mt-1 block font-medium">Penurunan pertumbuhan PDB melanda kredit macet perbankan umum.</span>
+              <span className="text-xs text-gray-400 mt-1 block font-medium">Penurunan pertumbuhan PDB melanda kredit macet perbankan umum.</span>
             </div>
           </div>
         </div>

@@ -110,7 +110,7 @@ export default function LearnView({
         </button>
         <div>
           <h2 className="text-xl font-bold text-gray-900 tracking-tight">Belajar Investasi</h2>
-          <p className="text-[10px] text-gray-400 font-medium">Tingkatkan pengetahuan finansialmu hari ini.</p>
+          <p className="text-xs text-gray-400 font-medium">Tingkatkan pengetahuan finansialmu hari ini.</p>
         </div>
       </div>
 
@@ -135,13 +135,13 @@ export default function LearnView({
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="text-base font-black text-gray-950">35%</span>
-              <span className="text-[8px] text-gray-400 font-bold block mt-0.5">Selesai</span>
+              <span className="text-xs text-gray-400 font-bold block mt-0.5">Selesai</span>
             </div>
           </div>
 
           <div className="text-center mb-4 px-2">
             <h4 className="text-xs font-bold text-gray-900 leading-tight">Progress Belajar</h4>
-            <p className="text-[11px] text-gray-500 font-medium mt-1">
+            <p className="text-xs text-gray-500 font-medium mt-1">
               Kamu sedang berada di jalur yang tepat! Lanjutkan membaca modul <span className="text-primary font-bold">Analisis Fundamental</span>.
             </p>
           </div>
@@ -191,17 +191,17 @@ export default function LearnView({
 
               <div className="p-4 flex-1">
                 <div className="flex justify-between items-start mb-2.5">
-                  <span className={`text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full ${m.tagClass}`}>
+                  <span className={`text-xs font-black uppercase px-2.5 py-0.5 rounded-full ${m.tagClass}`}>
                     {m.category}
                   </span>
-                  <span className="text-[10px] text-gray-400 font-semibold">{m.durationMinutes} Menit</span>
+                  <span className="text-xs text-gray-400 font-semibold">{m.durationMinutes} Menit</span>
                 </div>
 
                 <h4 className="text-xs font-black text-gray-900 leading-tight mb-2">{m.title}</h4>
-                <p className="text-[11px] text-gray-400 font-medium leading-relaxed mb-4">{m.description}</p>
+                <p className="text-xs text-gray-400 font-medium leading-relaxed mb-4">{m.description}</p>
 
                 {/* Progress metadata indicator */}
-                <div className="flex justify-between items-center mt-3 text-[10px] font-semibold text-gray-500">
+                <div className="flex justify-between items-center mt-3 text-xs font-semibold text-gray-500">
                   <div className="flex items-center gap-1">
                     <BookOpen className="w-3.5 h-3.5 text-primary" />
                     <span>{m.modules} Bab Modul</span>
@@ -225,7 +225,7 @@ export default function LearnView({
             <Award className="w-5 h-5" />
           </div>
           <h3 className="text-xs font-black text-primary uppercase tracking-wider mb-1.5">Tes Pemahaman Saham Dasar</h3>
-          <p className="text-[11px] text-gray-500 font-medium leading-normal mb-4">
+          <p className="text-xs text-gray-500 font-medium leading-normal mb-4">
             Uji pengetahuanmu dan dapatkan poin NeoVest! Selesaikan mini quiz 3-langkah ini untuk membuka lencana pemula.
           </p>
           <button
@@ -242,25 +242,25 @@ export default function LearnView({
       <div className="px-5">
         <div className="bg-slate-900 text-white rounded-3xl overflow-hidden soft-shadow border border-slate-800">
           <div className="h-28 bg-gradient-to-br from-primary via-primary-dark to-slate-900 p-5 flex flex-col justify-between relative">
-            <div className="absolute right-4 top-4 bg-white/10 backdrop-blur px-2.5 py-1 rounded-full text-[9px] font-bold text-accent uppercase tracking-wider">
+            <div className="absolute right-4 top-4 bg-white/10 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-accent uppercase tracking-wider">
               Webinar
             </div>
             <div className="w-8 h-8 rounded-full bg-accent text-dark-blue flex items-center justify-center animate-bounce">
               <Video className="w-4 h-4 stroke-[2.5]" />
             </div>
-            <span className="text-[10px] text-white/75 font-semibold">Webinar LIVE Akhir Pekan</span>
+            <span className="text-xs text-white/75 font-semibold">Webinar LIVE Akhir Pekan</span>
           </div>
 
           <div className="p-5">
-            <span className="bg-accent text-dark-blue text-[8px] font-black px-2 py-0.5 rounded uppercase tracking-wide inline-block mb-1.5">
+            <span className="bg-accent text-dark-blue text-xs font-black px-2 py-0.5 rounded uppercase tracking-wide inline-block mb-1.5">
               WEBINAR
             </span>
             <h4 className="text-xs font-black leading-tight text-white">Cara Membaca Candlestick &amp; Trend line Praktis</h4>
-            <span className="text-[10px] text-gray-400 font-medium mt-1 block">Budi Santoso, Analis Senior NeoVest</span>
+            <span className="text-xs text-gray-400 font-medium mt-1 block">Budi Santoso, Analis Senior NeoVest</span>
 
             <div className="flex gap-4 items-center justify-between border-t border-slate-800/80 mt-4.5 pt-4 bg-transparent">
               <div className="text-left">
-                <span className="text-[9px] text-gray-400 font-bold block uppercase tracking-wider">Waktu Mulai</span>
+                <span className="text-xs text-gray-400 font-bold block uppercase tracking-wider">Waktu Mulai</span>
                 <span className="text-xs font-bold text-white mt-0.5 block">Besok, 19:00 WIB</span>
               </div>
 
@@ -271,7 +271,7 @@ export default function LearnView({
                   alert('Selamat! Anda terdaftar dalam webinar "Cara Membaca Candlestick". Tautan Zoom akan dikirim ke email Anda.');
                 }}
                 disabled={registeredWebinar}
-                className={`h-9 border text-[10px] font-bold rounded-xl px-4 flex items-center justify-center transition-all ${
+                className={`h-9 border text-xs font-bold rounded-xl px-4 flex items-center justify-center transition-all ${
                   registeredWebinar 
                     ? 'border-transparent bg-teal-600 text-white' 
                     : 'border-primary bg-primary hover:bg-primary-dark text-white'
@@ -302,7 +302,7 @@ export default function LearnView({
             {!showResult ? (
               <div>
                 {/* Progress bar */}
-                <div className="flex items-center justify-between text-[10px] text-gray-450 font-bold mb-1.5">
+                <div className="flex items-center justify-between text-xs text-gray-450 font-bold mb-1.5">
                   <span>Pertanyaan {activeQuestion + 1} dari {quizQuestions.length}</span>
                   <span>{Math.round(((activeQuestion + 1) / quizQuestions.length) * 100)}%</span>
                 </div>

@@ -160,7 +160,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
             <form onSubmit={handleRegister} className="flex flex-col gap-3.5">
               {/* Full Name */}
               <div className="relative">
-                <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-[10px] font-medium text-gray-400 tracking-wider">
+                <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
                   Full Name
                 </label>
                 <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
@@ -178,7 +178,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
 
               {/* Email */}
               <div className="relative">
-                <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-[10px] font-medium text-gray-400 tracking-wider">
+                <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
                   Email
                 </label>
                 <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
@@ -196,7 +196,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
 
               {/* Phone Number */}
               <div className="relative">
-                <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-[10px] font-medium text-gray-400 tracking-wider">
+                <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
                   Phone Number
                 </label>
                 <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
@@ -214,7 +214,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
 
               {/* Password */}
               <div className="relative">
-                <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-[10px] font-medium text-gray-400 tracking-wider">
+                <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
                   Password
                 </label>
                 <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
@@ -244,7 +244,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
                   <div className={`h-1.5 flex-1 rounded-full transition-colors ${strength.score >= 2 ? 'bg-amber-500' : 'bg-gray-100'}`} />
                   <div className={`h-1.5 flex-1 rounded-full transition-colors ${strength.score >= 3 ? 'bg-green-500' : 'bg-gray-100'}`} />
                 </div>
-                <div className="flex justify-between items-center text-[10px] mt-0.5">
+                <div className="flex justify-between items-center text-xs mt-0.5">
                   <span className="text-gray-400">Kekuatan Password</span>
                   <span className={`font-semibold ${strength.score === 1 ? 'text-red-500' : strength.score === 2 ? 'text-amber-500 font-semibold' : 'text-green-600'}`}>{strength.label}</span>
                 </div>
@@ -260,7 +260,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
                 >
                   {agreeTerms && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                 </button>
-                <span className="text-[10px] text-gray-500 leading-normal">
+                <span className="text-xs text-gray-500 leading-normal">
                   Saya menyetujui <span className="text-primary font-semibold">Syarat dan Ketentuan</span> serta <span className="text-primary font-semibold">Kebijakan Privasi</span> yang berlaku.
                 </span>
               </label>
@@ -304,7 +304,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
             </svg>
           </div>
           <h2 className="text-xl font-bold text-gray-900 tracking-tight">NeoVest</h2>
-          <span className="text-[11px] text-gray-400 font-medium">Your trusted financial companion.</span>
+          <span className="text-xs text-gray-400 font-medium">Your trusted financial companion.</span>
         </div>
 
         {/* Inputs */}
@@ -317,7 +317,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
 
           {/* Email Address */}
           <div className="relative">
-            <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-[10px] font-medium text-gray-400 tracking-wider">
+            <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
               Email Address
             </label>
             <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
@@ -336,7 +336,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
           {/* Password */}
           <div>
             <div className="relative">
-              <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-[10px] font-medium text-gray-400 tracking-wider">
+              <label className="absolute -top-1.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-400 tracking-wider">
                 Password
               </label>
               <div className="flex items-center border border-gray-200 focus-within:border-primary rounded-xl h-12 px-3.5 bg-white transition-all">
@@ -358,7 +358,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
                 </button>
               </div>
             </div>
-            <div className="flex justify-end text-[10px] font-semibold text-primary mt-1.5 cursor-pointer">
+            <div className="flex justify-end text-xs font-semibold text-primary mt-1.5 cursor-pointer">
               Lupa Password?
             </div>
           </div>
@@ -376,7 +376,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
         {/* Divider text */}
         <div className="flex items-center gap-3 w-full my-4 px-2">
           <div className="h-px bg-gray-100 flex-1" />
-          <span className="text-[10px] text-gray-400 font-bold tracking-wider">ATAU</span>
+          <span className="text-xs text-gray-400 font-bold tracking-wider">ATAU</span>
           <div className="h-px bg-gray-100 flex-1" />
         </div>
 
@@ -392,7 +392,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
               });
               onNavigate('Home');
             }}
-            className="w-full h-11 border border-gray-200 hover:bg-gray-50 text-[11px] font-semibold text-gray-700 rounded-full flex items-center justify-center gap-2 transition-all"
+            className="w-full h-11 border border-gray-200 hover:bg-gray-50 text-xs font-semibold text-gray-700 rounded-full flex items-center justify-center gap-2 transition-all"
           >
             <span className="p-1 bg-teal-50 text-teal-600 rounded-full">
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -411,7 +411,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
               });
               onNavigate('Home');
             }}
-            className="w-full h-11 border border-gray-200 hover:bg-gray-50 text-[11px] font-semibold text-gray-700 rounded-full flex items-center justify-center gap-2 transition-all"
+            className="w-full h-11 border border-gray-200 hover:bg-gray-50 text-xs font-semibold text-gray-700 rounded-full flex items-center justify-center gap-2 transition-all"
           >
             {/* Google G icon */}
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">

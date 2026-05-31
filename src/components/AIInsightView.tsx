@@ -38,11 +38,11 @@ export default function AIInsightView({
       <div className="px-5 mb-5 flex items-start justify-between">
         <div>
           <h2 className="text-xl font-bold text-gray-900 tracking-tight">AI Insight</h2>
-          <p className="text-[10px] text-gray-400 font-medium leading-relaxed">Your personalized, data-driven strategy.</p>
+          <p className="text-xs text-gray-400 font-medium leading-relaxed">Your personalized, data-driven strategy.</p>
         </div>
 
         {/* Risk profile yellow lighting badge */}
-        <div className="inline-flex items-center gap-1 bg-accent/95 text-dark-blue font-bold px-3 py-1 rounded-full text-[10px] soft-shadow">
+        <div className="inline-flex items-center gap-1 bg-accent/95 text-dark-blue font-bold px-3 py-1 rounded-full text-xs soft-shadow">
           <Zap className="w-3.5 h-3.5" />
           <span>{userProfile.riskProfile}</span>
         </div>
@@ -67,22 +67,22 @@ export default function AIInsightView({
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-lg font-black text-gray-900">{bbcaData.code}</span>
-                <span className="bg-primary text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                <span className="bg-primary text-white text-xs font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
                   {bbcaData.aiRecommendation}
                 </span>
               </div>
-              <span className="text-[10px] text-gray-400 font-medium mt-0.5 block">{bbcaData.name}</span>
+              <span className="text-xs text-gray-400 font-medium mt-0.5 block">{bbcaData.name}</span>
             </div>
 
             <div className="text-right">
               <span className="text-sm font-black text-primary block">{bbcaData.aiConfidence}%</span>
-              <span className="text-[9px] text-gray-400 font-bold block mt-0.5">Al Confidence</span>
+              <span className="text-xs text-gray-400 font-bold block mt-0.5">Al Confidence</span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3.5 mb-4 border-t border-b border-gray-100/60 py-3.5">
             <div>
-              <span className="text-[8px] text-gray-400 font-bold uppercase tracking-wider block">Risk Level</span>
+              <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Risk Level</span>
               <div className="flex items-center gap-1.5 mt-1">
                 <span className="w-2.5 h-2.5 rounded-full bg-teal-500" />
                 <span className="text-xs font-bold text-gray-700">Low</span>
@@ -90,18 +90,18 @@ export default function AIInsightView({
             </div>
 
             <div>
-              <span className="text-[8px] text-gray-400 font-bold uppercase tracking-wider block">Target Price</span>
+              <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Target Price</span>
               <span className="text-xs font-bold text-gray-900 block mt-1">Rp 10.500</span>
             </div>
           </div>
 
           {/* Reasoning Bubble */}
           <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
-            <h4 className="text-[10px] font-bold text-primary flex items-center gap-1.5 text-primary">
+            <h4 className="text-xs font-bold text-primary flex items-center gap-1.5 text-primary">
               <Lightbulb className="w-4 h-4" />
               <span>Kenapa direkomendasikan?</span>
             </h4>
-            <p className="text-[11px] text-gray-600 font-medium leading-relaxed mt-2">
+            <p className="text-xs text-gray-600 font-medium leading-relaxed mt-2">
               Algoritma kami mendeteksi momentum positif dari laporan keuangan Q3 yang solid, dipadukan dengan sentimen makroekonomi yang mendukung sektor perbankan inti. Arus dana asing menunjukkan akumulasi konsisten selama 5 hari terakhir.
             </p>
           </div>
@@ -121,12 +121,12 @@ export default function AIInsightView({
             </div>
             <div>
               <h4 className="text-xs font-bold text-gray-900">{bmriData.code}</h4>
-              <span className="text-[9px] text-gray-400 font-semibold block">{bmriData.name}</span>
+              <span className="text-xs text-gray-400 font-semibold block">{bmriData.name}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="bg-primary-light text-primary text-[10px] font-bold px-2 py-1 rounded-lg">
+            <span className="bg-primary-light text-primary text-xs font-bold px-2 py-1 rounded-lg">
               85% Confidence
             </span>
             <button
@@ -136,7 +136,7 @@ export default function AIInsightView({
                 onSelectStock('BMRI');
                 onNavigate('TradeBuy');
               }}
-              className="bg-primary hover:bg-primary-dark text-white rounded-full text-[10px] font-bold px-3.5 py-1.5 focus:outline-none transition-all active:scale-95"
+              className="bg-primary hover:bg-primary-dark text-white rounded-full text-xs font-bold px-3.5 py-1.5 focus:outline-none transition-all active:scale-95"
             >
               Buy
             </button>
@@ -179,17 +179,17 @@ export default function AIInsightView({
             </div>
             
             <h4 id="ai-market-sentiment-label" className="text-sm font-extrabold text-primary mb-1 mt-1">Positif</h4>
-            <span className="text-[9px] text-gray-400 font-semibold block uppercase tracking-wider mb-4">Market Mood Indicator</span>
+            <span className="text-xs text-gray-400 font-semibold block uppercase tracking-wider mb-4">Market Mood Indicator</span>
           </div>
 
           {/* Sectors to watch tags */}
           <div>
-            <span className="text-[9px] text-gray-400 font-bold block mb-2 tracking-wider">SECTORS TO WATCH</span>
+            <span className="text-xs text-gray-400 font-bold block mb-2 tracking-wider">SECTORS TO WATCH</span>
             <div className="flex gap-2">
-              <span className="inline-flex items-center gap-1.5 bg-blue-50 text-primary text-[9px] font-extrabold px-2.5 py-1 rounded-lg">
+              <span className="inline-flex items-center gap-1.5 bg-blue-50 text-primary text-xs font-extrabold px-2.5 py-1 rounded-lg">
                 <Landmark className="w-3.5 h-3.5" /> Banking
               </span>
-              <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-[9px] font-extrabold px-2.5 py-1 rounded-lg">
+              <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">
                 <ShoppingBag className="w-3.5 h-3.5" /> Consumer
               </span>
             </div>
@@ -207,7 +207,7 @@ export default function AIInsightView({
 
           {/* Alert content */}
           <div className="bg-red-50 rounded-2xl p-4 border border-red-100/50">
-            <div className="flex items-center gap-1.5 mb-1 text-red-700 font-extrabold text-[11px]">
+            <div className="flex items-center gap-1.5 mb-1 text-red-700 font-extrabold text-xs">
               <AlertTriangle className="w-4 h-4 stroke-[2.5]" />
               <span>Konsentrasi Sektor Tinggi</span>
             </div>
@@ -241,7 +241,7 @@ export default function AIInsightView({
         </div>
 
         {/* Disclaimer footer */}
-        <p className="text-[10px] text-gray-400 font-medium leading-relaxed text-center px-4 mt-8">
+        <p className="text-xs text-gray-400 font-medium leading-relaxed text-center px-4 mt-8">
           Disclaimer: Keputusan investasi sepenuhnya berada di tangan investor. Data AI Insight disajikan sebagai referensi pendukung dan tidak menjamin keuntungan pasti. Kinerja masa lalu tidak mencerminkan hasil di masa depan.
         </p>
       </div>

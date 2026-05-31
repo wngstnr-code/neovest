@@ -124,7 +124,7 @@ export default function RiskProfileQuizViews({
       <div id="risk-quiz-screen" className="flex flex-col h-full bg-white px-5 pt-8 pb-4 justify-between overflow-y-auto no-scrollbar">
         {/* Onboarding top checklist bar */}
         <div>
-          <div className="flex justify-between items-center text-[10px] text-gray-400 font-bold mb-1 px-1">
+          <div className="flex justify-between items-center text-xs text-gray-400 font-bold mb-1 px-1">
             <span>Uji Profil Risiko</span>
             <span>Pertanyaan {currentQuestion + 1} dari {questions.length}</span>
           </div>
@@ -138,7 +138,7 @@ export default function RiskProfileQuizViews({
 
           <div className="flex gap-2 items-center bg-primary-light p-3.5 rounded-2xl border border-primary/10 mb-5">
             <HelpCircle className="w-5 h-5 text-primary shrink-0 stroke-[2.2]" />
-            <p className="text-[11px] text-primary font-bold leading-normal">
+            <p className="text-xs text-primary font-bold leading-normal">
               Bantu NeoVest me-rekomendasikan portofolio terbaik sesuai ketahanan emosional keuangan Anda.
             </p>
           </div>
@@ -190,7 +190,7 @@ export default function RiskProfileQuizViews({
             <div className="w-14 h-14 bg-accent/20 text-accent-dark rounded-full flex items-center justify-center mx-auto mb-3.5">
               <Target className="w-6 h-6 stroke-[2.2]" />
             </div>
-            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Profil Risiko Kamu</span>
+            <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Profil Risiko Kamu</span>
             
             <span id="risk-profile-result-badge" className="bg-accent text-dark-blue font-black tracking-wide px-5 py-1.5 rounded-full text-xs uppercase inline-block shadow-sm mt-1.5 mb-4">
               {userProfile.riskProfile}
@@ -205,12 +205,12 @@ export default function RiskProfileQuizViews({
 
             {/* Asset allocation progress columns */}
             <div className="text-left mb-6">
-              <span className="text-[10px] font-bold text-gray-900 block mb-3.5 uppercase tracking-wide">Rekomendasi Alokasi Aset</span>
+              <span className="text-xs font-bold text-gray-900 block mb-3.5 uppercase tracking-wide">Rekomendasi Alokasi Aset</span>
 
               <div className="flex flex-col gap-3">
                 {activeAllocations.map((alloc, idx) => (
                   <div key={idx} className="flex flex-col">
-                    <div className="flex justify-between items-center text-[11px] font-semibold text-gray-700 mb-1">
+                    <div className="flex justify-between items-center text-xs font-semibold text-gray-700 mb-1">
                       <span>{alloc.name}</span>
                       <span className="font-extrabold text-gray-950">{alloc.percentage}%</span>
                     </div>
@@ -228,13 +228,13 @@ export default function RiskProfileQuizViews({
 
             {/* Strategic Tips */}
             <div className="text-left border-t border-gray-150 pt-4 bg-transparent mb-2">
-              <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block mb-2">Saran Ahli Analis</span>
+              <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-2">Saran Ahli Analis</span>
               <ul className="flex flex-col gap-2">
-                <li className="text-[11px] text-gray-650 font-medium leading-relaxed flex gap-2 items-start">
+                <li className="text-xs text-gray-650 font-medium leading-relaxed flex gap-2 items-start">
                   <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
                   <span>Terapkan metode Dollar Cost Averaging (DCA) agar akumulasi posisi stabil.</span>
                 </li>
-                <li className="text-[11px] text-gray-650 font-medium leading-relaxed flex gap-2 items-start">
+                <li className="text-xs text-gray-650 font-medium leading-relaxed flex gap-2 items-start">
                   <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
                   <span>Lakukan evaluasi ulang profil risiko Anda setiap 6 bulan sekali.</span>
                 </li>
