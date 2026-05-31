@@ -64,14 +64,12 @@ export default function MarketView({
     <div id="market-view" className="flex flex-col h-full bg-surface-bg overflow-y-auto no-scrollbar pb-20 rounded-t-3xl pt-5">
       {/* Top Header */}
       <div className="flex items-center justify-between px-5 mb-4">
-        <h2 className="text-xl font-bold text-gray-900 tracking-tight">Market</h2>
-        
-        <button 
-          onClick={() => alert('Gunakan bar pencarian di bawah untuk menyaring emiten saham!')}
-          className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-gray-100 shadow-sm text-gray-600 active:scale-95 transition-all"
-        >
-          <Search className="w-4 h-4" />
-        </button>
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-2xl bg-primary/10 text-primary border border-primary/10 flex items-center justify-center">
+            <TrendingUp className="w-4 h-4 stroke-[2.4]" />
+          </div>
+          <h2 className="text-xl font-bold text-gray-900 tracking-tight">Market</h2>
+        </div>
       </div>
 
       {/* Embedded Search text input */}
