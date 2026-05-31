@@ -38,7 +38,7 @@ export default function BottomNav({ currentScreen, onNavigate }: BottomNavProps)
   ];
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 h-18 bg-white border-t border-gray-100 flex items-center justify-around px-2 z-40 pb-[env(safe-area-inset-bottom)]">
+    <div className="absolute bottom-0 left-0 right-0 h-20 bg-white border-t border-gray-100 flex items-center justify-around px-2 z-40 pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_30px_rgba(15,23,42,0.04)]">
       {tabs.map((tab) => {
         const Icon = tab.icon;
         const isActive = activeTab === tab.id;
@@ -47,21 +47,17 @@ export default function BottomNav({ currentScreen, onNavigate }: BottomNavProps)
             key={tab.id}
             id={`bottom-nav-tab-${tab.id.toLowerCase()}`}
             onClick={() => onNavigate(tab.screen)}
-            className="flex flex-col items-center justify-center w-14 h-14 relative focus:outline-none transition-all"
+            className="flex flex-col items-center justify-center w-[68px] h-16 relative focus:outline-none transition-all"
           >
             {isActive ? (
-              <div className="flex flex-col items-center justify-center">
-                {/* Visual Indicator Pill inspired by Livin Mandiri / Blue style */}
-                <div className="absolute -top-1 w-8 h-1 bg-primary rounded-full transition-all" />
-                <div className="p-2 bg-primary/10 rounded-full text-primary transition-all">
-                  <Icon className="w-5 h-5 stroke-[2.5]" />
-                </div>
-                <span className="text-xs font-bold text-primary mt-1">{tab.label}</span>
+              <div className="bottom-nav-active-pill absolute -top-2 flex h-[58px] w-[72px] flex-col items-center justify-center rounded-[26px] bg-primary text-white shadow-[0_8px_18px_rgba(0,89,187,0.22)] transition-all dark:bg-accent dark:shadow-[0_8px_18px_rgba(250,204,21,0.22)]">
+                <Icon className="w-5 h-5 stroke-[2.6] fill-current" />
+                <span className="bottom-nav-active-label text-xs font-semibold mt-1 leading-none">{tab.label}</span>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center text-gray-400 hover:text-gray-600 transition-all">
-                <Icon className="w-5 h-5 stroke-[2]" />
-                <span className="text-xs font-medium text-gray-400 mt-1">{tab.label}</span>
+              <div className="flex flex-col items-center justify-center text-gray-400 hover:text-gray-600 transition-all pt-1">
+                <Icon className="w-5 h-5 stroke-[2.2]" />
+                <span className="text-xs font-medium text-gray-400 mt-1 leading-none">{tab.label}</span>
               </div>
             )}
           </button>

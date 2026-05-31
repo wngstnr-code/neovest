@@ -230,6 +230,12 @@ body {
   caret-color: var(--color-primary);
 }
 
+:root.dark .bottom-nav-active-pill,
+:root.dark .bottom-nav-active-pill svg,
+:root.dark .bottom-nav-active-label {
+  color: #001a41 !important;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { ArrowLeft, HelpCircle, CheckCircle, AlertTriangle, Building2, Info, Minus, Plus, Sparkles, TrendingUp } from 'lucide-react';
+import { ArrowLeft, HelpCircle, CheckCircle, AlertTriangle, Building2, Info, Minus, Plus, Sparkles, TrendingUp, Eye, EyeOff } from 'lucide-react';
 import { Stock, Screen, UserProfile } from '../types';
 
 interface OrderViewsProps {
@@ -26,6 +26,7 @@ export default function OrderViews({
   const [tradeShares, setTradeShares] = useState(1000); // 10 lots equivalent, shown as shares
   const [tradeExecuted, setTradeExecuted] = useState(false);
   const [errorWarning, setErrorWarning] = useState('');
+  const [showBalance, setShowBalance] = useState(false);
 
   // Numerical properties
   const priceSharesAmount = tradePrice * tradeShares;
@@ -215,9 +216,19 @@ export default function OrderViews({
 
         {/* Persistent screen button "Review Order" */}
         <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex flex-col gap-3 px-5 py-5 z-40">
-          <div className="flex justify-between text-xs text-gray-600">
-            <span>Saldo Tersedia</span>
-            <span className="text-gray-900">{formatIDR(userProfile.balance)}</span>
+          <div className="flex justify-between items-center gap-3 text-xs text-gray-600">
+            <div className="flex items-center gap-1.5">
+              <span>Saldo Tersedia</span>
+              <button
+                type="button"
+                onClick={() => setShowBalance((prev) => !prev)}
+                className="flex h-6 w-6 items-center justify-center rounded-full text-gray-400 hover:bg-gray-50 hover:text-gray-700 active:scale-95"
+                aria-label={showBalance ? 'Sembunyikan saldo' : 'Tampilkan saldo'}
+              >
+                {showBalance ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
+              </button>
+            </div>
+            <span className="text-gray-900">{showBalance ? formatIDR(userProfile.balance) : 'Rp •••••••'}</span>
           </div>
           <div className="flex justify-between items-end">
             <span className="text-lg font-black text-gray-900">Estimasi Total</span>
@@ -345,7 +356,9 @@ export default function OrderViews({
                 </div>
                 <div className="flex justify-between border-t border-dashed border-gray-200 pt-2 text-xs">
                   <span className="text-gray-900 font-black">Sisa Saldo RDN:</span>
-                  <span className="text-primary font-black">{formatIDR(userProfile.balance - totalChargeAmount)}</span>
+                  <span className="text-primary font-black">
+                    {showBalance ? formatIDR(userProfile.balance - totalChargeAmount) : 'Rp •••••••'}
+                  </span>
                 </div>
               </div>
 

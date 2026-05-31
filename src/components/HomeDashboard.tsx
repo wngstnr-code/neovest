@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Search, Bell, History, CreditCard, Users, User, BookOpen, ChevronRight, TrendingUp, TrendingDown, X, Check, Sparkles } from 'lucide-react';
+import { Search, Bell, History, CreditCard, Users, User, BookOpen, ChevronRight, TrendingUp, TrendingDown, X, Check, Sparkles, Eye, EyeOff } from 'lucide-react';
 import { Stock, LearnModule, UserProfile, PortfolioItem } from '../types';
 
 interface HomeDashboardProps {
@@ -27,6 +27,7 @@ export default function HomeDashboard({
   const [searchVal, setSearchVal] = useState('');
   const [showNotificationToast, setShowNotificationToast] = useState(false);
   const [readNotificationIds, setReadNotificationIds] = useState<string[]>([]);
+  const [showBalance, setShowBalance] = useState(false);
 
   // Dynamic calculations
   const calculatePortfolioValue = () => {
@@ -189,7 +190,17 @@ export default function HomeDashboard({
 
       {/* Total Aset Card with gradient inspired by the screen */}
       <div className="px-5 mb-6">
-        <div className="bg-gradient-to-br from-primary via-primary to-[#0070ea] rounded-3xl p-5 text-white shadow-xl relative overflow-hidden">
+        <div
+          onClick={() => onNavigate('Portfolio')}
+          className="bg-gradient-to-br from-primary via-primary to-[#0070ea] rounded-3xl p-5 text-white shadow-xl relative overflow-hidden cursor-pointer active:scale-[0.99] transition-transform"
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              onNavigate('Portfolio');
+            }
+          }}
+        >
           {/* Visual abstract overlay waves */}
           <div className="absolute -right-10 -bottom-10 w-44 h-44 bg-white/5 rounded-full blur-2xl" />
           <div className="absolute left-1/3 -top-12 w-32 h-32 bg-accent/10 rounded-full blur-xl" />
@@ -201,9 +212,22 @@ export default function HomeDashboard({
             </span>
           )}
 
-          <span className="text-xs text-white/80 font-medium tracking-wide">Total Aset</span>
+          <div className="relative flex items-center justify-between gap-3">
+            <span className="text-xs text-white/80 font-medium tracking-wide">Total Aset</span>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowBalance((prev) => !prev);
+              }}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-white/90 backdrop-blur-sm active:scale-95"
+              aria-label={showBalance ? 'Sembunyikan saldo' : 'Tampilkan saldo'}
+            >
+              {showBalance ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
           <h2 id="home-total-assets" className="text-2xl font-bold tracking-tight text-white mt-1 select-all font-sans">
-            {formatIDR(totalAssets)}
+            {showBalance ? formatIDR(totalAssets) : 'Rp •••••••'}
           </h2>
 
           <div className="inline-flex items-center gap-1.5 bg-white/15 px-3 py-1.5 rounded-xl text-teal-200 mt-4 select-none backdrop-blur-sm">

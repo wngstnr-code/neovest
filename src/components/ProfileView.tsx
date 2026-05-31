@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { User, Shield, LogOut, CheckCircle, Globe, Landmark, Award, Sun, Moon } from 'lucide-react';
+import { User, Shield, LogOut, CheckCircle, Globe, Landmark, Award, Sun, Moon, Eye, EyeOff } from 'lucide-react';
 import { UserProfile, Screen } from '../types';
 
 interface ProfileViewProps {
@@ -20,6 +20,7 @@ export default function ProfileView({
 }: ProfileViewProps) {
   const [showKycModal, setShowKycModal] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => document.documentElement.classList.contains('dark'));
+  const [showBalance, setShowBalance] = useState(false);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -114,8 +115,20 @@ export default function ProfileView({
       {/* Bank balance credentials */}
       <div className="px-5 mb-6">
         <div className="bg-gradient-to-tr from-[#001a41] to-primary-dark rounded-3xl p-5 text-white shadow-md relative overflow-hidden">
-          <span className="text-xs text-white/70 font-semibold block tracking-wider uppercase">Saldo RDN (Rekening Virtual)</span>
-          <h2 id="profile-rdn-balance" className="text-xl font-extrabold mt-0.5 select-all">{formatIDR(userProfile.balance)}</h2>
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-xs text-white/70 font-semibold block tracking-wider uppercase">Saldo RDN (Rekening Virtual)</span>
+            <button
+              type="button"
+              onClick={() => setShowBalance((prev) => !prev)}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white/90 active:scale-95"
+              aria-label={showBalance ? 'Sembunyikan saldo' : 'Tampilkan saldo'}
+            >
+              {showBalance ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
+          <h2 id="profile-rdn-balance" className="text-xl font-extrabold mt-0.5 select-all">
+            {showBalance ? formatIDR(userProfile.balance) : 'Rp •••••••'}
+          </h2>
           
           <div className="flex justify-between items-center mt-3.5 border-t border-white/10 pt-3.5 bg-transparent">
             <div>
