@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Sparkles, AlertTriangle, ChevronRight, LayoutGrid, CheckCircle, Zap, Lightbulb, Compass, Landmark, ShoppingBag } from 'lucide-react';
+import { Sparkles, AlertTriangle, ChevronRight, LayoutGrid, CheckCircle, Zap, Lightbulb, Compass, Landmark, ShoppingBag, Activity, FileText, Globe } from 'lucide-react';
 import { Stock, UserProfile, Screen } from '../types';
 
 interface AIInsightViewProps {
@@ -21,9 +21,11 @@ export default function AIInsightView({
   onSelectStock,
 }: AIInsightViewProps) {
   const [rebalanceCompleted, setRebalanceCompleted] = useState(false);
+  const [expandedPick, setExpandedPick] = useState<string | null>('BBCA');
 
   const bbcaData = stocks.find((s) => s.code === 'BBCA') || stocks[0];
   const bmriData = stocks.find((s) => s.code === 'BMRI') || stocks[1];
+  const adroData = stocks.find((s) => s.code === 'ADRO') || stocks[2];
 
   const handleRebalance = () => {
     setRebalanceCompleted(true);
@@ -36,9 +38,14 @@ export default function AIInsightView({
     <div id="ai-insight-view" className="flex flex-col h-full bg-surface-bg overflow-y-auto no-scrollbar pb-24 rounded-t-3xl pt-5">
       {/* Top Title Section */}
       <div className="px-5 mb-5 flex items-start justify-between">
-        <div>
-          <h2 className="text-xl font-bold text-gray-900 tracking-tight">AI Insight</h2>
-          <p className="text-xs text-gray-400 font-medium leading-relaxed">Your personalized, data-driven strategy.</p>
+        <div className="flex items-start gap-2.5">
+          <svg className="w-8 h-8 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+            <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <div>
+            <h2 className="text-xl font-bold text-gray-900 tracking-tight mt-0.5">AI Insight</h2>
+          </div>
         </div>
 
         {/* Risk profile yellow lighting badge */}
@@ -55,93 +62,69 @@ export default function AIInsightView({
           TODAY'S AI PICKS
         </h3>
 
-        {/* BBCA Pick Card */}
-        <div 
-          onClick={() => {
-            onSelectStock(bbcaData.code);
-            onNavigate('StockDetail');
-          }}
-          className="bg-white rounded-3xl border border-gray-100 p-5 soft-shadow mb-4 cursor-pointer hover:shadow-md transition-shadow"
-        >
-          <div className="flex justify-between items-start mb-3">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-lg font-black text-gray-900">{bbcaData.code}</span>
-                <span className="bg-primary text-white text-xs font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                  {bbcaData.aiRecommendation}
-                </span>
-              </div>
-              <span className="text-xs text-gray-400 font-medium mt-0.5 block">{bbcaData.name}</span>
-            </div>
-
-            <div className="text-right">
-              <span className="text-sm font-black text-primary block">{bbcaData.aiConfidence}%</span>
-              <span className="text-xs text-gray-400 font-bold block mt-0.5">Al Confidence</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3.5 mb-4 border-t border-b border-gray-100/60 py-3.5">
-            <div>
-              <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Risk Level</span>
-              <div className="flex items-center gap-1.5 mt-1">
-                <span className="w-2.5 h-2.5 rounded-full bg-teal-500" />
-                <span className="text-xs font-bold text-gray-700">Low</span>
-              </div>
-            </div>
-
-            <div>
-              <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Target Price</span>
-              <span className="text-xs font-bold text-gray-900 block mt-1">Rp 10.500</span>
-            </div>
-          </div>
-
-          {/* Reasoning Bubble */}
-          <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
-            <h4 className="text-xs font-bold text-primary flex items-center gap-1.5 text-primary">
-              <Lightbulb className="w-4 h-4" />
-              <span>Kenapa direkomendasikan?</span>
-            </h4>
-            <p className="text-xs text-gray-600 font-medium leading-relaxed mt-2">
-              Algoritma kami mendeteksi momentum positif dari laporan keuangan Q3 yang solid, dipadukan dengan sentimen makroekonomi yang mendukung sektor perbankan inti. Arus dana asing menunjukkan akumulasi konsisten selama 5 hari terakhir.
-            </p>
-          </div>
-        </div>
-
-        {/* BMRI Pick Card */}
-        <div 
-          onClick={() => {
-            onSelectStock(bmriData.code);
-            onNavigate('StockDetail');
-          }}
-          className="bg-white rounded-2xl border border-gray-100 px-4 py-3.5 soft-shadow flex items-center justify-between cursor-pointer hover:bg-gray-50/50 transition-colors"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-2xl bg-amber-50 text-amber-500 font-black text-xs flex items-center justify-center">
-              BM
-            </div>
-            <div>
-              <h4 className="text-xs font-bold text-gray-900">{bmriData.code}</h4>
-              <span className="text-xs text-gray-400 font-semibold block">{bmriData.name}</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <span className="bg-primary-light text-primary text-xs font-bold px-2 py-1 rounded-lg">
-              85% Confidence
-            </span>
-            <button
-              id="ai-insight-buy-bmri"
-              onClick={(e) => {
-                e.stopPropagation();
-                onSelectStock('BMRI');
-                onNavigate('TradeBuy');
-              }}
-              className="bg-primary hover:bg-primary-dark text-white rounded-full text-xs font-bold px-3.5 py-1.5 focus:outline-none transition-all active:scale-95"
+        {[bbcaData, bmriData, adroData].map((pickData) => {
+          const isExpanded = expandedPick === pickData.code;
+          return (
+            <div 
+              key={pickData.code}
+              onClick={() => setExpandedPick(isExpanded ? null : pickData.code)}
+              className="bg-white rounded-2xl border border-gray-100 p-4 soft-shadow mb-3 cursor-pointer hover:bg-gray-50/50 transition-all overflow-hidden"
             >
-              Buy
-            </button>
-          </div>
-        </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 text-primary font-black text-sm flex items-center justify-center border border-primary/10">
+                    {pickData.code.substring(0, 2)}
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-sm font-black text-gray-900">{pickData.code}</h4>
+                    </div>
+                    <span className="text-xs text-gray-400 font-semibold block mt-0.5">{pickData.name}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="text-right">
+                    <span className="text-sm font-black text-primary block">{pickData.aiConfidence}%</span>
+                    <span className="text-[10px] text-gray-400 font-bold block">Confidence</span>
+                  </div>
+                  <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+                </div>
+              </div>
+
+              {/* Expandable Content */}
+              {isExpanded && (
+                <div className="mt-4 pt-4 border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="grid grid-cols-2 gap-3.5 mb-4">
+                    <div>
+                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Risk Level</span>
+                      <div className="flex items-center gap-1.5 mt-1">
+                        <span className={`w-2.5 h-2.5 rounded-full ${pickData.riskLevel === 'Rendah' ? 'bg-teal-500' : 'bg-amber-500'}`} />
+                        <span className="text-xs font-bold text-gray-700">{pickData.riskLevel}</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Target Price</span>
+                      <span className="text-xs font-bold text-gray-900 block mt-1">Rp {(pickData.price * 1.15).toLocaleString('id-ID')}</span>
+                    </div>
+                  </div>
+
+                  {/* Reasoning Bubble */}
+                  <div className="bg-primary/5 rounded-2xl p-3 border border-primary/10">
+                    <h4 className="text-xs font-bold text-primary flex items-center gap-1.5 mb-1.5">
+                      <Lightbulb className="w-3.5 h-3.5" />
+                      <span>Analisis AI</span>
+                    </h4>
+                    <p className="text-[10px] text-gray-600 font-medium leading-relaxed">
+                      {pickData.fundamental}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* Sentimen Pasar gauge layout */}
@@ -197,51 +180,113 @@ export default function AIInsightView({
         </div>
       </div>
 
-      {/* Sector Concentration Alarm card */}
-      <div className="px-5">
-        <div className="bg-white rounded-3xl border border-gray-100 p-5 soft-shadow relative">
-          <div className="flex items-center gap-2 text-red-500 font-black text-xs mb-3.5">
-            <AlertTriangle className="w-5 h-5 stroke-[2.5]" />
-            <span>Insight Portofolio</span>
-          </div>
-
-          {/* Alert content */}
-          <div className="bg-red-50 rounded-2xl p-4 border border-red-100/50">
-            <div className="flex items-center gap-1.5 mb-1 text-red-700 font-extrabold text-xs">
-              <AlertTriangle className="w-4 h-4 stroke-[2.5]" />
-              <span>Konsentrasi Sektor Tinggi</span>
+      {/* News Sentiment Highlight */}
+      <div className="px-5 mb-6">
+        <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
+          <LayoutGrid className="w-4 h-4 text-primary stroke-[2.2]" />
+          NEWS SENTIMENT HIGHLIGHT
+        </h3>
+        <div className="bg-white rounded-2xl border border-gray-100 p-4 soft-shadow">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-teal-50 flex flex-col items-center justify-center shrink-0 border border-teal-100">
+              <span className="text-teal-700 font-black text-xs">75%</span>
+              <span className="text-[8px] text-teal-600 font-bold">POS</span>
             </div>
-            <p className="text-xs text-gray-600 font-medium leading-relaxed mt-1">
-              Portofolio Anda memiliki eksposur <span className="font-bold text-gray-900">65% di sektor Perbankan</span>. Mengingat volatilitas harga pasar saat ini, sangat disarankan untuk melakukan diversifikasi taktis.
-            </p>
+            <div>
+              <h4 className="text-xs font-bold text-gray-900 mb-1">Sentimen TLKM Menguat</h4>
+              <p className="text-[10px] leading-relaxed text-gray-500 font-medium">
+                Berita terkini menunjukkan sentimen positif pada TLKM akibat rilis rencana strategis ekspansi data center skala besar ke seluruh Indonesia.
+              </p>
+            </div>
           </div>
-
-          <button
-            id="ai-rebalance-btn"
-            onClick={handleRebalance}
-            disabled={rebalanceCompleted}
-            className={`w-full h-11 text-xs font-bold rounded-2xl flex items-center justify-center gap-1.5 mt-4 transition-all ${
-              rebalanceCompleted 
-                ? 'bg-green-100 text-green-700 border border-green-200' 
-                : 'bg-primary text-white hover:bg-primary-dark shadow-md'
-            }`}
-          >
-            {rebalanceCompleted ? (
-              <>
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                Portofolio Berhasil Direbalance!
-              </>
-            ) : (
-              <>
-                Lihat Rekomendasi Rebalancing
-                <ChevronRight className="w-4 h-4" />
-              </>
-            )}
-          </button>
         </div>
+      </div>
 
-        {/* Disclaimer footer */}
-        <p className="text-xs text-gray-400 font-medium leading-relaxed text-center px-4 mt-8">
+      {/* AI Portfolio Alert */}
+      <div className="px-5 mb-6">
+        <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
+          <AlertTriangle className="w-4 h-4 text-red-500 stroke-[2.2]" />
+          EARLY WARNING SYSTEM
+        </h3>
+        <div className="bg-red-50/50 rounded-2xl border border-red-100 p-4 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-1 h-full bg-red-500"></div>
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+              <Zap className="w-4 h-4 text-red-600" />
+            </div>
+            <div>
+              <h4 className="text-xs font-bold text-red-800 mb-1">Volatilitas GOTO Meningkat</h4>
+              <p className="text-[10px] leading-relaxed text-red-600/90 font-medium">
+                AI kami mendeteksi lonjakan volume transaksi GOTO sebesar 300% di atas rata-rata 5 hari terakhir. Harap pantau pergerakan harga dengan seksama.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Pattern Recognition */}
+      <div className="px-5 mb-6">
+        <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
+          <Activity className="w-4 h-4 text-primary stroke-[2.2]" />
+          PATTERN RECOGNITION
+        </h3>
+        <div className="bg-white rounded-2xl border border-gray-100 p-4 soft-shadow">
+          <h4 className="text-xs font-bold text-gray-900 mb-1">BBRI - Double Bottom</h4>
+          <div className="w-full h-16 bg-gray-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden border border-gray-100">
+            <svg className="w-full h-full" viewBox="0 0 200 50" preserveAspectRatio="none">
+              <path d="M10,20 L40,40 L70,25 L100,40 L130,15 L160,10 L190,5" fill="none" stroke="#0059bb" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="40" cy="40" r="3" fill="#0059bb" />
+              <circle cx="100" cy="40" r="3" fill="#0059bb" />
+              <line x1="10" y1="40" x2="190" y2="40" stroke="#10b981" strokeWidth="1" strokeDasharray="4 4" />
+            </svg>
+          </div>
+          <p className="text-[10px] leading-relaxed text-gray-500 font-medium">
+            <strong className="text-gray-700">BBRI</strong> sedang membentuk pola Double Bottom. Potensi rebound dengan support kuat di 5.300 dan target resistance di 5.600.
+          </p>
+        </div>
+      </div>
+
+      {/* Earnings Summary */}
+      <div className="px-5 mb-6">
+        <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
+          <FileText className="w-4 h-4 text-primary stroke-[2.2]" />
+          EARNINGS SUMMARY
+        </h3>
+        <div className="bg-white rounded-2xl border border-gray-100 p-4 soft-shadow">
+          <div className="flex items-start gap-3 mb-2">
+            <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
+              <span className="text-primary font-black text-[10px]">Q3</span>
+            </div>
+            <div>
+              <h4 className="text-xs font-bold text-gray-900 mb-0.5">Rangkuman Kinerja BMRI</h4>
+              <span className="text-[10px] text-gray-400 font-medium">Laporan Kuartal III - 2026</span>
+            </div>
+          </div>
+          <ul className="text-[10px] leading-relaxed text-gray-500 font-medium list-disc pl-4 space-y-1">
+            <li>Laba BMRI naik 15% (Beat estimasi pasar).</li>
+            <li>NPL (Kredit Macet) membaik.</li>
+            <li>Pertumbuhan kredit solid.</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Macroeconomic Correlation */}
+      <div className="px-5 mb-6">
+        <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3 flex items-center gap-1.5">
+          <Globe className="w-4 h-4 text-primary stroke-[2.2]" />
+          MACRO CORRELATION
+        </h3>
+        <div className="bg-white rounded-2xl border border-gray-100 p-4 soft-shadow">
+          <h4 className="text-xs font-bold text-gray-900 mb-1">Keputusan Suku Bunga BI</h4>
+          <p className="text-[10px] leading-relaxed text-gray-500 font-medium">
+            Suku bunga acuan BI ditahan di 6.00%. Ini menjadi katalis positif bagi emiten perbankan besar.
+          </p>
+        </div>
+      </div>
+
+      {/* Disclaimer footer */}
+      <div className="px-5">
+        <p className="text-xs text-gray-400 font-medium leading-relaxed text-center mt-2">
           Disclaimer: Keputusan investasi sepenuhnya berada di tangan investor. Data AI Insight disajikan sebagai referensi pendukung dan tidak menjamin keuntungan pasti. Kinerja masa lalu tidak mencerminkan hasil di masa depan.
         </p>
       </div>
