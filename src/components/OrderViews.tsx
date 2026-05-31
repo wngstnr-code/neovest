@@ -12,7 +12,7 @@ interface OrderViewsProps {
   stock: Stock;
   userProfile: UserProfile;
   onNavigate: (screen: Screen) => void;
-  onExecuteTrade: (lotsNum: number, pricePerUnit: number) => void;
+  onExecuteTrade: (sharesNum: number, pricePerUnit: number) => void;
 }
 
 export default function OrderViews({
@@ -23,18 +23,18 @@ export default function OrderViews({
   onExecuteTrade,
 }: OrderViewsProps) {
   const [tradePrice, setTradePrice] = useState(stock.price);
-  const [tradeLots, setTradeLots] = useState(10); // Standard starting lots count
+  const [tradeShares, setTradeShares] = useState(1000); // 10 lots equivalent, shown as shares
   const [tradeExecuted, setTradeExecuted] = useState(false);
   const [errorWarning, setErrorWarning] = useState('');
 
   // Numerical properties
-  const priceSharesAmount = tradePrice * 100 * tradeLots;
+  const priceSharesAmount = tradePrice * tradeShares;
   const brokerageFee = Math.round(priceSharesAmount * 0.0015); // 0.15% fee
   const levyTax = Math.round(priceSharesAmount * 0.00043);
   const totalChargeAmount = priceSharesAmount + brokerageFee + levyTax;
 
-  const handleLotsPills = (num: number) => {
-    setTradeLots(Math.max(1, tradeLots + num));
+  const handleSharesPills = (num: number) => {
+    setTradeShares(Math.max(1, tradeShares + num));
   };
 
   const handlePriceClickFromOrderBook = (priceVal: number) => {
@@ -55,7 +55,7 @@ export default function OrderViews({
       return;
     }
     // Execution decreases balance and appends to holding array
-    onExecuteTrade(tradeLots, tradePrice);
+    onExecuteTrade(tradeShares, tradePrice);
     setTradeExecuted(true);
   };
 
@@ -161,27 +161,27 @@ export default function OrderViews({
               </div>
             </div>
 
-            {/* Input 2: Jumlah Lot */}
+            {/* Input 2: Jumlah Lembar */}
             <div>
-              <label className="text-xs text-gray-400 font-bold block mb-1.5 px-3 bg-white w-fit relative top-3">Lot Amount</label>
+              <label className="text-xs text-gray-400 font-bold block mb-1.5 px-3 bg-white w-fit relative top-3">Jumlah Lembar</label>
               <div className="flex items-center justify-between border border-gray-200 rounded-xl h-12 px-2">
                 <button
                   type="button"
-                  onClick={() => setTradeLots(Math.max(1, tradeLots - 1))}
+                  onClick={() => setTradeShares(Math.max(1, tradeShares - 1))}
                   className="w-10 h-10 text-gray-500 font-mono font-black rounded-lg flex items-center justify-center text-sm focus:outline-none"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
                 <input
-                  id="trade-lots-input"
+                  id="trade-shares-input"
                   type="number"
-                  value={tradeLots}
-                  onChange={(e) => setTradeLots(Math.max(1, parseInt(e.target.value) || 1))}
+                  value={tradeShares}
+                  onChange={(e) => setTradeShares(Math.max(1, parseInt(e.target.value) || 1))}
                   className="w-24 text-center font-extrabold text-sm text-gray-900 outline-none"
                 />
                 <button
                   type="button"
-                  onClick={() => setTradeLots(tradeLots + 1)}
+                  onClick={() => setTradeShares(tradeShares + 1)}
                   className="w-10 h-10 text-gray-500 font-mono font-black rounded-lg flex items-center justify-center text-sm focus:outline-none"
                 >
                   <Plus className="w-4 h-4" />
@@ -191,19 +191,19 @@ export default function OrderViews({
               {/* Incremental pill selectors */}
               <div className="flex gap-2 mt-3 justify-center">
                 <button
-                  onClick={() => handleLotsPills(10)}
+                  onClick={() => handleSharesPills(100)}
                   className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs px-4 py-1.5 rounded-full focus:outline-none"
                 >
-                  +10
+                  +100
                 </button>
                 <button
-                  onClick={() => handleLotsPills(50)}
+                  onClick={() => handleSharesPills(500)}
                   className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs px-4 py-1.5 rounded-full focus:outline-none"
                 >
-                  +50
+                  +500
                 </button>
                 <button
-                  onClick={() => setTradeLots(Math.max(1, Math.floor(userProfile.balance / (tradePrice * 100))))}
+                  onClick={() => setTradeShares(Math.max(1, Math.floor(userProfile.balance / (tradePrice * 1.00193))))}
                   className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs px-4 py-1.5 rounded-full focus:outline-none"
                 >
                   Max
@@ -270,7 +270,7 @@ export default function OrderViews({
             <div className="flex flex-col gap-3 pt-4 text-sm">
               <div className="flex justify-between">
                 <span className="text-gray-600">Quantity</span>
-                <span className="font-black text-gray-950">{tradeLots} Lots</span>
+                <span className="font-black text-gray-950">{tradeShares.toLocaleString('id-ID')} Lembar</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Price</span>
@@ -295,8 +295,8 @@ export default function OrderViews({
             </div>
           </div>
 
-          <div className="bg-blue-100 text-dark-blue rounded-xl p-4 flex gap-2.5 text-xs leading-relaxed">
-            <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+          <div className="order-tip-box rounded-xl p-4 flex gap-2.5 text-xs leading-relaxed">
+            <Info className="order-tip-icon w-4 h-4 shrink-0 mt-0.5" />
             <p><span className="font-black">Market Tip:</span> Stock prices fluctuate. This is a limit order; your execution price may slightly vary based on market conditions.</p>
           </div>
         </div>
@@ -341,7 +341,7 @@ export default function OrderViews({
                 </div>
                 <div className="flex justify-between">
                   <span>Jumlah Posisi:</span>
-                  <span className="text-gray-900 font-black">{tradeLots} Lots ({tradeLots * 100} Lembar)</span>
+                  <span className="text-gray-900 font-black">{tradeShares.toLocaleString('id-ID')} Lembar</span>
                 </div>
                 <div className="flex justify-between border-t border-dashed border-gray-200 pt-2 text-xs">
                   <span className="text-gray-900 font-black">Sisa Saldo RDN:</span>

@@ -43,6 +43,7 @@ export interface Transaction {
   stockCode: string;
   type: 'BUY' | 'SELL';
   lots: number;
+  shares?: number;
   price: number;
   date: string;
   totalPayment: number;

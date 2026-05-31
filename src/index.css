@@ -4,20 +4,114 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Inter", monospace;
-  
+
   --color-primary: #0059bb;
   --color-primary-dark: #004493;
   --color-primary-light: #e6f0fa;
-  --color-accent: #fecb00;
+  --color-accent: #ffd700;
   --color-accent-dark: #cc9900;
   --color-dark-blue: #001a41;
   --color-surface-bg: #f7f9fb;
   --color-surface-card: #ffffff;
 }
 
+@layer base {
+  :root.dark {
+    --color-surface-bg: #07111f;
+    --color-surface-card: #101b2d;
+    --color-primary: #60a5fa;
+    --color-primary-dark: #3b82f6;
+    --color-primary-light: #123052;
+    --color-accent: #facc15;
+    --color-accent-dark: #eab308;
+    --color-dark-blue: #001a41;
+
+    --color-gray-50: #152033;
+    --color-gray-100: #1f2b3f;
+    --color-gray-150: #27354a;
+    --color-gray-200: #334155;
+    --color-gray-300: #64748b;
+    --color-gray-400: #94a3b8;
+    --color-gray-500: #cbd5e1;
+    --color-gray-600: #dbe4ef;
+    --color-gray-700: #e5edf7;
+    --color-gray-750: #e8eef8;
+    --color-gray-800: #eef4fb;
+    --color-gray-850: #f3f7fc;
+    --color-gray-900: #f8fafc;
+    --color-gray-905: #f8fafc;
+    --color-gray-950: #ffffff;
+
+    --color-slate-50: #152033;
+    --color-slate-100: #1f2b3f;
+    --color-slate-700: #dbe4ef;
+    --color-slate-800: #e5edf7;
+    --color-slate-900: #f8fafc;
+    --color-slate-950: #020617;
+
+    --color-teal-50: #052f2c;
+    --color-teal-100: #0f4d49;
+    --color-teal-500: #2dd4bf;
+    --color-teal-600: #5eead4;
+    --color-teal-700: #99f6e4;
+
+    --color-red-50: #3b1013;
+    --color-red-100: #5f171c;
+    --color-red-400: #fb7185;
+    --color-red-500: #fb7185;
+    --color-red-600: #fda4af;
+    --color-red-650: #fda4af;
+    --color-red-655: #fda4af;
+    --color-red-700: #fecdd3;
+    --color-red-750: #ffe4e6;
+    --color-red-800: #ffe4e6;
+    --color-red-900: #fff1f2;
+
+    --color-rose-50: #3b101c;
+    --color-rose-100: #5f1732;
+    --color-rose-400: #fb7185;
+    --color-rose-500: #fb7185;
+    --color-rose-600: #fda4af;
+    --color-rose-650: #fda4af;
+    --color-rose-700: #fecdd3;
+    --color-rose-800: #ffe4e6;
+
+    --color-blue-50: #102747;
+    --color-blue-100: #173a65;
+    --color-sky-100: #123052;
+
+    --color-amber-50: #382609;
+    --color-amber-100: #52380d;
+    --color-amber-200: #7a530f;
+    --color-amber-400: #fbbf24;
+    --color-amber-500: #f59e0b;
+    --color-amber-600: #fbbf24;
+    --color-amber-700: #fcd34d;
+    --color-amber-800: #fde68a;
+    --color-yellow-50: #382609;
+    --color-yellow-100: #52380d;
+    --color-yellow-200: #fef08a;
+    --color-yellow-300: #fde047;
+    --color-yellow-400: #facc15;
+    --color-yellow-500: #eab308;
+    --color-yellow-600: #facc15;
+    --color-yellow-700: #fde047;
+    --color-yellow-800: #fef08a;
+
+    --color-purple-50: #2b174f;
+    --color-purple-600: #d8b4fe;
+
+    color-scheme: dark;
+  }
+}
+
 /* Custom soft shadow for our premium cards */
 .soft-shadow {
   box-shadow: 0 4px 20px rgba(0, 89, 187, 0.05);
+}
+
+.dark .soft-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .soft-shadow-lg {
@@ -28,10 +122,112 @@
   box-shadow: 0 0 12px rgba(0, 89, 187, 0.2);
 }
 
+.risk-profile-panel {
+  background-color: #fff4bf;
+  border: 1px solid rgba(250, 204, 21, 0.7);
+}
+
+.risk-profile-title {
+  color: #ca8a04;
+}
+
+.risk-profile-copy {
+  color: #4b5563;
+}
+
+:root.dark .risk-profile-panel {
+  background-color: rgba(250, 204, 21, 0.14);
+  border-color: rgba(250, 204, 21, 0.45);
+}
+
+:root.dark .risk-profile-title {
+  color: #fde047;
+}
+
+:root.dark .risk-profile-copy {
+  color: #fef3c7;
+}
+
+.order-tip-box {
+  background-color: #e6f0fa;
+  color: #1e3a5f;
+}
+
+.order-tip-icon {
+  color: #0059bb;
+}
+
+:root.dark .order-tip-box {
+  background-color: rgba(96, 165, 250, 0.22);
+  color: #dbeafe;
+}
+
+:root.dark .order-tip-icon {
+  color: #93c5fd;
+}
+
 body {
   font-family: var(--font-sans);
-  background-color: #f7f9fb;
-  color: #191c1e;
+  background-color: var(--color-surface-bg);
+  color: var(--color-gray-900);
+}
+
+.dark body {
+  background-color: var(--color-surface-bg);
+  color: var(--color-gray-900);
+}
+
+:root.dark [class~="bg-white"] {
+  background-color: var(--color-surface-card) !important;
+}
+
+:root.dark .text-black,
+:root.dark .text-gray-800,
+:root.dark .text-gray-850,
+:root.dark .text-gray-900,
+:root.dark .text-gray-905,
+:root.dark .text-gray-950,
+:root.dark .text-\[\#001a41\] {
+  color: #f8fafc !important;
+}
+
+:root.dark .text-gray-600,
+:root.dark .text-gray-700,
+:root.dark .text-slate-700,
+:root.dark .text-slate-800 {
+  color: #dbe4ef !important;
+}
+
+:root.dark .text-gray-300,
+:root.dark .text-gray-400,
+:root.dark .text-gray-500 {
+  color: #9fb0c6 !important;
+}
+
+:root.dark .text-white,
+:root.dark [class~="bg-primary"] .text-white,
+:root.dark [class~="bg-primary-dark"] .text-white {
+  color: #ffffff !important;
+}
+
+:root.dark [class~="border-gray-50"],
+:root.dark [class~="border-gray-100"],
+:root.dark [class~="border-gray-150"],
+:root.dark [class~="border-gray-200"],
+:root.dark [class~="border-slate-800"] {
+  border-color: #263449 !important;
+}
+
+:root.dark [class~="hover:bg-gray-50"]:hover,
+:root.dark [class~="hover:bg-gray-100"]:hover {
+  background-color: #1f2b3f !important;
+}
+
+:root.dark input,
+:root.dark textarea,
+:root.dark select {
+  color: var(--color-gray-900);
+  caret-color: var(--color-primary);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -44,4 +240,3 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-

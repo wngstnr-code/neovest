@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
-import { User, Shield, CreditCard, Bell, LogOut, CheckCircle, Smartphone, Globe, Landmark, Award } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { User, Shield, CreditCard, Bell, LogOut, CheckCircle, Smartphone, Globe, Landmark, Award, Sun, Moon } from 'lucide-react';
 import { UserProfile, Screen } from '../types';
 
 interface ProfileViewProps {
@@ -19,6 +19,15 @@ export default function ProfileView({
   onNavigate,
 }: ProfileViewProps) {
   const [showKycModal, setShowKycModal] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => document.documentElement.classList.contains('dark'));
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
   // Switch user profile identity for fast prototype testing
   const toggleIdentity = () => {
@@ -155,7 +164,7 @@ export default function ProfileView({
             className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-gray-50 text-left transition-colors focus:outline-none"
           >
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center">
+              <div className="w-9 h-9 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center">
                 <Shield className="w-5 h-5 stroke-[2.2]" />
               </div>
               <div>
@@ -165,33 +174,6 @@ export default function ProfileView({
             </div>
             <span className="text-xs text-gray-300 font-bold">&gt;</span>
           </button>
-
-          {/* Security Biometrics Toggle */}
-          <div className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-gray-50 text-left transition-colors">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-blue-50 text-primary rounded-xl flex items-center justify-center">
-                <Smartphone className="w-5 h-5 stroke-[2.2]" />
-              </div>
-              <div>
-                <span className="text-xs font-bold text-gray-900 block">Biometric Fingerprint</span>
-                <span className="text-xs text-gray-400 font-medium block mt-0.5">Aktifkan sidik jari saat masuk login</span>
-              </div>
-            </div>
-            {/* Custom toggle switch */}
-            <button
-              onClick={handleBiometricToggle}
-              id="profile-biometric-toggle-switch"
-              className={`w-11 h-6 rounded-full p-0.5 transition-colors focus:outline-none relative flex items-center ${
-                userProfile.biometricsEnabled ? 'bg-primary' : 'bg-gray-200'
-              }`}
-            >
-              <div
-                className={`w-5 h-5 bg-white rounded-full shadow-md transition-transform ${
-                  userProfile.biometricsEnabled ? 'translate-x-5' : 'translate-x-0'
-                }`}
-              />
-            </button>
-          </div>
 
           {/* Bank Accounts */}
           <div className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-gray-50 text-left transition-colors cursor-pointer">
@@ -220,6 +202,32 @@ export default function ProfileView({
             </div>
             <span className="text-xs text-gray-400 font-bold shrink-0">ID (Bahasa)</span>
           </div>
+
+          {/* Theme Toggle */}
+          <div className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-gray-50 text-left transition-colors">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 bg-gray-100 text-gray-700 rounded-xl flex items-center justify-center">
+                {isDarkMode ? <Moon className="w-5 h-5 stroke-[2.2]" /> : <Sun className="w-5 h-5 stroke-[2.2]" />}
+              </div>
+              <div>
+                <span className="text-xs font-bold text-gray-900 block">Tema Gelap</span>
+                <span className="text-xs text-gray-400 font-medium block mt-0.5">Ubah tampilan ke mode gelap</span>
+              </div>
+            </div>
+            <button
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              id="profile-theme-toggle-switch"
+              className={`w-11 h-6 rounded-full p-0.5 transition-colors focus:outline-none relative flex items-center ${
+                isDarkMode ? 'bg-primary' : 'bg-gray-200'
+              }`}
+            >
+              <div
+                className={`w-5 h-5 bg-white rounded-full shadow-md transition-transform ${
+                  isDarkMode ? 'translate-x-5' : 'translate-x-0'
+                }`}
+              />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -228,7 +236,7 @@ export default function ProfileView({
         <button
           id="profile-logout-btn"
           onClick={() => onNavigate('Welcome')}
-          className="w-full h-11 border border-red-200 hover:bg-red-50 text-red-500 rounded-2xl text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+          className="w-full h-11 border border-red-500 bg-red-500 hover:bg-red-600 text-white dark:border-[#9f1239] dark:bg-[#be123c] dark:hover:bg-[#9f1239] dark:text-white rounded-2xl text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm"
         >
           <LogOut className="w-4.5 h-4.5 stroke-[2.5]" />
           Log Out Akun NeoVest

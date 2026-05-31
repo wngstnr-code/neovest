@@ -317,14 +317,14 @@ export default function PortfolioView({
             <span>Risk Analyzer</span>
           </div>
 
-          <div className="bg-amber-50/50 rounded-2xl p-4 border border-amber-100/50 mb-4">
+          <div className="risk-profile-panel rounded-2xl p-4 mb-4">
             <div className="flex justify-between items-center mb-1.5">
-              <span className="text-xs text-amber-800 font-extrabold">Profil Risiko Anda</span>
+              <span className="risk-profile-title text-xs font-extrabold">Profil Risiko Anda</span>
               <span className="bg-accent text-dark-blue font-bold px-2.5 py-0.5 rounded-lg text-xs uppercase">
                 {userProfile.riskProfile}
               </span>
             </div>
-            <p className="text-xs text-gray-600 font-medium leading-relaxed mt-1">
+            <p className="risk-profile-copy text-xs font-medium leading-relaxed mt-1">
               Konsentrasi portofolio terbesar saat ini ada di sektor {allocationRows[0]?.label || 'Perbankan'} ({primaryConcentration}%). Pertimbangkan diversifikasi agar risiko tidak bertumpu pada satu sektor.
             </p>
           </div>

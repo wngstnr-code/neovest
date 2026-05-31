@@ -194,9 +194,6 @@ export default function MarketView({
                     <div>
                       <div className="flex items-center gap-1.5">
                         <h4 className="text-xs font-extrabold text-gray-950">{stock.code}</h4>
-                        <span className="bg-primary/5 text-primary text-xs font-bold px-1.5 py-0.5 rounded-full">
-                          AI BUY
-                        </span>
                       </div>
                       <span className="text-xs text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
                     </div>
@@ -269,9 +266,6 @@ export default function MarketView({
                     <div>
                       <div className="flex items-center gap-1.5">
                         <h4 className="text-xs font-extrabold text-gray-950">{stock.code}</h4>
-                        <span className="bg-amber-50 text-amber-600 text-xs font-bold px-1.5 py-0.5 rounded-full">
-                          AI HOLD
-                        </span>
                       </div>
                       <span className="text-xs text-gray-400 font-medium block max-w-28 truncate">{stock.name}</span>
                     </div>

@@ -94,9 +94,9 @@ export default function OrdersView({
         <div className="bg-white rounded-2xl p-3 border border-gray-100 soft-shadow">
           <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Total Volume</span>
           <span className="text-base font-black text-primary block mt-0.5">
-            {orders.reduce((acc, o) => acc + o.lots, 0)} Lots
+            {orders.reduce((acc, o) => acc + (o.shares ?? o.lots * 100), 0).toLocaleString('id-ID')} Lembar
           </span>
-          <span className="text-xs text-gray-400 font-semibold block mt-0.5">Rata-rata 100 lembar/lot</span>
+          <span className="text-xs text-gray-400 font-semibold block mt-0.5">Akumulasi lembar saham</span>
         </div>
       </div>
 
@@ -154,6 +154,7 @@ export default function OrdersView({
             {filteredOrders.map((order) => {
               const liveStock = stocks.find((s) => s.code === order.stockCode);
               const isBuy = order.type === 'BUY';
+              const orderShares = order.shares ?? order.lots * 100;
               
               return (
                 <div
@@ -192,7 +193,7 @@ export default function OrdersView({
                   <div className="grid grid-cols-3 gap-2 text-center text-xs font-bold text-gray-500">
                     <div className="text-left">
                       <span className="text-xs text-gray-400 block mb-0.5 font-bold uppercase tracking-wider">Jumlah</span>
-                      <span className="text-gray-900 font-extrabold">{order.lots} Lot</span>
+                      <span className="text-gray-900 font-extrabold">{orderShares.toLocaleString('id-ID')} Lembar</span>
                     </div>
 
                     <div>

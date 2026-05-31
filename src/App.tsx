@@ -101,9 +101,10 @@ export default function App() {
   };
 
   // Stocks purchase algorithm decreases cash and appends portfolio rows
-  const handleExecuteTrade = (lotsNum: number, pricePerUnit: number) => {
+  const handleExecuteTrade = (sharesNum: number, pricePerUnit: number) => {
+    const lotsEquivalent = sharesNum / 100;
     // Total calculation
-    const priceSharesAmount = pricePerUnit * 100 * lotsNum;
+    const priceSharesAmount = pricePerUnit * sharesNum;
     const transactionCharge = Math.round(priceSharesAmount * 0.0015);
     const levyTax = Math.round(priceSharesAmount * 0.00043);
     const totalDeducted = priceSharesAmount + transactionCharge + levyTax;
@@ -121,7 +122,8 @@ export default function App() {
       id: 'ORD-' + Math.floor(1000 + Math.random() * 9000),
       stockCode: selectedStockCode,
       type: 'BUY',
-      lots: lotsNum,
+      lots: lotsEquivalent,
+      shares: sharesNum,
       price: pricePerUnit,
       date: 'Hari ini',
       totalPayment: totalDeducted,
@@ -154,7 +156,7 @@ export default function App() {
         // Recalculate average weighted buying price
         const target = prev[existingIdx];
         const prevTotalShares = target.lots * 100;
-        const newTotalShares = lotsNum * 100;
+        const newTotalShares = sharesNum;
         const weightedCost =
           (target.avgPrice * prevTotalShares + pricePerUnit * newTotalShares) /
           (prevTotalShares + newTotalShares);
@@ -162,7 +164,7 @@ export default function App() {
         const copies = [...prev];
         copies[existingIdx] = {
           ...target,
-          lots: target.lots + lotsNum,
+          lots: target.lots + lotsEquivalent,
           avgPrice: Math.round(weightedCost),
         };
         return copies;
@@ -174,7 +176,7 @@ export default function App() {
           {
             stockCode: selectedStockCode,
             name: stockReferenced ? stockReferenced.name : 'Saham Terbeli',
-            lots: lotsNum,
+            lots: lotsEquivalent,
             avgPrice: pricePerUnit,
             currentPrice: pricePerUnit,
           },
