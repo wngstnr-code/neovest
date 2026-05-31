@@ -83,6 +83,7 @@ export type Screen =
   | 'RiskProfileQuiz'
   | 'RiskProfileResult'
   | 'Watchlist'
+  | 'History'
   | 'Profile'
   | 'TradeBuy'
   | 'TradeReview'

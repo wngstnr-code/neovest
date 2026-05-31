@@ -41,7 +41,7 @@ export default function PremiumUpgrade({
   };
 
   return (
-    <div id="premium-upgrade-view" className="flex flex-col h-full bg-slate-950 text-white overflow-y-auto no-scrollbar pb-24 rounded-t-3xl pt-5">
+    <div id="premium-upgrade-view" className="flex flex-col h-full bg-slate-950 text-white overflow-y-auto no-scrollbar pb-6 pt-5">
       {/* Top Header */}
       <div className="flex items-center justify-between px-5 mb-5">
         <button

@@ -67,8 +67,8 @@ export default function ProfileView({
           )}
 
           <div className="flex items-center gap-3.5">
-            <div className="w-13 h-13 rounded-2xl bg-primary/5 text-primary text-base font-black flex items-center justify-center shrink-0 border border-primary/10">
-              {userProfile.fullName.substring(0, 2).toUpperCase()}
+            <div className="w-13 h-13 rounded-2xl bg-primary/5 text-primary flex items-center justify-center shrink-0 border border-primary/10">
+              <User className="w-6 h-6 stroke-[2.4]" />
             </div>
             
             <div>

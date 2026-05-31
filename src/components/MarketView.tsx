@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Search, Star, Sparkles, TrendingUp, TrendingDown, HelpCircle, Flame } from 'lucide-react';
+import { Search, Star, TrendingUp, Flame } from 'lucide-react';
 import { Stock, Screen } from '../types';
 
 interface MarketViewProps {
@@ -24,11 +24,12 @@ export default function MarketView({
   onSelectStock,
   initialSearchQuery = '',
 }: MarketViewProps) {
-  const [selectedCategory, setSelectedCategory] = useState<'semua' | 'perbankan' | 'energi' | 'teknologi'>('semua');
+  const [selectedCategory, setSelectedCategory] = useState<'semua' | 'favorit' | 'perbankan' | 'energi' | 'teknologi'>('semua');
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
 
-  const categories: { id: 'semua' | 'perbankan' | 'energi' | 'teknologi'; label: string }[] = [
+  const categories: { id: 'semua' | 'favorit' | 'perbankan' | 'energi' | 'teknologi'; label: string }[] = [
     { id: 'semua', label: 'Semua' },
+    { id: 'favorit', label: 'Favorit' },
     { id: 'perbankan', label: 'Perbankan' },
     { id: 'energi', label: 'Energi' },
     { id: 'teknologi', label: 'Teknologi' },
@@ -36,7 +37,9 @@ export default function MarketView({
 
   // Filtering stock items
   const filteredStocks = stocks.filter((stock) => {
-    const matchesCategory = selectedCategory === 'semua' || stock.category === selectedCategory;
+    const matchesCategory =
+      selectedCategory === 'semua' ||
+      (selectedCategory === 'favorit' ? watchlist.includes(stock.code) : stock.category === selectedCategory);
     const matchesSearch =
       stock.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
       stock.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -59,31 +62,10 @@ export default function MarketView({
 
   return (
     <div id="market-view" className="flex flex-col h-full bg-surface-bg overflow-y-auto no-scrollbar pb-20 rounded-t-3xl pt-5">
-      {/* Top Header with Segmented Switcher */}
+      {/* Top Header */}
       <div className="flex items-center justify-between px-5 mb-4">
-        {/* Sleek Segmented Switcher for SBN & Saham, Community, and Order */}
-        <div className="flex bg-gray-100/80 p-0.5 rounded-full border border-gray-200/50">
-          <button
-            onClick={() => onNavigate('Market')}
-            className="text-[10px] font-black px-4 py-1.5 rounded-full bg-white text-primary shadow-sm uppercase tracking-wider"
-          >
-            SBN &amp; Saham
-          </button>
-          <button
-            onClick={() => onNavigate('Community')}
-            className="text-[10px] font-black px-4 py-1.5 rounded-full text-gray-500 hover:text-gray-900 uppercase tracking-wider transition-all"
-          >
-            Community
-          </button>
-          <button
-            onClick={() => onNavigate('Orders')}
-            className="text-[10px] font-black px-4 py-1.5 rounded-full text-gray-500 hover:text-gray-900 uppercase tracking-wider transition-all"
-          >
-            Order
-          </button>
-        </div>
+        <h2 className="text-xl font-bold text-gray-900 tracking-tight">Market</h2>
         
-        {/* Simple interactive details tool */}
         <button 
           onClick={() => alert('Gunakan bar pencarian di bawah untuk menyaring emiten saham!')}
           className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-gray-100 shadow-sm text-gray-600 active:scale-95 transition-all"

@@ -80,6 +80,15 @@ export default function StockDetailView({
             <span>{isLoss ? '' : '+'}{stock.changeAmount} ({stock.changePercent}%)</span>
           </div>
         </div>
+
+        <button
+          id="stock-detail-inline-buy-btn"
+          onClick={() => onNavigate('TradeBuy')}
+          className="mt-4 w-full h-11 bg-primary hover:bg-primary-dark text-white rounded-2xl text-xs font-bold flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all"
+        >
+          <ShoppingCart className="w-4 h-4 shrink-0" />
+          <span>Beli Saham {stock.code}</span>
+        </button>
       </div>
 
       {/* Timeframe selector toolbar */}
@@ -254,27 +263,6 @@ export default function StockDetailView({
         </div>
       </div>
 
-      {/* Persistent Static Purchase Bar exactly on bottom overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-white border-t border-gray-100 flex items-center justify-between px-5 z-40 rounded-b-3xl">
-        <button
-          onClick={() => onToggleWatchlist(stock.code)}
-          className={`h-11 border px-4 rounded-xl flex items-center justify-center gap-2 transition-all font-semibold text-xs shrink-0 ${
-            isAdded ? 'border-accent bg-accent/15 text-accent-dark' : 'border-gray-200 text-gray-500'
-          }`}
-        >
-          <Star className={`w-4.5 h-4.5 ${isAdded ? 'fill-accent' : ''}`} />
-          <span>{isAdded ? 'Watchlisted' : 'Watchlist'}</span>
-        </button>
-
-        <button
-          id="stock-detail-trade-btn"
-          onClick={() => onNavigate('TradeBuy')}
-          className="flex-1 max-w-xs h-11 bg-primary hover:bg-primary-dark text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1 shadow-md hover:shadow-lg transition-all ml-4"
-        >
-          <ShoppingCart className="w-4 h-4 shrink-0" />
-          <span>Beli Saham {stock.code}</span>
-        </button>
-      </div>
     </div>
   );
 }

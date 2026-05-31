@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Search, Bell, Bookmark, CreditCard, Users, BookOpen, ChevronRight, TrendingUp, TrendingDown, ShoppingCart } from 'lucide-react';
+import { Search, Bell, History, CreditCard, Users, User, BookOpen, ChevronRight, TrendingUp, TrendingDown, X, Check, Sparkles } from 'lucide-react';
 import { Stock, LearnModule, UserProfile, PortfolioItem } from '../types';
 
 interface HomeDashboardProps {
@@ -26,6 +26,7 @@ export default function HomeDashboard({
 }: HomeDashboardProps) {
   const [searchVal, setSearchVal] = useState('');
   const [showNotificationToast, setShowNotificationToast] = useState(false);
+  const [readNotificationIds, setReadNotificationIds] = useState<string[]>([]);
 
   // Dynamic calculations
   const calculatePortfolioValue = () => {
@@ -52,17 +53,95 @@ export default function HomeDashboard({
   };
 
   const highlightedStock = stocks.find((s) => s.code === 'BBCA') || stocks[0];
+  const notifications = [
+    {
+      id: 'portfolio-up',
+      title: 'Portofolio naik',
+      message: 'Nilai aset Anda bertambah Rp 320.000 hari ini.',
+      time: 'Baru saja',
+      tone: 'bg-teal-50 text-teal-700',
+      dot: 'bg-teal-500',
+    },
+    {
+      id: 'order-match',
+      title: 'Order BBCA berhasil',
+      message: 'Pembelian 10 lot BBCA sudah match di harga Rp 10.250.',
+      time: '14:30',
+      tone: 'bg-blue-50 text-primary',
+      dot: 'bg-primary',
+    },
+    {
+      id: 'insight-ready',
+      title: 'Insight AI tersedia',
+      message: 'Rekomendasi saham harian sudah diperbarui.',
+      time: '09:00',
+      tone: 'bg-amber-50 text-amber-700',
+      dot: 'bg-accent',
+    },
+  ];
+  const unreadNotifications = notifications.filter(
+    (notification) => !readNotificationIds.includes(notification.id)
+  );
 
   return (
     <div id="home-dashboard" className="flex flex-col h-full bg-surface-bg overflow-y-auto no-scrollbar pb-20 rounded-t-3xl pt-5">
-      {/* Search active notification toast */}
+      {/* Mock notification panel */}
       {showNotificationToast && (
-        <div className="absolute top-16 left-4 right-4 z-50 bg-primary text-white p-3 rounded-2xl flex items-center justify-between shadow-lg text-xs">
-          <span className="flex items-center gap-1.5">
-            <Bell className="w-4 h-4 shrink-0" />
-            <span>Tidak ada notifikasi baru hari ini. Portofolio Anda aman!</span>
-          </span>
-          <button onClick={() => setShowNotificationToast(false)} className="font-bold ml-2">×</button>
+        <div className="absolute top-16 left-4 right-4 z-50 rounded-3xl bg-white p-4 shadow-xl border border-gray-100">
+          <div className="mb-3 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <Bell className="h-4 w-4" />
+              </div>
+              <div>
+                <h3 className="text-xs font-black text-gray-950">Notifikasi</h3>
+                <p className="text-[10px] font-medium text-gray-400">Update terbaru akun Anda</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setShowNotificationToast(false)}
+              className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 hover:bg-gray-50 hover:text-gray-700 active:scale-95"
+              aria-label="Tutup notifikasi"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-2.5">
+            {unreadNotifications.length === 0 ? (
+              <div className="rounded-2xl bg-gray-50 p-4 text-center">
+                <p className="text-[11px] font-bold text-gray-700">Semua notifikasi sudah dibaca</p>
+                <p className="mt-0.5 text-[10px] font-medium text-gray-400">Update baru akan muncul di sini.</p>
+              </div>
+            ) : (
+              unreadNotifications.map((notification) => (
+              <div key={notification.id} className="flex gap-3 rounded-2xl bg-gray-50/70 p-3">
+                <div className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${notification.dot}`} />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-2">
+                    <h4 className="text-[11px] font-black text-gray-900">{notification.title}</h4>
+                    <div className="flex shrink-0 items-center gap-1.5">
+                      <span className="text-[9px] font-bold text-gray-400">{notification.time}</span>
+                      <button
+                        onClick={() => setReadNotificationIds((prev) => [...prev, notification.id])}
+                        className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-gray-400 border border-gray-100 hover:text-primary active:scale-95 transition-all"
+                        aria-label="Tandai sudah dibaca"
+                      >
+                        <Check className="h-3.5 w-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                  <p className="mt-0.5 text-[10px] font-medium leading-relaxed text-gray-500">
+                    {notification.message}
+                  </p>
+                  <span className={`mt-2 inline-flex rounded-full px-2 py-0.5 text-[9px] font-bold ${notification.tone}`}>
+                    Belum dibaca
+                  </span>
+                </div>
+              </div>
+              ))
+            )}
+          </div>
         </div>
       )}
 
@@ -71,7 +150,7 @@ export default function HomeDashboard({
         <div className="flex items-center gap-2.5">
           {/* Circular avatar with brand outline */}
           <div className="w-10 h-10 rounded-full border-2 border-primary/20 bg-primary/5 flex items-center justify-center font-bold text-sm text-primary overflow-hidden">
-            {userProfile.fullName ? userProfile.fullName.substring(0, 2).toUpperCase() : 'TA'}
+            <User className="w-5 h-5 stroke-[2.4]" />
           </div>
           <div>
             <div className="flex items-center gap-1">
@@ -83,11 +162,13 @@ export default function HomeDashboard({
         </div>
 
         <button
-          onClick={() => setShowNotificationToast(true)}
+          onClick={() => setShowNotificationToast((prev) => !prev)}
           className="w-10 h-10 bg-white rounded-full flex items-center justify-center border border-gray-100 soft-shadow text-gray-600 focus:outline-none relative"
         >
           <Bell className="w-4.5 h-4.5 stroke-[2.2]" />
-          <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white" />
+          {unreadNotifications.length > 0 && (
+            <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white" />
+          )}
         </button>
       </div>
 
@@ -136,18 +217,18 @@ export default function HomeDashboard({
         </div>
       </div>
 
-      {/* Quick Access Menu Grid (Watchlist, Subscription (labeled NeoVest Premium), Community, Learn) */}
+      {/* Quick Access Menu Grid (History, Subscription (labeled NeoVest Premium), Community, Learn) */}
       <div className="px-5 mb-6">
         <div className="grid grid-cols-4 bg-white rounded-3xl p-4 soft-shadow border border-gray-100">
-          {/* Watchlist */}
+          {/* Transaction History */}
           <button
-            onClick={() => onNavigate('Watchlist')}
+            onClick={() => onNavigate('History')}
             className="flex flex-col items-center justify-center gap-2 focus:outline-none focus:scale-95"
           >
             <div className="w-11 h-11 bg-blue-50 text-primary rounded-2xl flex items-center justify-center soft-shadow">
-              <Bookmark className="w-5 h-5 stroke-[2.2]" />
+              <History className="w-5 h-5 stroke-[2.2]" />
             </div>
-            <span className="text-[10px] font-bold text-gray-750">Watchlist</span>
+            <span className="text-[10px] font-bold text-gray-750">Riwayat</span>
           </button>
 
           {/* Premium Subscription */}
@@ -155,9 +236,11 @@ export default function HomeDashboard({
             onClick={() => onNavigate('PremiumUpgrade')}
             className="flex flex-col items-center justify-center gap-2 focus:outline-none focus:scale-95"
           >
-            <div className="w-11 h-11 bg-amber-50 text-accent-dark rounded-2xl flex items-center justify-center soft-shadow relative animate-pulse">
+            <div className="w-11 h-11 bg-amber-50 text-accent-dark rounded-2xl flex items-center justify-center soft-shadow relative">
               <CreditCard className="w-5 h-5 stroke-[2.2]" />
-              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full" />
+              {!userProfile.isPremium && (
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full" />
+              )}
             </div>
             <span className="text-[10px] font-bold text-gray-750">Premium</span>
           </button>
@@ -188,41 +271,39 @@ export default function HomeDashboard({
 
       {/* Featured AI Insight: BBCA Card precisely matching design */}
       <div className="px-5 mb-6">
+        <div className="mb-3 flex items-center justify-between">
+          <div>
+            <span className="text-xs font-black text-gray-900 tracking-tight">Rekomendasi AI Hari Ini</span>
+            <p className="mt-0.5 text-[10px] font-medium text-gray-400 leading-normal">
+              Analisis berbasis data, bukan ajakan transaksi mutlak.
+            </p>
+          </div>
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary" aria-label="Rekomendasi AI">
+            <Sparkles className="h-4 w-4 stroke-[2.4]" />
+          </span>
+        </div>
         <div className="relative bg-white rounded-3xl border border-gray-100 p-5 soft-shadow overflow-hidden">
-          {/* Subtle colored accent shapes in background */}
-          <div className="absolute right-0 top-0 w-28 h-28 bg-primary/5 rounded-full" />
+          {/* Subtle colored accent shape in background */}
           <div className="absolute -left-12 -bottom-10 w-24 h-24 bg-teal-500/5 rounded-full blur-lg" />
 
           {/* Header */}
-          <div className="flex justify-between items-start mb-3.5 relative">
+          <div className="relative flex items-start justify-between gap-3">
             <div>
               <h3 className="text-xl font-extrabold text-primary tracking-tight">{highlightedStock.code}</h3>
               <p className="text-[11px] text-gray-400 font-medium">{highlightedStock.name}</p>
             </div>
-            <button
-              id="home-buy-bbca-btn"
-              onClick={() => {
-                onSelectStock('BBCA');
-                onNavigate('TradeBuy');
-              }}
-              className="bg-accent hover:bg-accent-dark text-dark-blue text-xs font-bold px-4 py-1.5 rounded-full soft-shadow flex items-center gap-1 active:scale-95 transition-all"
-            >
-              <ShoppingCart className="w-3.5 h-3.5" /> Buy
-            </button>
-          </div>
-
-          {/* Badges */}
-          <div className="flex gap-1.5 mb-4 relative">
-            <span className="text-[10px] font-semibold bg-primary-light text-primary px-2.5 py-1 rounded-lg">
-              Confidence {highlightedStock.aiConfidence}%
-            </span>
-            <span className="text-[10px] font-semibold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-lg">
-              Risiko {highlightedStock.riskLevel}
-            </span>
+            <div className="flex shrink-0 flex-col items-end gap-1.5">
+              <span className="text-[10px] font-semibold bg-primary-light text-primary px-2.5 py-1 rounded-lg">
+                Confidence {highlightedStock.aiConfidence}%
+              </span>
+              <span className="text-[10px] font-semibold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-lg">
+                Risiko {highlightedStock.riskLevel}
+              </span>
+            </div>
           </div>
 
           {/* Text Summary */}
-          <p className="text-xs text-gray-500 leading-relaxed font-medium mb-5 bg-gray-50/50 p-2.5 rounded-xl border border-gray-50">
+          <p className="text-xs text-gray-500 leading-relaxed font-medium mb-0 bg-gray-50/50 px-2.5 py-2 rounded-xl border border-gray-50">
             "{highlightedStock.fundamental}"
           </p>
 
@@ -232,7 +313,7 @@ export default function HomeDashboard({
               onSelectStock('BBCA');
               onNavigate('StockDetail');
             }}
-            className="w-full h-11 bg-primary hover:bg-primary-dark text-white text-xs font-bold rounded-2xl flex items-center justify-center gap-1 transition-all"
+            className="w-full h-10 bg-primary hover:bg-primary-dark text-white text-xs font-bold rounded-2xl flex items-center justify-center gap-1 transition-all"
           >
             Lihat Detail Analisis
           </button>
@@ -243,7 +324,6 @@ export default function HomeDashboard({
       <div className="mb-6">
         <div className="flex justify-between items-center px-5 mb-3">
           <span className="text-xs font-bold text-gray-905 tracking-tight uppercase">Indeks Pasar</span>
-          <span className="text-[10px] font-bold text-gray-400 select-none">Swipe &gt;</span>
         </div>
         
         {/* Horizontal scroll view */}

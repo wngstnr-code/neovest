@@ -16,10 +16,11 @@ export default function BottomNav({ currentScreen, onNavigate }: BottomNavProps)
   // Map our subviews or detail screens to their respective primary navigation tab
   const getActiveTab = (): string => {
     if (['Welcome', 'Login', 'Register'].includes(currentScreen)) return 'none';
+    if (['History', 'PremiumUpgrade', 'Community', 'CommunityPostDetail', 'Learn', 'TradeBuy', 'TradeReview'].includes(currentScreen)) return 'none';
     if (['Home', 'Watchlist'].includes(currentScreen)) return 'Home';
-    if (['Market', 'StockDetail', 'TradeBuy', 'TradeReview', 'Community', 'CommunityPostDetail', 'Orders'].includes(currentScreen)) return 'Market';
+    if (['Market', 'StockDetail', 'Orders'].includes(currentScreen)) return 'Market';
     if (['Portfolio'].includes(currentScreen)) return 'Portfolio';
-    if (['Insight', 'PremiumUpgrade'].includes(currentScreen)) return 'Insight';
+    if (['Insight'].includes(currentScreen)) return 'Insight';
     if (['Profile', 'RiskProfileResult', 'RiskProfileQuiz'].includes(currentScreen)) return 'Profile';
     return 'Home';
   };

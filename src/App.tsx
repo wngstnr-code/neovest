@@ -28,6 +28,7 @@ import OrderViews from './components/OrderViews';
 import PremiumUpgrade from './components/PremiumUpgrade';
 import CommunityView from './components/CommunityView';
 import OrdersView from './components/OrdersView';
+import HistoryView from './components/HistoryView';
 
 export default function App() {
   // Mobile app navigation state router
@@ -104,7 +105,8 @@ export default function App() {
     // Total calculation
     const priceSharesAmount = pricePerUnit * 100 * lotsNum;
     const transactionCharge = Math.round(priceSharesAmount * 0.0015);
-    const totalDeducted = priceSharesAmount + transactionCharge;
+    const levyTax = Math.round(priceSharesAmount * 0.00043);
+    const totalDeducted = priceSharesAmount + transactionCharge + levyTax;
 
     if (totalDeducted > userProfile.balance) return;
 
@@ -345,6 +347,14 @@ export default function App() {
               stocks={stocks}
               onNavigate={handleNavigate}
               onSelectStock={handleSelectStock}
+            />
+          )}
+
+          {currentScreen === 'History' && (
+            <HistoryView
+              orders={orders}
+              stocks={stocks}
+              onNavigate={handleNavigate}
             />
           )}
         </div>

@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { BookOpen, Award, CheckCircle, ChevronRight, Bookmark, Play, Video } from 'lucide-react';
+import { ArrowLeft, BookOpen, Award, CheckCircle, ChevronRight, Bookmark, Play, Video } from 'lucide-react';
 import { LearnModule, Screen } from '../types';
 
 interface LearnViewProps {
@@ -98,11 +98,20 @@ export default function LearnView({
   };
 
   return (
-    <div id="learn-view" className="flex flex-col h-full bg-surface-bg overflow-y-auto no-scrollbar pb-24 rounded-t-3xl pt-5">
+    <div id="learn-view" className="flex flex-col h-full bg-surface-bg overflow-y-auto no-scrollbar pb-6 rounded-t-3xl pt-5">
       {/* Top Header */}
-      <div className="px-5 mb-5">
-        <h2 className="text-xl font-bold text-gray-900 tracking-tight">Belajar Investasi</h2>
-        <p className="text-[10px] text-gray-400 font-medium">Tingkatkan pengetahuan finansialmu hari ini.</p>
+      <div className="px-5 mb-5 flex items-start gap-2.5">
+        <button
+          onClick={() => onNavigate('Home')}
+          className="w-9 h-9 -ml-1 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-100 active:scale-95 transition-all shrink-0"
+          aria-label="Kembali"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 tracking-tight">Belajar Investasi</h2>
+          <p className="text-[10px] text-gray-400 font-medium">Tingkatkan pengetahuan finansialmu hari ini.</p>
+        </div>
       </div>
 
       {/* Interactive learning circular progress card */}

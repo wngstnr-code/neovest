@@ -22,7 +22,8 @@ import {
   X,
   Target,
   Sparkles,
-  Award
+  Award,
+  User
 } from 'lucide-react';
 import { Screen, UserProfile } from '../types';
 
@@ -568,13 +569,16 @@ export default function CommunityView({
       <div className="h-14 bg-white border-b border-gray-100 px-4 flex items-center justify-between shadow-sm shrink-0 z-10 pt-4">
         {/* Elegant Simple Heading for Community */}
         <div className="flex items-center gap-2">
-          {userProfile.fullName ? (
-            <div className="w-8 h-8 rounded-full bg-primary/10 text-primary border border-primary/20 flex items-center justify-center text-[10px] font-black">
-              {userProfile.fullName.substring(0, 2).toUpperCase()}
-            </div>
-          ) : (
-            <div className="w-8 h-8 rounded-full bg-primary text-white" />
-          )}
+          <button
+            onClick={() => onNavigate('Home')}
+            className="w-9 h-9 -ml-2 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-100 active:scale-95 transition-all"
+            aria-label="Kembali"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <div className="w-8 h-8 rounded-full bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
+            <User className="w-4 h-4 stroke-[2.4]" />
+          </div>
           <span className="text-xs font-extrabold text-primary uppercase tracking-wider">Community</span>
         </div>
         
@@ -592,7 +596,7 @@ export default function CommunityView({
       </div>
 
       {/* Main Core scroll viewport */}
-      <div className="flex-1 overflow-y-auto no-scrollbar pb-24 touch-pan-y">
+      <div className="flex-1 overflow-y-auto no-scrollbar pb-6 touch-pan-y">
         
         {/* Horizontal scroll trending discussions section */}
         <div className="my-5">
@@ -838,7 +842,7 @@ export default function CommunityView({
       {/* Floating Action Button (FAB) at bottom-right of the viewport frame */}
       <button 
         onClick={() => setShowCreateModal(true)}
-        className="absolute bottom-20 right-5 w-12 h-12 bg-accent hover:bg-accent-dark text-dark-blue rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-all z-30"
+        className="absolute bottom-5 right-5 w-12 h-12 bg-accent hover:bg-accent-dark text-dark-blue rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-all z-30"
         id="create-discussion-fab"
         title="Buat Diskusi"
       >
