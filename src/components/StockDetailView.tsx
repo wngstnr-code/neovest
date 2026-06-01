@@ -152,9 +152,6 @@ export default function StockDetailView({
       {/* Recommended AI Insights Alert Card */}
       <div className="px-5 mb-6">
         <div className="bg-white rounded-3xl border border-gray-100 p-5 soft-shadow relative overflow-hidden">
-          {/* Accent decoration */}
-          <div className="absolute right-0 top-0 w-24 h-24 bg-primary/5 rounded-full" />
-
           <div className="flex justify-between items-center mb-3">
             <span className="text-xs font-black text-gray-900 tracking-wider">WAWASAN AI REKOMENDASI</span>
             <span className="text-xs font-bold text-primary flex items-center gap-0.5 bg-primary-light px-2.5 py-0.5 rounded-full">
