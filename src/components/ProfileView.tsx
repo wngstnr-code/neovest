@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { User, Shield, LogOut, CheckCircle, Globe, Landmark, Award, Sun, Moon, Eye, EyeOff } from 'lucide-react';
+import { User, Shield, LogOut, CheckCircle, Globe, Landmark, Award, Sun, Moon, Eye, EyeOff, Headphones, MessageCircle, PhoneCall, Mail } from 'lucide-react';
 import { UserProfile, Screen } from '../types';
 import NeoVestLogo from './NeoVestLogo';
 
@@ -20,6 +20,7 @@ export default function ProfileView({
   onNavigate,
 }: ProfileViewProps) {
   const [showKycModal, setShowKycModal] = useState(false);
+  const [showCustomerServiceModal, setShowCustomerServiceModal] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => document.documentElement.classList.contains('dark'));
   const [showBalance, setShowBalance] = useState(false);
 
@@ -216,6 +217,25 @@ export default function ProfileView({
             <span className="text-xs text-gray-400 font-bold shrink-0">ID (Bahasa)</span>
           </div>
 
+          {/* Customer Service */}
+          <button
+            type="button"
+            onClick={() => setShowCustomerServiceModal(true)}
+            id="profile-customer-service-btn"
+            className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-gray-50 text-left transition-colors focus:outline-none"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 bg-blue-50 text-primary rounded-xl flex items-center justify-center">
+                <Headphones className="w-5 h-5 stroke-[2.2]" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-gray-900 block">Customer Service</span>
+                <span className="text-xs text-gray-400 font-medium block mt-0.5">Bantuan cepat untuk akun dan transaksi</span>
+              </div>
+            </div>
+            <span className="text-xs text-gray-300 font-bold">&gt;</span>
+          </button>
+
           {/* Theme Toggle */}
           <div className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-gray-50 text-left transition-colors">
             <div className="flex items-center gap-3">
@@ -280,6 +300,70 @@ export default function ProfileView({
                 Kembali ke Profil
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* CUSTOMER SERVICE POPUP */}
+      {showCustomerServiceModal && (
+        <div className="absolute inset-0 bg-dark-blue/60 backdrop-blur-xs flex items-center justify-center z-50 p-5">
+          <div className="bg-white rounded-3xl w-full max-w-sm p-5 shadow-xl animate-fadeIn duration-200">
+            <div className="flex items-start gap-3 mb-4">
+              <div className="w-12 h-12 bg-blue-50 text-primary rounded-2xl flex items-center justify-center shrink-0">
+                <Headphones className="w-6 h-6 stroke-[2.2]" />
+              </div>
+              <div>
+                <h3 className="text-sm font-black text-gray-950 block">Customer Service NeoVest</h3>
+                <p className="text-xs text-gray-500 leading-relaxed font-medium mt-1">
+                  Tim kami siap membantu kendala akun, KYC, deposit, dan transaksi.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2.5">
+              <a
+                href="https://wa.me/6281200000000"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full flex items-center gap-3 p-3 rounded-2xl bg-teal-50 text-teal-700 border border-teal-100 active:scale-[0.98] transition-all"
+              >
+                <MessageCircle className="w-4.5 h-4.5 stroke-[2.3]" />
+                <div>
+                  <span className="text-xs font-black block">Chat WhatsApp</span>
+                  <span className="text-xs font-medium opacity-80">Respon cepat setiap hari</span>
+                </div>
+              </a>
+
+              <a
+                href="tel:1500888"
+                className="w-full flex items-center gap-3 p-3 rounded-2xl bg-blue-50 text-primary border border-blue-100 active:scale-[0.98] transition-all"
+              >
+                <PhoneCall className="w-4.5 h-4.5 stroke-[2.3]" />
+                <div>
+                  <span className="text-xs font-black block">Hotline 1500-888</span>
+                  <span className="text-xs font-medium opacity-80">Senin-Jumat, 08.00-20.00 WIB</span>
+                </div>
+              </a>
+
+              <a
+                href="mailto:support@neovest.id"
+                className="w-full flex items-center gap-3 p-3 rounded-2xl bg-gray-50 text-gray-700 border border-gray-100 active:scale-[0.98] transition-all"
+              >
+                <Mail className="w-4.5 h-4.5 stroke-[2.3]" />
+                <div>
+                  <span className="text-xs font-black block">support@neovest.id</span>
+                  <span className="text-xs font-medium opacity-80">Untuk laporan detail dan dokumen</span>
+                </div>
+              </a>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setShowCustomerServiceModal(false)}
+              className="w-full h-11 bg-primary text-white text-xs font-bold rounded-2xl mt-5"
+            >
+              Kembali ke Profil
+            </button>
           </div>
         </div>
       )}
