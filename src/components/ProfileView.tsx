@@ -32,7 +32,7 @@ export default function ProfileView({
 
   // Switch user profile identity for fast prototype testing
   const toggleIdentity = () => {
-    if (userProfile.fullName === 'talita feby') {
+    if (userProfile.fullName === 'Talita Feby') {
       onUpdateUserProfile({
         fullName: 'Olitha Kaisha',
         email: 'alex.turner@gmail.com',
@@ -41,7 +41,7 @@ export default function ProfileView({
       });
     } else {
       onUpdateUserProfile({
-        fullName: 'talita feby',
+        fullName: 'Talita Feby',
         email: 'talita.wijaya@gmail.com',
         isPremium: false,
         riskProfile: 'Moderat',
@@ -115,21 +115,21 @@ export default function ProfileView({
       {/* Bank balance credentials */}
       <div className="px-5 mb-6">
         <div className="bg-gradient-to-tr from-[#001a41] to-primary-dark rounded-3xl p-5 text-white shadow-md relative overflow-hidden">
-          <div className="flex items-center justify-between gap-3">
-            <span className="text-xs text-white/70 font-semibold block tracking-wider uppercase">Saldo RDN (Rekening Virtual)</span>
+          <span className="text-xs text-white/70 font-semibold block tracking-wider uppercase">Saldo RDN (Rekening Virtual)</span>
+          <div className="flex items-center gap-3 mt-0.5">
+            <h2 id="profile-rdn-balance" className="text-xl font-extrabold select-all">
+              {showBalance ? formatIDR(userProfile.balance) : 'Rp •••••••'}
+            </h2>
             <button
               type="button"
               onClick={() => setShowBalance((prev) => !prev)}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white/90 active:scale-95"
+              className="flex h-6 w-6 items-center justify-center rounded-full text-white/70 hover:text-white transition-colors focus:outline-none"
               aria-label={showBalance ? 'Sembunyikan saldo' : 'Tampilkan saldo'}
             >
               {showBalance ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
           </div>
-          <h2 id="profile-rdn-balance" className="text-xl font-extrabold mt-0.5 select-all">
-            {showBalance ? formatIDR(userProfile.balance) : 'Rp •••••••'}
-          </h2>
-          
+
           <div className="flex justify-between items-center mt-3.5 border-t border-white/10 pt-3.5 bg-transparent">
             <div>
               <span className="text-xs text-white/50 font-bold block uppercase tracking-wider">Bank Kustodian</span>

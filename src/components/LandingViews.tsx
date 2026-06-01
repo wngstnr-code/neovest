@@ -17,7 +17,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
   const [showPassword, setShowPassword] = useState(false);
   
   // Registration States
-  const [fullName, setFullName] = useState('talita feby');
+  const [fullName, setFullName] = useState('Talita Feby');
   const [email, setEmail] = useState('talita.wijaya@gmail.com');
   const [phone, setPhone] = useState('081234567890');
   const [password, setPassword] = useState('Rahasia123');
@@ -386,7 +386,7 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
             type="button"
             onClick={() => {
               onLoginSuccess({
-                fullName: 'talita feby',
+                fullName: 'Talita Feby',
                 email: 'talita.wijaya@gmail.com',
               });
               onNavigate('Home');

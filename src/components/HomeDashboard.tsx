@@ -191,15 +191,7 @@ export default function HomeDashboard({
       {/* Total Aset Card with gradient inspired by the screen */}
       <div className="px-5 mb-6">
         <div
-          onClick={() => onNavigate('Portfolio')}
-          className="bg-gradient-to-br from-primary via-primary to-[#0070ea] rounded-3xl p-5 text-white shadow-xl relative overflow-hidden cursor-pointer active:scale-[0.99] transition-transform"
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              onNavigate('Portfolio');
-            }
-          }}
+          className="bg-gradient-to-br from-primary via-primary to-[#0070ea] rounded-3xl p-5 text-white shadow-xl relative overflow-hidden"
         >
           {/* Visual abstract overlay waves */}
           <div className="absolute -right-10 -bottom-10 w-44 h-44 bg-white/5 rounded-full blur-2xl" />
@@ -212,23 +204,23 @@ export default function HomeDashboard({
             </span>
           )}
 
-          <div className="relative flex items-center justify-between gap-3">
-            <span className="text-xs text-white/80 font-medium tracking-wide">Total Aset</span>
+          <span className="text-xs text-white/80 font-medium tracking-wide">Total Aset</span>
+          <div className="flex items-center gap-3 mt-1 relative z-10">
+            <h2 id="home-total-assets" className="text-2xl font-bold tracking-tight text-white select-all font-sans">
+              {showBalance ? formatIDR(totalAssets) : 'Rp •••••••'}
+            </h2>
             <button
-              type="button"
               onClick={(e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 setShowBalance((prev) => !prev);
               }}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-white/90 backdrop-blur-sm active:scale-95"
+              className="flex h-7 w-7 items-center justify-center rounded-full text-white/70 hover:text-white transition-colors focus:outline-none"
               aria-label={showBalance ? 'Sembunyikan saldo' : 'Tampilkan saldo'}
             >
               {showBalance ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
           </div>
-          <h2 id="home-total-assets" className="text-2xl font-bold tracking-tight text-white mt-1 select-all font-sans">
-            {showBalance ? formatIDR(totalAssets) : 'Rp •••••••'}
-          </h2>
 
           <div className="inline-flex items-center gap-1.5 bg-white/15 px-3 py-1.5 rounded-xl text-teal-200 mt-4 select-none backdrop-blur-sm">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">

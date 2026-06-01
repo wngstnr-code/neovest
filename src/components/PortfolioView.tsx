@@ -133,20 +133,20 @@ export default function PortfolioView({
         <div className="bg-gradient-to-br from-primary via-primary to-[#0070ea] rounded-3xl p-5 text-white shadow-xl relative overflow-hidden">
           <div className="absolute -right-10 -bottom-10 w-44 h-44 bg-white/5 rounded-full blur-2xl" />
           <div className="absolute left-1/3 -top-12 w-32 h-32 bg-accent/10 rounded-full blur-xl" />
-          <div className="relative flex items-center justify-between gap-3">
-            <span className="text-xs text-white/80 font-medium tracking-wide block">Total Nilai</span>
+          <span className="text-xs text-white/80 font-medium tracking-wide block relative">Total Nilai</span>
+          <div className="flex items-center gap-3 mt-1 relative z-10">
+            <h2 className="text-2xl font-bold tracking-tight text-white">
+              {showBalance ? formatIDR(totalAssets) : 'Rp •••••••'}
+            </h2>
             <button
               type="button"
               onClick={() => setShowBalance((prev) => !prev)}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-white/90 backdrop-blur-sm active:scale-95"
+              className="flex h-7 w-7 items-center justify-center rounded-full text-white/70 hover:text-white transition-colors focus:outline-none"
               aria-label={showBalance ? 'Sembunyikan saldo' : 'Tampilkan saldo'}
             >
               {showBalance ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
           </div>
-          <h2 className="text-2xl font-bold tracking-tight text-white mt-1 relative">
-            {showBalance ? formatIDR(totalAssets) : 'Rp •••••••'}
-          </h2>
 
           <div className="inline-flex items-center gap-1.5 bg-white/15 px-3 py-1.5 rounded-xl text-teal-200 mt-4 select-none backdrop-blur-sm relative">
             <svg className="w-3.5 h-3.5 stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
