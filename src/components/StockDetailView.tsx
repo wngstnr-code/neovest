@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Star, Heart, TrendingUp, TrendingDown, ChevronRight, Shield, RefreshCcw, Check, ShoppingCart } from 'lucide-react';
 import { Stock, Screen } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 interface StockDetailViewProps {
   stock: Stock;
@@ -52,12 +53,15 @@ export default function StockDetailView({
 
         <span className="font-extrabold text-gray-900 text-sm">Detail Saham</span>
 
-        <button
-          onClick={() => onToggleWatchlist(stock.code)}
-          className="w-9 h-9 bg-white rounded-full flex items-center justify-center border border-gray-100 shadow-sm text-gray-700 focus:outline-none"
-        >
-          <Star className={`w-4.5 h-4.5 stroke-[2.2] ${isAdded ? 'fill-accent text-accent' : 'text-gray-300'}`} />
-        </button>
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={() => onToggleWatchlist(stock.code)}
+            className="w-9 h-9 bg-white rounded-full flex items-center justify-center border border-gray-100 shadow-sm text-gray-700 focus:outline-none"
+          >
+            <Star className={`w-4.5 h-4.5 stroke-[2.2] ${isAdded ? 'fill-accent text-accent' : 'text-gray-300'}`} />
+          </button>
+          <NeoVestLogo compact />
+        </div>
       </div>
 
       {/* Main Stock Summary with price and tick change */}

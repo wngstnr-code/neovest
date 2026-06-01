@@ -6,6 +6,7 @@
 import React, { useMemo, useState } from 'react';
 import { ArrowDownToLine, ArrowLeft, ArrowUpFromLine } from 'lucide-react';
 import { Screen, Stock, Transaction } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 type HistoryFilter = 'Semua' | 'Beli' | 'Jual' | 'Berhasil' | 'Gagal';
 type HistoryStatus = 'Berhasil' | 'Gagal';
@@ -107,15 +108,18 @@ export default function HistoryView({ orders, stocks, onNavigate }: HistoryViewP
     <div id="history-view" className="h-full overflow-y-auto bg-surface-bg pb-6 no-scrollbar">
       <div className="mx-auto flex min-h-full w-full max-w-md flex-col">
         <div className="border-b border-gray-100 bg-surface-bg px-5 pb-4 pt-5">
-          <div className="flex items-center gap-2.5">
-          <button
-            onClick={() => onNavigate('Home')}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary/5 active:scale-95"
-            aria-label="Kembali"
-          >
-            <ArrowLeft className="h-5 w-5 stroke-[2.4]" />
-          </button>
-            <h1 className="text-xl font-bold tracking-tight text-primary">Riwayat Transaksi</h1>
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-2.5">
+              <button
+                onClick={() => onNavigate('Home')}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary/5 active:scale-95"
+                aria-label="Kembali"
+              >
+                <ArrowLeft className="h-5 w-5 stroke-[2.4]" />
+              </button>
+              <h1 className="text-xl font-bold tracking-tight text-primary">Riwayat Transaksi</h1>
+            </div>
+            <NeoVestLogo compact />
           </div>
         </div>
 
@@ -141,7 +145,7 @@ export default function HistoryView({ orders, stocks, onNavigate }: HistoryViewP
         </div>
 
         <div className="flex flex-col gap-5 px-5 pt-4">
-          {Object.entries(groupedItems).map(([group, items]) => (
+          {(Object.entries(groupedItems) as [string, HistoryItem[]][]).map(([group, items]) => (
             <section key={group}>
               <h2 className="mb-2.5 text-xs font-bold tracking-[0.18em] text-slate-700">{group}</h2>
               <div className="flex flex-col gap-2.5">

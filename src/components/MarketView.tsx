@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Search, Star, TrendingUp, Flame } from 'lucide-react';
 import { Stock, Screen } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 interface MarketViewProps {
   stocks: Stock[];
@@ -69,12 +70,9 @@ export default function MarketView({
       {/* Top Header */}
       <div className="flex items-center justify-between px-5 mb-4">
         <div className="flex items-center gap-2.5">
-          <svg className="w-8 h-8 text-primary shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-            <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
           <h2 className="text-xl font-bold text-gray-900 tracking-tight">Pasar</h2>
         </div>
+        <NeoVestLogo />
       </div>
 
       {/* Embedded Search text input */}

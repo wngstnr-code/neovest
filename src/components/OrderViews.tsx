@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, HelpCircle, CheckCircle, AlertTriangle, Building2, Info, Minus, Plus, Sparkles, TrendingUp, Eye, EyeOff } from 'lucide-react';
 import { Stock, Screen, UserProfile } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 interface OrderViewsProps {
   currentScreen: Screen;
@@ -79,7 +80,10 @@ export default function OrderViews({
           
           <span className="font-extrabold text-primary text-sm">Beli {stock.code}</span>
           
-          <HelpCircle className="w-5 h-5 text-primary" />
+          <div className="flex items-center gap-2.5">
+            <HelpCircle className="w-5 h-5 text-primary" />
+            <NeoVestLogo compact />
+          </div>
         </div>
 
         <div className="px-5 mb-4">
@@ -258,7 +262,10 @@ export default function OrderViews({
             <ArrowLeft className="w-4 h-4 stroke-[2.2]" />
           </button>
           <span className="font-extrabold text-primary text-sm">Transaksi Aset</span>
-          <HelpCircle className="w-5 h-5 text-gray-600" />
+          <div className="flex items-center gap-2.5">
+            <HelpCircle className="w-5 h-5 text-gray-600" />
+            <NeoVestLogo compact />
+          </div>
         </div>
 
         <div className="px-5">

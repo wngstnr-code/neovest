@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Sparkles, AlertTriangle, ChevronRight, LayoutGrid, CheckCircle, Zap, Lightbulb, Compass, Landmark, ShoppingBag, Activity, FileText, Globe } from 'lucide-react';
 import { Stock, UserProfile, Screen } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 interface AIInsightViewProps {
   userProfile: UserProfile;
@@ -39,19 +40,18 @@ export default function AIInsightView({
       {/* Top Title Section */}
       <div className="px-5 mb-5 flex items-start justify-between">
         <div className="flex items-start gap-2.5">
-          <svg className="w-8 h-8 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-            <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
           <div>
             <h2 className="text-xl font-bold text-gray-900 tracking-tight mt-0.5">Wawasan AI</h2>
           </div>
         </div>
 
-        {/* Risk profile yellow lighting badge */}
-        <div className="inline-flex items-center gap-1 bg-accent/95 text-dark-blue font-bold px-3 py-1 rounded-full text-xs soft-shadow">
-          <Zap className="w-3.5 h-3.5" />
-          <span>{userProfile.riskProfile}</span>
+        <div className="flex items-center gap-2.5">
+          {/* Risk profile yellow lighting badge */}
+          <div className="inline-flex items-center gap-1 bg-accent/95 text-dark-blue font-bold px-3 py-1 rounded-full text-xs soft-shadow">
+            <Zap className="w-3.5 h-3.5" />
+            <span>{userProfile.riskProfile}</span>
+          </div>
+          <NeoVestLogo compact />
         </div>
       </div>
 

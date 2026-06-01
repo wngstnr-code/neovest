@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, Shield, LogOut, CheckCircle, Globe, Landmark, Award, Sun, Moon, Eye, EyeOff } from 'lucide-react';
 import { UserProfile, Screen } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 interface ProfileViewProps {
   userProfile: UserProfile;
@@ -64,13 +65,12 @@ export default function ProfileView({
       {/* Top Header */}
       <div className="px-5 mb-5 flex justify-between items-center">
         <div className="flex items-center gap-2.5">
-          <svg className="w-8 h-8 text-primary shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-            <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
           <h2 className="text-xl font-bold text-gray-900 tracking-tight">Akun Saya</h2>
         </div>
-        <span className="text-xs text-gray-400 font-bold">Ver v1.0.8</span>
+        <div className="flex items-center gap-2.5">
+          <span className="text-xs text-gray-400 font-bold">Ver v1.0.8</span>
+          <NeoVestLogo compact />
+        </div>
       </div>
 
       {/* User Information Display Card with toggle possibility */}

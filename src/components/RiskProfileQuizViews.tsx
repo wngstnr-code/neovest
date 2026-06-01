@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { ShieldCheck, HelpCircle, ArrowRight, Award, RotateCcw, Heart, TrendingUp, Target } from 'lucide-react';
 import { Screen, UserProfile } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 interface RiskProfileQuizViewsProps {
   currentScreen: Screen;
@@ -124,9 +125,12 @@ export default function RiskProfileQuizViews({
       <div id="risk-quiz-screen" className="flex flex-col h-full bg-white px-5 pt-8 pb-4 justify-between overflow-y-auto no-scrollbar">
         {/* Onboarding top checklist bar */}
         <div>
-          <div className="flex justify-between items-center text-xs text-gray-400 font-bold mb-1 px-1">
-            <span>Uji Profil Risiko</span>
-            <span>Pertanyaan {currentQuestion + 1} dari {questions.length}</span>
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <div className="min-w-0 text-xs font-bold text-gray-400">
+              <span>Uji Profil Risiko</span>
+              <span className="block">Pertanyaan {currentQuestion + 1} dari {questions.length}</span>
+            </div>
+            <NeoVestLogo />
           </div>
 
           <div className="w-full bg-gray-100 h-1.5 rounded-full mb-6 overflow-hidden">
@@ -176,12 +180,9 @@ export default function RiskProfileQuizViews({
     return (
       <div id="risk-result-screen" className="flex flex-col h-full bg-surface-bg px-5 pt-6 pb-4 overflow-y-auto no-scrollbar">
         {/* Header */}
-        <div className="flex items-center gap-2 mb-4">
-          <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-            <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        <div className="flex items-center justify-between gap-3 mb-4">
           <span className="font-extrabold text-[#001a41] text-sm">Hasil Risiko</span>
+          <NeoVestLogo />
         </div>
 
         {/* Card Body Container */}

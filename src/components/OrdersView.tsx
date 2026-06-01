@@ -18,6 +18,7 @@ import {
   Filter 
 } from 'lucide-react';
 import { Transaction, Screen, Stock } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 interface OrdersViewProps {
   orders: Transaction[];
@@ -73,14 +74,17 @@ export default function OrdersView({
           </button>
         </div>
 
-        {/* Back to Home Button */}
-        <button
-          onClick={() => onNavigate('Home')}
-          className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-gray-100 shadow-sm text-gray-600 active:scale-95 transition-all"
-          title="Kembali ke Beranda"
-        >
-          <ArrowLeft className="w-4 h-4" />
-        </button>
+        <div className="flex items-center gap-2.5">
+          {/* Back to Home Button */}
+          <button
+            onClick={() => onNavigate('Home')}
+            className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-gray-100 shadow-sm text-gray-600 active:scale-95 transition-all"
+            title="Kembali ke Beranda"
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+          <NeoVestLogo compact />
+        </div>
       </div>
 
       {/* Quick Stats Grid */}

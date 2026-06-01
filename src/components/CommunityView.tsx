@@ -26,6 +26,7 @@ import {
   User
 } from 'lucide-react';
 import { Screen, UserProfile } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 export interface CommunityComment {
   id: string;
@@ -349,9 +350,12 @@ export default function CommunityView({
             <ArrowLeft className="w-5 h-5 text-gray-800" />
           </button>
           <span className="text-sm font-extrabold text-blue-900 tracking-tight">Komunitas NeoVest</span>
-          <button className="w-10 h-10 -mr-2 rounded-full flex items-center justify-center hover:bg-gray-100 active:scale-95 transition-all">
-            <MoreVertical className="w-5 h-5 text-gray-500" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 active:scale-95 transition-all">
+              <MoreVertical className="w-5 h-5 text-gray-500" />
+            </button>
+            <NeoVestLogo compact />
+          </div>
         </div>
 
         {/* Scrollable content detail */}
@@ -589,16 +593,19 @@ export default function CommunityView({
           <span className="text-xs font-extrabold text-primary uppercase tracking-wider">Komunitas</span>
         </div>
         
-        {/* Toggle list action search */}
-        <div className="relative flex items-center max-w-[130px] bg-gray-50 border border-gray-150 rounded-full py-1.5 px-3.5 ml-auto">
-          <Search className="w-3.5 h-3.5 text-gray-400 shrink-0 mr-1.5" />
-          <input 
-            type="text" 
-            placeholder="Cari postingan..." 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-transparent outline-none text-xs text-gray-800 placeholder-gray-400 font-bold"
-          />
+        <div className="ml-auto flex items-center gap-2.5">
+          {/* Toggle list action search */}
+          <div className="relative flex items-center max-w-[130px] bg-gray-50 border border-gray-150 rounded-full py-1.5 px-3.5">
+            <Search className="w-3.5 h-3.5 text-gray-400 shrink-0 mr-1.5" />
+            <input 
+              type="text" 
+              placeholder="Cari postingan..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-transparent outline-none text-xs text-gray-800 placeholder-gray-400 font-bold"
+            />
+          </div>
+          <NeoVestLogo compact />
         </div>
       </div>
 

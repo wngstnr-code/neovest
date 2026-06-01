@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Check, Sparkles, Star, Award, ShieldAlert, CreditCard } from 'lucide-react';
 import { Screen, UserProfile } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 interface PremiumUpgradeProps {
   userProfile: UserProfile;
@@ -53,7 +54,7 @@ export default function PremiumUpgrade({
         <span className="font-extrabold text-accent text-xs uppercase tracking-widest flex items-center gap-1">
           <Star className="w-3.5 h-3.5 fill-accent" /> PREMIUM
         </span>
-        <div className="w-9" /> {/* Spacer */}
+        <NeoVestLogo compact dark />
       </div>
 
       {/* Hero Header Area */}

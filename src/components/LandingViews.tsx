@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, ShieldCheck, Mail, Lock, User, Phone, Check } from 'lucide-react';
 import { Screen, UserProfile } from '../types';
+import logoNeoVest from '../../logo-neovest.png';
 
 interface LandingViewsProps {
   currentScreen: Screen;
@@ -79,13 +80,13 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
         {/* Top Space */}
         <div className="flex justify-center mt-12">
           <div className="flex flex-col items-center">
-            {/* Elegant NeoVest Logo Emblem */}
-            <div className="p-4 bg-primary/5 rounded-2xl mb-4 soft-shadow">
-              <svg className="w-16 h-16 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-                <path d="M9 14.5L11.5 12L14.5 15L19 9.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M6 13L8.5 15.5L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            {/* Center NeoVest logo */}
+            <div className="mb-4 flex h-24 w-24 items-center justify-center overflow-hidden rounded-2xl bg-primary/5 soft-shadow">
+              <img
+                src={logoNeoVest}
+                alt="NeoVest"
+                className="h-full w-full object-cover object-center"
+              />
             </div>
             <span className="text-2xl font-bold tracking-tight text-primary font-sans">NeoVest</span>
           </div>
@@ -135,12 +136,14 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
     return (
       <div id="register-screen" className="flex flex-col h-full bg-surface-bg px-5 pt-6 pb-4 overflow-y-auto no-scrollbar">
         {/* Brand header */}
-        <div className="flex items-center gap-2 mb-4">
-          <svg className="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-            <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          <span className="font-bold text-primary text-base">NeoVest</span>
+        <div className="mb-4 flex flex-col items-center">
+          <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-primary/5 soft-shadow">
+            <img
+              src={logoNeoVest}
+              alt="NeoVest"
+              className="h-full w-full object-cover object-center"
+            />
+          </div>
         </div>
 
         {/* Card Body */}
@@ -297,11 +300,12 @@ export default function LandingViews({ currentScreen, onNavigate, onLoginSuccess
       <div id="login-screen" className="flex flex-col h-full bg-white px-5 pt-8 pb-4 justify-between overflow-y-auto no-scrollbar">
         {/* Brand visual header inside card like */}
         <div className="flex flex-col items-center mt-6">
-          <div className="p-3 bg-primary/5 rounded-2xl mb-2 soft-shadow flex items-center justify-center">
-            <svg className="w-12 h-12 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L3 7V12C3 17.5 7.2 21.4 12 22C16.8 21.4 21 17.5 21 12V7L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-              <path d="M9 13.5L11.5 11L14.5 14L19 8.5" stroke="#fecb00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+          <div className="mb-2 flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl bg-primary/5 soft-shadow">
+            <img
+              src={logoNeoVest}
+              alt="NeoVest"
+              className="h-full w-full object-cover object-center"
+            />
           </div>
           <h2 className="text-xl font-bold text-gray-900 tracking-tight">NeoVest</h2>
           <span className="text-xs text-gray-400 font-medium">Teman finansial tepercaya Anda.</span>

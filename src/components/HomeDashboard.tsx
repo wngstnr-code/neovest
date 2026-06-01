@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Search, Bell, History, CreditCard, Users, User, BookOpen, ChevronRight, TrendingUp, TrendingDown, X, Check, Sparkles, Eye, EyeOff } from 'lucide-react';
 import { Stock, LearnModule, UserProfile, PortfolioItem } from '../types';
+import NeoVestLogo from './NeoVestLogo';
 
 interface HomeDashboardProps {
   userProfile: UserProfile;
@@ -158,19 +159,22 @@ export default function HomeDashboard({
               <span className="text-sm text-gray-500 font-medium">Halo, </span>
               <span className="text-sm font-bold text-gray-900">{userProfile.fullName.split(' ')[0]}</span>
             </div>
-            <span className="text-xs text-gray-400 font-medium block leading-none mt-0.5">Masa Depan Berkelas Anda</span>
+            <span className="text-xs text-gray-400 font-medium block leading-none mt-0.5">Hari baru, peluang baru</span>
           </div>
         </div>
 
-        <button
-          onClick={() => setShowNotificationToast((prev) => !prev)}
-          className="w-10 h-10 bg-white rounded-full flex items-center justify-center border border-gray-100 soft-shadow text-gray-600 focus:outline-none relative"
-        >
-          <Bell className="w-4.5 h-4.5 stroke-[2.2]" />
-          {unreadNotifications.length > 0 && (
-            <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white" />
-          )}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setShowNotificationToast((prev) => !prev)}
+            className="w-10 h-10 bg-white rounded-full flex items-center justify-center border border-gray-100 soft-shadow text-gray-600 focus:outline-none relative"
+          >
+            <Bell className="w-4.5 h-4.5 stroke-[2.2]" />
+            {unreadNotifications.length > 0 && (
+              <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white" />
+            )}
+          </button>
+          <NeoVestLogo />
+        </div>
       </div>
 
       {/* Cari Saham Search Action */}
