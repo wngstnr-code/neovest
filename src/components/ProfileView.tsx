@@ -106,7 +106,7 @@ export default function ProfileView({
               </div>
               <p className="text-xs text-gray-400 font-medium tracking-normal mt-0.5">{userProfile.email}</p>
               <p className="text-xs text-primary font-bold mt-1.5 cursor-pointer block hover:underline" onClick={toggleIdentity}>
-                Ganti Pengguna (Simulasi)
+                Ganti Pengguna 
               </p>
             </div>
           </div>
