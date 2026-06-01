@@ -84,6 +84,13 @@ export default function HomeDashboard({
   const unreadNotifications = notifications.filter(
     (notification) => !readNotificationIds.includes(notification.id)
   );
+  const marketIndexes = [
+    { code: 'IHSG', value: '7.245,12', change: '+0.45%', positive: true },
+    { code: 'LQ45', value: '982,40', change: '+0.62%', positive: true },
+    { code: 'IDX30', value: '495,10', change: '-0.12%', positive: false },
+    { code: 'JII', value: '547,88', change: '+0.31%', positive: true },
+    { code: 'KOMPAS100', value: '1.186,24', change: '-0.08%', positive: false },
+  ];
 
   return (
     <div id="home-dashboard" className="flex flex-col h-full bg-surface-bg overflow-y-auto no-scrollbar pb-20 rounded-t-3xl pt-5">
@@ -348,35 +355,19 @@ export default function HomeDashboard({
         
         {/* Horizontal scroll view */}
         <div className="flex gap-3 overflow-x-auto no-scrollbar px-5 pb-1">
-          {/* Card 1: IHSG */}
-          <div className="min-w-32 bg-white rounded-2xl p-3.5 border border-gray-100 flex-1 soft-shadow">
-            <span className="text-xs text-gray-400 font-bold block">IHSG</span>
-            <h4 className="text-xs font-bold text-gray-900 mt-1">7.245,12</h4>
-            <div className="flex items-center gap-0.5 text-teal-600 font-bold text-xs mt-2">
-              <TrendingUp className="w-3.5 h-3.5" />
-              <span>+0.45%</span>
-            </div>
-          </div>
-
-          {/* Card 2: LQ45 */}
-          <div className="min-w-32 bg-white rounded-2xl p-3.5 border border-gray-100 flex-1 soft-shadow">
-            <span className="text-xs text-gray-400 font-bold block">LQ45</span>
-            <h4 className="text-xs font-bold text-gray-900 mt-1">982,40</h4>
-            <div className="flex items-center gap-0.5 text-teal-600 font-bold text-xs mt-2">
-              <TrendingUp className="w-3.5 h-3.5" />
-              <span>+0.62%</span>
-            </div>
-          </div>
-
-          {/* Card 3: IDX30 */}
-          <div className="min-w-32 bg-white rounded-2xl p-3.5 border border-gray-100 flex-1 soft-shadow">
-            <span className="text-xs text-gray-400 font-bold block">IDX30</span>
-            <h4 className="text-xs font-bold text-gray-900 mt-1">495,10</h4>
-            <div className="flex items-center gap-0.5 text-red-500 font-bold text-xs mt-2">
-              <TrendingDown className="w-3.5 h-3.5" />
-              <span>-0.12%</span>
-            </div>
-          </div>
+          {marketIndexes.map((index) => {
+            const TrendIcon = index.positive ? TrendingUp : TrendingDown;
+            return (
+              <div key={index.code} className="min-w-32 bg-white rounded-2xl p-3.5 border border-gray-100 flex-1 soft-shadow">
+                <span className="text-xs text-gray-400 font-bold block">{index.code}</span>
+                <h4 className="text-xs font-bold text-gray-900 mt-1">{index.value}</h4>
+                <div className={`flex items-center gap-0.5 font-bold text-xs mt-2 ${index.positive ? 'text-teal-600' : 'text-red-500'}`}>
+                  <TrendIcon className="w-3.5 h-3.5" />
+                  <span>{index.change}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
