@@ -45,22 +45,21 @@ export default function AIInsightView({
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5">
-          {/* Risk profile yellow lighting badge */}
-          <div className="inline-flex items-center gap-1 bg-accent/95 text-dark-blue font-bold px-3 py-1 rounded-full text-xs soft-shadow">
-            <Zap className="w-3.5 h-3.5" />
-            <span>{userProfile.riskProfile}</span>
-          </div>
-          <NeoVestLogo compact />
-        </div>
+        <NeoVestLogo compact />
       </div>
 
       {/* Today's AI Picks section */}
       <div className="px-5 mb-6">
-        <h3 className="text-xs font-bold text-gray-900 tracking-wider mb-3.5 flex items-center gap-1">
-          <Sparkles className="w-4.5 h-4.5 text-primary stroke-[2.2]" />
-          PILIHAN AI HARI INI
-        </h3>
+        <div className="mb-3.5 flex items-center justify-between gap-3">
+          <h3 className="text-xs font-bold text-gray-900 tracking-wider flex items-center gap-1">
+            <Sparkles className="w-4.5 h-4.5 text-primary stroke-[2.2]" />
+            PILIHAN AI HARI INI
+          </h3>
+          <div className="inline-flex items-center gap-1 bg-accent/95 text-dark-blue font-bold px-3 py-1 rounded-full text-xs soft-shadow">
+            <Zap className="w-3.5 h-3.5" />
+            <span>{userProfile.riskProfile}</span>
+          </div>
+        </div>
 
         {[bbcaData, bmriData, adroData].map((pickData) => {
           const isExpanded = expandedPick === pickData.code;
