@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Home, TrendingUp, PieChart, Lightbulb, User } from 'lucide-react';
+import { Home, TrendingUp, BriefcaseBusiness, Lightbulb, User } from 'lucide-react';
 import { Screen } from '../types';
 
 interface BottomNavProps {
@@ -32,7 +32,7 @@ export default function BottomNav({ currentScreen, onNavigate }: BottomNavProps)
   const tabs = [
     { id: 'Home', label: 'Beranda', icon: Home, screen: 'Home' as Screen },
     { id: 'Market', label: 'Pasar', icon: TrendingUp, screen: 'Market' as Screen },
-    { id: 'Portfolio', label: 'Portofolio', icon: PieChart, screen: 'Portfolio' as Screen },
+    { id: 'Portfolio', label: 'Portofolio', icon: BriefcaseBusiness, screen: 'Portfolio' as Screen },
     { id: 'Insight', label: 'Wawasan', icon: Lightbulb, screen: 'Insight' as Screen },
     { id: 'Profile', label: 'Profil', icon: User, screen: 'Profile' as Screen },
   ];
@@ -50,7 +50,7 @@ export default function BottomNav({ currentScreen, onNavigate }: BottomNavProps)
             className="flex flex-col items-center justify-center w-[68px] h-16 relative focus:outline-none transition-all"
           >
             {isActive ? (
-              <div className="bottom-nav-active-pill absolute -top-2 flex h-[58px] w-[72px] flex-col items-center justify-center rounded-[26px] bg-primary text-white shadow-[0_8px_18px_rgba(0,89,187,0.22)] transition-all dark:bg-accent dark:shadow-[0_8px_18px_rgba(250,204,21,0.22)]">
+              <div className="bottom-nav-active-pill absolute -top-2 flex h-[58px] w-[72px] flex-col items-center justify-center rounded-[26px] bg-accent text-dark-blue shadow-[0_8px_18px_rgba(250,204,21,0.24)] transition-all">
                 <Icon className="w-5 h-5 stroke-[2.6] fill-current" />
                 <span className="bottom-nav-active-label text-xs font-semibold mt-1 leading-none">{tab.label}</span>
               </div>
